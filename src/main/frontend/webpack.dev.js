@@ -17,17 +17,6 @@ module.exports = merge(common, {
             {
                 context: [ "/api" ],
                 target: "http://localhost:8080"
-            },
-            {
-                context: [ "/" ],
-                target: 'http://localhost:3000',
-                bypass: function (req, res) {
-                    if (req.headers.accept.indexOf('html') !== -1) {
-                        return '/index.html';
-                    }else{
-                        return res
-                    }
-                }
             }
         ]
     }

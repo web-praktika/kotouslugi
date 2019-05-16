@@ -12,7 +12,7 @@ class App extends Component {
                 </header>
                 <main className="main">
                     <Router>
-                        <Route path="/" exact render={() => <div>Тут услуги</div>}/>
+                        <Route path="/" exact render={() => <div>Тут услуги 12312</div>}/>
                     </Router>
                 </main>
                 <footer className="footer">

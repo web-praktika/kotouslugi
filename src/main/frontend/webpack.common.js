@@ -10,8 +10,8 @@ module.exports = {
     entry: [ './src/index.js' ],
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: "[name].js",
-        chunkFilename: "[name].js"
+        filename: "[hash][name].js",
+        chunkFilename: "[hash][name].js"
     },
     module: {
         rules: [
@@ -40,8 +40,8 @@ module.exports = {
     plugins: [
         // new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[name].css"
+            filename: "[hash][name].css",
+            chunkFilename: "[hash][name].css"
         }),
         new HtmlWebpackPlugin({
             title: 'Котуслуги',
