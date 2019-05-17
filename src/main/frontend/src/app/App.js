@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {hot} from 'react-hot-loader/root'
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import "./style.css"
+import CatalogPage from "./Catalog/СatalogPage";
+import Page404 from "./404/404Page";
+import TestServicePage from "./TestService/ServicePage";
 
 class App extends Component {
     render() {
@@ -12,7 +15,11 @@ class App extends Component {
                 </header>
                 <main className="main">
                     <Router>
-                        <Route path="/" exact render={() => <div>Тут услуги 12312</div>}/>
+                        <Switch>
+                            <Route path="/" exact component={CatalogPage}/>
+                            <Route path="/1" exact component={TestServicePage}/>
+                            <Route component={Page404}/>
+                        </Switch>
                     </Router>
                 </main>
                 <footer className="footer">
