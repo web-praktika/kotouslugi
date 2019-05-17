@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {listOfServices} from './mock'
-import catIcon from "../../images/icons/128x128/cat_box.png"
+import catIcon from "../../images/icons/128x128/cat_walk.png"
 import {Link} from "react-router-dom";
 import { Input } from 'semantic-ui-react'
 
