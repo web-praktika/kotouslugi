@@ -26,7 +26,7 @@ class App extends Component {
                 </main>
                 <div className="ui divider"/>
                 <footer className="ui container footer ">
-                    footer
+                    footer надо прибить вниз)
                 </footer>
             </div>
         )
