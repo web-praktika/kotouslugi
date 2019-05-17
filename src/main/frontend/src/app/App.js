@@ -5,15 +5,17 @@ import "./style.css"
 import CatalogPage from "./Catalog/СatalogPage";
 import Page404 from "./404/404Page";
 import TestServicePage from "./TestService/ServicePage";
+import 'semantic-ui-css/semantic.min.css'
 
 class App extends Component {
     render() {
         return (
             <div>
-                <header className="header">
-                    header
+                <header className="ui container header">
+                    Котуслуги
                 </header>
-                <main className="main">
+                <div className="ui divider"/>
+                <main className="ui container ">
                     <Router>
                         <Switch>
                             <Route path="/" exact component={CatalogPage}/>
@@ -22,7 +24,8 @@ class App extends Component {
                         </Switch>
                     </Router>
                 </main>
-                <footer className="footer">
+                <div className="ui divider"/>
+                <footer className="ui container footer ">
                     footer
                 </footer>
             </div>
