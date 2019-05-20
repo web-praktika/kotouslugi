@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {listOfServices} from './mock'
-import catIcon from "../../images/icons/128x128/cat_walk.png"
+import {icons, listOfServices} from './constants'
 import {Link} from "react-router-dom";
-import { Input } from 'semantic-ui-react'
+import {Input} from 'semantic-ui-react'
+import axios from "axios";
 
 
 export default class CatalogPage extends Component {
@@ -12,11 +12,18 @@ export default class CatalogPage extends Component {
     };
 
     componentDidMount() {
-        this.setState({services: listOfServices})
+        // this.setState({services: listOfServices})
+        this.getData()
     }
 
-    render() {
+    getData = () => {
+        axios.post('api/listService').then(({data}) => {
+            this.setState({services: data.content})
+        })
+    };
 
+    render() {
+        const {services} = this.state;
         return (
             <div>
                 <div>
@@ -33,10 +40,12 @@ export default class CatalogPage extends Component {
                 </div>
 
                 <div className={"ui cards centered"}>
-                    {listOfServices.map((service) =>
-                        <Link to={"/" + service.id } className="ui card" key={service.id}>
+                    {services.map((service) =>
+                        <Link to={"/" + service.id} className="ui card" key={service.id}>
                             <div className="content">
-                                <div className="ui mini left floated image"><img alt={"картинка"} src={catIcon}/></div>
+                                <div className="ui mini left floated image">
+                                    <img alt={"картинка"} src={icons[service.id]}/>
+                                </div>
                                 <div className="header">{service.name}</div>
                                 <div className="meta"><span className="date">Категория: Семья и дети</span></div>
                                 <div className="description">{service.description}</div>

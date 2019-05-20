@@ -12,7 +12,7 @@ class App extends Component {
         return (
             <div>
                 <header className="ui container header">
-                    Котуслуги
+                    <span className="red_cat">Кот</span>услуги
                 </header>
                 <div className="ui divider"/>
                 <main className="ui container ">
