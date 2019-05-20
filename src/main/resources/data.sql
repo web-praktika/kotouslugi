@@ -6,29 +6,21 @@ values (0,
 INSERT INTO service
 values (1,
         '"Подходи ответственно к здоровью питомца. Здоровый кот - мало хлопот."',
-        '"Запись в ветклинику');
+        '"Запись на приём к ветеринару"');
 INSERT INTO service
 values (2,
-        '"Корма и игрушки по спец цене. Все товары проверены и утверждены котокомиссией."',
-        '"Доставка зоотоваров"');
-INSERT INTO service
-values (3,
         '"Уже забыли как выглядит чистый кот. Тогда мы идём к вам."',
         '"Помыть кота"');
 INSERT INTO service
-values (4,
-        '"+"',
-        '"Запись на приём к ветеринару"');
-INSERT INTO service
-values (5,
-        '"..."',
+values (3,
+        '"Оформи заявление на получение корбки уже сегодня "',
         '"Социальная помощь котосемьям"');
 INSERT INTO service
-values (6,
+values (4,
         '"..."',
         '"Пенсионный котофонд"');
 INSERT INTO service
-values (7,
+values (5,
         '"Ну типа как с недвижимостью. Это будет электронная услуга с очередью выполнения."',
         '"Оформление лотка в котореестр"');
 
@@ -37,24 +29,22 @@ values (7,
 INSERT INTO category
 values (0, '"Семья и дети"');
 INSERT INTO category
-values (1, '"Категория 1"');
+values (1, '"Медицина"');
 INSERT INTO category
-values (2, '"Категория 2"');
+values (2, '"Социалка"');
+INSERT INTO category
+values (3, '"Котостроительство"');
 
 -- service_to_category
 INSERT INTO service_category
 values (0, 0);
 INSERT INTO service_category
-values (1, 0);
+values (1, 1);
 INSERT INTO service_category
-values (2, 0);
+values (2, 1);
 INSERT INTO service_category
-values (3, 1);
+values (3, 2);
 INSERT INTO service_category
-values (4, 1);
+values (4, 2);
 INSERT INTO service_category
-values (5, 1);
-INSERT INTO service_category
-values (6, 2);
-INSERT INTO service_category
-values (7, 2);
+values (5, 3);
