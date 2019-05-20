@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import ru.praktika.kotouslugi.exception.ServiceException;
+import ru.praktika.kotouslugi.model.Category;
 import ru.praktika.kotouslugi.model.KotoServiceEntity;
 import ru.praktika.kotouslugi.model.response.BaseResponse;
 import ru.praktika.kotouslugi.request.RequestId;
@@ -40,5 +41,10 @@ public class ProductServiceController extends BaseController {
     @RequestMapping(value = "getServiceById", method = RequestMethod.POST, produces = "application/json")
     public BaseResponse<KotoServiceEntity> getServiceById(@RequestBody RequestId request) {
         return wrapper((s) -> kotoService.getServiceById(request));
+    }
+
+    @RequestMapping(value = "listCategories", method = RequestMethod.POST, produces = "application/json")
+    public BaseResponse<List<Category>> listCategories() {
+        return wrapper((s) -> kotoService.listCategories());
     }
 }

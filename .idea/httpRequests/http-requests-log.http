@@ -1,0 +1,31 @@
+POST http://localhost:8080/api/getServiceById
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{
+  "id": "2"
+}
+
+<> 2019-05-20T031848.200.json
+
+###
+
+POST http://localhost:8080/api/listService
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2019-05-20T031842.200.json
+
+###
+
+POST http://localhost:8080/api/listCategories
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+<> 2019-05-20T031834.200.json
+
+###
+

@@ -2,7 +2,9 @@ package ru.praktika.kotouslugi.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.praktika.kotouslugi.dao.CategoryRepository;
 import ru.praktika.kotouslugi.dao.KotoServiceRepository;
+import ru.praktika.kotouslugi.model.Category;
 import ru.praktika.kotouslugi.model.KotoServiceEntity;
 import ru.praktika.kotouslugi.request.RequestId;
 
@@ -14,6 +16,8 @@ public class KotoService {
 
     @Autowired
     private KotoServiceRepository kotoServiceRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     /**
      * Получение списка всех сервисов
@@ -38,6 +42,18 @@ public class KotoService {
         KotoServiceEntity serviceEntity = kotoServiceRepository.findByServiceId(request.getId());
         if (serviceEntity != null)
             result = serviceEntity;
+        return result;
+    }
+
+    /**
+     * получение списка категорий
+     *
+     * @return список категорий
+     */
+    public List<Category> listCategories() {
+        List<Category> result = new LinkedList<>();
+        Iterable<Category> categories = categoryRepository.findAll();
+        categories.forEach(result::add);
         return result;
     }
 }
