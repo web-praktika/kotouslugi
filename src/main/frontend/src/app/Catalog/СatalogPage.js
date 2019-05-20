@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {icons} from './constants'
-import {Link} from "react-router-dom";
 import {Input} from 'semantic-ui-react'
 import axios from "axios";
 import loader from "../../images/loader.gif"
+import CatalogCard from "./CatalogCard";
 
 export default class CatalogPage extends Component {
 
@@ -49,20 +48,10 @@ export default class CatalogPage extends Component {
                 <div className={"ui header"}>
                     Каталог услуг
                 </div>
+
                 {filtered.length ?
                     <div className={"ui cards centered"}>
-                        {filtered.map((service) =>
-                            <Link to={"/" + service.id} className="ui card" key={service.id}>
-                                <div className="content">
-                                    <div className="ui mini left floated image">
-                                        <img alt={"картинка"} src={icons[service.id]}/>
-                                    </div>
-                                    <div className="header">{service.name}</div>
-                                    <div className="meta"><span className="date">{service.categories.map((item)=> {return item.name}).join(',')}</span></div>
-                                    <div className="description">{service.description}</div>
-                                </div>
-                            </Link>)
-                        }
+                        {filtered.map((service) => <CatalogCard service={service}/>)}
                     </div> :
                     <img className="ui centered medium image" alt={"картинка"} src={loader}/>
                 }
