@@ -32,6 +32,6 @@ public class ProductServiceController extends BaseController {
 
     @RequestMapping(value = "listService", method = RequestMethod.POST, produces = "application/json")
     public BaseResponse<List<KotoServiceEntity>> listService() {
-        return wrapper((s) -> kotoService.listUslugi());
+        return wrapper((s) -> kotoService.listServices());
     }
 }
