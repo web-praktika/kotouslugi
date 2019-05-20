@@ -58,7 +58,7 @@ export default class CatalogPage extends Component {
                                         <img alt={"картинка"} src={icons[service.id]}/>
                                     </div>
                                     <div className="header">{service.name}</div>
-                                    <div className="meta"><span className="date">Категория: Семья и дети</span></div>
+                                    <div className="meta"><span className="date">{service.categories.map((item)=> {return item.name}).join(',')}</span></div>
                                     <div className="description">{service.description}</div>
                                 </div>
                             </Link>)
