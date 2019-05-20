@@ -1,9 +1,25 @@
 package ru.praktika.kotouslugi.model;
 
+
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "service")
 public class KotoServiceEntity {
+    @Id
+    @GeneratedValue
     private int id;
     private String name;
     private String description;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "service_category",
+            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName = "id"))
+    private List<Category> categories;
+
+    public KotoServiceEntity() {
+    }
 
     public KotoServiceEntity(int id) {
         this.id = id;
@@ -31,5 +47,13 @@ public class KotoServiceEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 }
