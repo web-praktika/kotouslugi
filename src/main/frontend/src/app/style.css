@@ -1,11 +1,11 @@
 .red_cat{
     color: #1270B7;
-    font-size: 1.28571429em;
 }
 .blue_cat{
     color: #ED2E52;
-    font-size: 1.28571429em;
 }
 .header_padded{
     padding-top: 10px;
+    font-size: 1.28571429em;
+    font-weight: bold;
 }
