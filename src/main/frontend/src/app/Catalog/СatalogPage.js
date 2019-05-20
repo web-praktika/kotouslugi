@@ -3,7 +3,7 @@ import {icons, listOfServices} from './constants'
 import {Link} from "react-router-dom";
 import {Input} from 'semantic-ui-react'
 import axios from "axios";
-
+import loader from "../../images/loader.gif"
 
 export default class CatalogPage extends Component {
 
@@ -38,7 +38,7 @@ export default class CatalogPage extends Component {
                 <div className={"ui header"}>
                     Каталог услуг
                 </div>
-
+                {services.length ?
                 <div className={"ui cards centered"}>
                     {services.map((service) =>
                         <Link to={"/" + service.id} className="ui card" key={service.id}>
@@ -52,7 +52,9 @@ export default class CatalogPage extends Component {
                             </div>
                         </Link>)
                     }
-                </div>
+                </div> :
+                    <img className="ui centered medium image" alt={"картинка"} src={loader}/>
+                }
 
             </div>
         )

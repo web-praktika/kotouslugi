@@ -689,31 +689,31 @@ export default class TestServicePage
                                     <div className="default text">Saved Contacts</div>
                                     <div className="menu">
                                         <div className="item" data-value="jenny" data-text="Jenny">
-                                            <img className="ui mini avatar image" src="/images/avatar/small/jenny.jpg"/>
+                                            <img className="ui mini avatar image" src=""/>
                                             Jenny Hess
                                         </div>
                                         <div className="item" data-value="elliot" data-text="Elliot">
                                             <img className="ui mini avatar image"
-                                                 src="/images/avatar/small/elliot.jpg"/>
+                                                 src=""/>
                                             Elliot Fu
                                         </div>
                                         <div className="item" data-value="stevie" data-text="Stevie">
                                             <img className="ui mini avatar image"
-                                                 src="/images/avatar/small/stevie.jpg"/>
+                                                 src=""/>
                                             Stevie Feliciano
                                         </div>
                                         <div className="item" data-value="christian" data-text="Christian">
                                             <img className="ui mini avatar image"
-                                                 src="/images/avatar/small/christian.jpg"/>
+                                                 src=""/>
                                             Christian
                                         </div>
                                         <div className="item" data-value="matt" data-text="Matt">
-                                            <img className="ui mini avatar image" src="/images/avatar/small/matt.jpg"/>
+                                            <img className="ui mini avatar image" src=""/>
                                             Matt
                                         </div>
                                         <div className="item" data-value="justen" data-text="Justen">
                                             <img className="ui mini avatar image"
-                                                 src="/images/avatar/small/justen.jpg"/>
+                                                 src=""/>
                                             Justen Kitsune
                                         </div>
                                     </div>

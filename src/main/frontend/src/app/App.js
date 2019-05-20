@@ -34,9 +34,10 @@ class App extends Component {
                         </Switch>
                     </Router>
                 </main>
-                <div className="ui divider"/>
-                <footer className="ui container footer ">
-                    footer надо прибить вниз)
+                <footer className="footer">
+                    <div className="ui container ">
+                        footer надо прибить вниз)
+                    </div>
                 </footer>
             </div>
         )
