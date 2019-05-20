@@ -10,7 +10,7 @@ module.exports = merge(common, {
     },
     devServer: {
         compress: true,
-        port: 3000,
+        port: 3001,
         stats: "minimal",
         hot: true,
         proxy: [
@@ -20,7 +20,7 @@ module.exports = merge(common, {
             },
             {
                 context: [ "/" ],
-                target: 'http://localhost:3000',
+                target: 'http://localhost:3001',
                 bypass: function (req, res) {
                     if (req.headers.accept.indexOf('html') !== -1) {
                         return '/index.html';

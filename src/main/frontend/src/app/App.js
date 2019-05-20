@@ -12,10 +12,18 @@ class App extends Component {
     render() {
         return (
             <div>
-                <header  className="ui container header_padded">
+                <header className="ui container header_padded">
                     <img className="ui middle aligned mini image" src={mainIcon}/>
                     <span className="blue_cat">Кот</span><span className="red_cat">услуги</span>
                 </header>
+                <div className="ui divider"/>
+                <div className="ui container">
+                    <div className="ui breadcrumb">
+                        <a className="section" href={'/'}>Главная</a>
+                        <i className="right angle icon divider"/>
+                        <a className="section">Каталог услуг</a>
+                    </div>
+                </div>
                 <div className="ui divider"/>
                 <main className="ui container ">
                     <Router>
@@ -26,9 +34,10 @@ class App extends Component {
                         </Switch>
                     </Router>
                 </main>
-                <div className="ui divider"/>
-                <footer className="ui container footer ">
-                    footer надо прибить вниз)
+                <footer className="footer">
+                    <div className="ui container ">
+                        footer надо прибить вниз)
+                    </div>
                 </footer>
             </div>
         )
