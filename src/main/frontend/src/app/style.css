@@ -18,3 +18,7 @@
     color: #fff; /* Цвет текста */
     width: 100%; /* Ширина слоя */
 }
+
+.radioGroupTop{
+    padding-top: 10px;
+}

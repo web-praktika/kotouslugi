@@ -51,7 +51,7 @@ export default class CatalogPage extends Component {
 
                 {filtered.length ?
                     <div className={"ui cards centered"}>
-                        {filtered.map((service) => <CatalogCard service={service}/>)}
+                        {filtered.map((service) => <CatalogCard service={service} key={service.id}/>)}
                     </div> :
                     <img className="ui centered medium image" alt={"картинка"} src={loader}/>
                 }

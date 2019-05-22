@@ -6,10 +6,10 @@ export default class Header extends Component {
 
     render() {
         return (
-            <header className="ui container header_padded">
+            <a href="/" className="ui container header_padded" title={'Котуслуги: проще,чем мур мур мур!'}>
                 <img className="ui middle aligned mini image" src={mainIcon}/>
                 <span className="blue_cat">Кот</span><span className="red_cat">услуги</span>
-            </header>
+            </a>
         )
     }
 }
