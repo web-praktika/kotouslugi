@@ -3,7 +3,7 @@ import {hot} from 'react-hot-loader/root'
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import CatalogPage from "./Catalog/СatalogPage";
 import Page404 from "./404/404Page";
-import TestServicePage from "./TestService/ServicePage";
+import TestServicePage from "./TestService/FormPage";
 import Header from "./Header";
 import Breadcrumb from "./Breadcrumb";
 import Footer from "./Footer";
