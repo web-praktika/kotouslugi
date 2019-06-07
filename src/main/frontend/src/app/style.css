@@ -1,3 +1,12 @@
+html, body, #app, .mainWrapper {
+    height: 100%;
+}
+
+.mainWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 .red_cat{
     color: #1270B7;
 }
@@ -8,12 +17,21 @@
     padding-top: 10px;
     font-size: 1.28571429em;
     font-weight: bold;
+    flex: 0 1;
 }
+
+Breadcrumb {
+    flex: 0 1;
+}
+
+main {
+    flex: 1 0;
+}
+
 .footer {
     background: #E6EBEC;
-    position: fixed; /* Фиксированное положение */
-    left: 0;
-    bottom: 0; /* Левый нижний угол */
+    flex: 0 1;
+    margin-top: 50px;
     padding: 10px; /* Поля вокруг текста */
     color: #fff; /* Цвет текста */
     width: 100%; /* Ширина слоя */
@@ -21,4 +39,19 @@
 
 .radioGroupTop{
     padding-top: 10px;
+}
+
+.ui.card >.content {
+    height: 172px;
+}
+
+.carousel-wrapper {
+    position: relative;
+    margin-top: 24px;
+    width: 1200px;
+    height: 212px;
+    border-radius: .28571429rem;
+}
+.carousel-slider {
+    border-radius: 4px;
 }

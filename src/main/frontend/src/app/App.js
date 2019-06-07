@@ -9,11 +9,12 @@ import Breadcrumb from "./Breadcrumb";
 import Footer from "./Footer";
 import "./style.css"
 import 'semantic-ui-css/semantic.min.css'
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 class App extends Component {
     render() {
         return (
-            <div>
+            <div className="mainWrapper">
                 <Header/>
                 <div className="ui divider"/>
                 <Breadcrumb/>

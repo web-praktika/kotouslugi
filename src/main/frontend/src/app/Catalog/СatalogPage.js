@@ -3,6 +3,7 @@ import {Input} from 'semantic-ui-react'
 import axios from "axios";
 import loader from "../../images/loader.gif"
 import CatalogCard from "./CatalogCard";
+import CarouselPage from "./Carousel";
 
 export default class CatalogPage extends Component {
 
@@ -43,6 +44,10 @@ export default class CatalogPage extends Component {
                         fluid
                         onChange={(e, v) => this.searchService(v)}
                     />
+                </div>
+
+                <div className={"carousel-wrapper"}>
+                    <CarouselPage/>
                 </div>
 
                 <div className={"ui header"}>
