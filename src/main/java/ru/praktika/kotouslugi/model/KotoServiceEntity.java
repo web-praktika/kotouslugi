@@ -14,8 +14,8 @@ public class KotoServiceEntity {
     private String description;
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "service_category",
-            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "publisher_id", referencedColumnName = "id"))
+            joinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "service_id", referencedColumnName = "id"))
     private List<Category> categories;
 
     public KotoServiceEntity() {
