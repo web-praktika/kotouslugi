@@ -22,7 +22,7 @@ public class ProductServiceController extends BaseController {
     private KotoService kotoService;
 
     @RequestMapping(value = "hello", method = RequestMethod.POST, produces = "application/json")
-    public BaseResponse<String> copyRequisit() {
+    public BaseResponse<String> hello() {
         return wrapper((s) -> "hello test!!");
     }
 
