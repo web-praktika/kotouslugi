@@ -10,6 +10,7 @@ import Footer from "./Footer";
 import "./style.css"
 import 'semantic-ui-css/semantic.min.css'
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import OrdersListPage from "./OrdersList/OrdersListPage";
 
 class App extends Component {
     render() {
@@ -24,6 +25,7 @@ class App extends Component {
                         <Switch>
                             <Route path="/" exact component={CatalogPage}/>
                             <Route path="/1" exact component={TestServicePage}/>
+                            <Route path="/orders" exact component={OrdersListPage}/>
                             <Route component={Page404}/>
                         </Switch>
                     </Router>

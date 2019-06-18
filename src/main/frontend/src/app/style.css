@@ -14,7 +14,6 @@ html, body, #app, .mainWrapper {
     color: #ED2E52;
 }
 .header_padded{
-    padding-top: 10px;
     font-size: 1.28571429em;
     font-weight: bold;
     flex: 0 1;

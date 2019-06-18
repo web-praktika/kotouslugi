@@ -3,8 +3,11 @@ import React, {Component} from 'react';
 export default class FirstStepForm extends Component {
 
     render() {
+
+        const {fields} = this.props;
+
         return (
-            <form className="ui form" onSubmit={this.props.submitForm}>
+            <div className="ui form">
                 <h4 className="ui dividing header">Персональная информация</h4>
 
                 <div className="two fields">
@@ -15,6 +18,7 @@ export default class FirstStepForm extends Component {
                             name="name"
                             placeholder="Кличка"
                             onChange={this.props.handleChange}
+                            value={fields.name ? fields.name.value : undefined}
                         />
                     </div>
                     <div className="field">
@@ -24,6 +28,7 @@ export default class FirstStepForm extends Component {
                             name="lastName"
                             placeholder="Название породы"
                             onChange={this.props.handleChange}
+                            value={fields.lastName ? fields.lastName.value : undefined}
                         />
                     </div>
                 </div>
@@ -36,6 +41,7 @@ export default class FirstStepForm extends Component {
                             name="age"
                             placeholder="Возраст"
                             onChange={this.props.handleChange}
+                            value={fields.age ? fields.age.value : undefined}
                         />
                     </div>
 
@@ -48,8 +54,10 @@ export default class FirstStepForm extends Component {
                                         type="radio"
                                         name="sex"
                                         onChange={this.props.handleChange}
-                                        defaultChecked={true}
-                                        value={'male'}
+                                        // defaultChecked={true}
+                                        placeholder="Пол"
+                                        value='male'
+                                        checked={fields.sex ? fields.sex.value === 'male' : true }
                                     />
                                     <label>Кот</label>
                                 </div>
@@ -61,6 +69,8 @@ export default class FirstStepForm extends Component {
                                         name="sex"
                                         onChange={this.props.handleChange}
                                         value={'female'}
+                                        checked={fields.sex ? fields.sex.value === 'female' : false }
+                                        placeholder="Пол"
                                     />
                                     <label>Кошка</label>
                                 </div>
@@ -75,9 +85,10 @@ export default class FirstStepForm extends Component {
                         <label>Почта</label>
                         <input
                             type="text"
-                            name="e-mail"
+                            name="email"
                             placeholder="Почта"
                             onChange={this.props.handleChange}
+                            value={fields.email ? fields.email.value : undefined}
                         />
                     </div>
                     <div className="field">
@@ -87,13 +98,14 @@ export default class FirstStepForm extends Component {
                             name="phone"
                             placeholder="Телефон"
                             onChange={this.props.handleChange}
+                            value={fields.phone ? fields.phone.value : undefined}
                         />
                     </div>
                 </div>
-                <button className="ui icon right labeled button primary right floated" type='submit'>
+                <button className="ui icon right labeled button primary right floated" onClick={this.props.changeStepNext}>
                     Далее<i aria-hidden="true" className="right arrow icon"></i>
                 </button>
-            </form>
+            </div>
         )
     }
 }
