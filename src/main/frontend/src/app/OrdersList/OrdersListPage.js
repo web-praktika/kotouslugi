@@ -26,7 +26,7 @@ export default class OrdersListPage extends Component {
                             <td>{item.id}</td>
                             <td>{item.name}</td>
                             <td>{item.status}</td>
-                            <td>{item.fields}</td>
+                            <td>{JSON.stringify(item.fields)}</td>
                         </tr>
                     )}
 

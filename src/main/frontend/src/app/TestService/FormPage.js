@@ -37,7 +37,8 @@ export default class TestServicePage extends Component {
             preparedFields[item] = fields[item].value
         });
         params.name = 'Название услуги';
-        params.field = preparedFields;
+        params.fields = preparedFields;
+        params.status="FILED";
         console.log(params);
         axios.post('api/requisition/createRequisition', params).then((result) => {
             console.log(result);
