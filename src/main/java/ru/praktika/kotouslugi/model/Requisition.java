@@ -15,16 +15,27 @@ public class Requisition implements Serializable {
     private int id;
     private String name;
     private RequisitionStatus status;
+    private int serviceId;
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Field> fields;
 
     public Requisition() {
     }
 
-    public Requisition(String name, RequisitionStatus status) {
+
+    public Requisition(String name, RequisitionStatus status,Integer serviceId) {
         this.name = name;
         this.status = status;
         this.fields = new LinkedList<>();
+        this.serviceId = serviceId;
+    }
+
+    public int getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(int serviceId) {
+        this.serviceId = serviceId;
     }
 
     public int getId() {

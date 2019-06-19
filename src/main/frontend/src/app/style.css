@@ -40,7 +40,7 @@ main {
     padding-top: 10px;
 }
 
-.ui.card >.content {
+.catalogCard {
     height: 172px;
 }
 

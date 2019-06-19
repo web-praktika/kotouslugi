@@ -38,11 +38,13 @@ export default class TestServicePage extends Component {
         });
         params.name = 'Название услуги';
         params.fields = preparedFields;
-        params.status="FILED";
-        console.log(params);
-        axios.post('api/requisition/createRequisition', params).then((result) => {
-            console.log(result);
-        })
+        params.status = "ACCEPTED";
+        params.serviceId=1;
+        axios.post('api/requisition/createRequisition', params).then(() => {
+            alert("Заявка успешно подана");
+            this.props.history.push('/')
+        }).catch((e)=> {
+            alert('Произошка ошибка ' + e );})
     };
 
     handleChange = (e) => {

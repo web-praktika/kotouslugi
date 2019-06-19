@@ -27,7 +27,7 @@ public class RequisitionService {
 
     public int createRequisition(Map<String, Object> request) {
 
-        Requisition requisition = new Requisition("Заявление", RequisitionStatus.DRAFT);
+        Requisition requisition = new Requisition("Заявление", RequisitionStatus.DRAFT, 1);
         request.forEach((s, o) -> {
             switch (s) {
                 case "name":
@@ -42,6 +42,9 @@ public class RequisitionService {
                         Field field = new Field(s1, o1.toString());
                         requisition.getFields().add(field);
                     });
+                    break;
+                case "serviceId":
+                    requisition.setServiceId((Integer) o);
                     break;
             }
         });

@@ -9,7 +9,7 @@ export default class CatalogCard extends Component {
         const {service} = this.props;
         return (
             <Link to={"/" + service.id} className="ui card" >
-                <div className="content">
+                <div className="content catalogCard">
                     <div className="ui mini left floated image">
                         <img alt={"картинка"} src={icons[service.id]}/>
                     </div>
