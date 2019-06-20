@@ -49,7 +49,7 @@ export default class TestServicePage extends Component {
         params.serviceId=1;
         axios.post('api/requisition/createRequisition', params).then(() => {
             alert("Заявка успешно подана");
-            this.props.history.push('/')
+            window.location.assign('/')
         }).catch((e)=> {
             alert('Произошка ошибка ' + e );})
     };
