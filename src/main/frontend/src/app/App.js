@@ -13,19 +13,30 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import OrdersListPage from "./OrdersList/OrdersListPage";
 
 class App extends Component {
+
+    state ={
+        BreadcrumbLabel :  'Каталог услуг'
+    };
+
+    changeBreadcrumbLabel = (label) =>{
+        this.setState({BreadcrumbLabel: label})
+    };
+
     render() {
+
         return (
             <div className="mainWrapper">
                 <Header/>
                 <div className="ui divider"/>
-                <Breadcrumb/>
+                <Breadcrumb BreadcrumbLabel={this.state.BreadcrumbLabel}/>
                 <div className="ui divider"/>
                 <main className="ui container ">
                     <Router>
                         <Switch>
                             <Route path="/" exact component={CatalogPage}/>
-                            <Route path="/1" exact component={TestServicePage}/>
-                            <Route path="/orders" exact component={OrdersListPage}/>
+                            <Route path="/1" exact render={() => (<TestServicePage changeBreadcrumbLabel={this.changeBreadcrumbLabel}/>)}/>
+                            <Route path="/orders" exact render={() => (<OrdersListPage changeBreadcrumbLabel={this.changeBreadcrumbLabel}/>)}/>
+
                             <Route component={Page404}/>
                         </Switch>
                     </Router>

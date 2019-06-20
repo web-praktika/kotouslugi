@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Input} from 'semantic-ui-react'
 import axios from "axios";
-import loader from "../../images/loader.gif"
+import loader from "../../../public/static/images/loader.gif"
 import CatalogCard from "./CatalogCard";
-import CarouselPage from "./Carousel";
+import CarouselPage from "../Carousel/Carousel";
 
 export default class CatalogPage extends Component {
 
@@ -55,7 +55,7 @@ export default class CatalogPage extends Component {
                 </div>
 
                 {filtered.length ?
-                    <div className={"ui cards centered"}>
+                    <div className={"ui three cards"}>
                         {filtered.map((service) => <CatalogCard service={service} key={service.id}/>)}
                     </div> :
                     <img className="ui centered medium image" alt={"картинка"} src={loader}/>

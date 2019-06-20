@@ -13,6 +13,13 @@ export default class TestServicePage extends Component {
         fields: {}
     };
 
+    componentDidMount() {
+
+        axios.post('/api/getServiceById',{id:1}).then(({data}) => {
+            this.props.changeBreadcrumbLabel(data.content.name)
+        })
+    }
+
     changeStepNext = () => {
         let {activeStep, numberOfSteps} = this.state;
         if (activeStep + 1 < numberOfSteps) {

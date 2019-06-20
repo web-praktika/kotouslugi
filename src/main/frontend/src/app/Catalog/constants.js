@@ -1,9 +1,9 @@
-import catIcon1 from "../../images/icons/128x128/cat_walk.png"
-import catIcon2 from "../../images/icons/128x128/cat_box.png"
-import catIcon3 from "../../images/icons/128x128/cat_clean.png"
-import catIcon4 from "../../images/icons/128x128/cat_drunk.png"
-import catIcon5 from "../../images/icons/128x128/cat_hiss.png"
-import catIcon6 from "../../images/icons/128x128/cat_moustache.png"
+import catIcon1 from "../../../public/static/images/icons/cat_walk.png"
+import catIcon2 from "../../../public/static/images/icons/cat_pirate.png"
+import catIcon3 from "../../../public/static/images/icons/cat_clean.png"
+import catIcon4 from "../../../public/static/images/icons/cat_gift.png"
+import catIcon5 from "../../../public/static/images/icons/cat_grumpy.png"
+import catIcon6 from "../../../public/static/images/icons/cat_poo.png"
 
 // export const listOfServices = [
 //     {

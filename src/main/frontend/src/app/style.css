@@ -37,7 +37,7 @@ main {
 }
 
 .radioGroupTop{
-    padding-top: 10px;
+    padding-top: 14px;
 }
 
 .catalogCard {
@@ -45,10 +45,10 @@ main {
 }
 
 .carousel-wrapper {
-    position: relative;
+    /*position: relative;*/
     margin-top: 24px;
-    width: 1200px;
-    height: 212px;
+    /*width: 1200px;*/
+    /*height: 212px;*/
     border-radius: .28571429rem;
 }
 .carousel-slider {

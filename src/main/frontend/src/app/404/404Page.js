@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import icon404 from "../../images/icons/404.png"
+import icon404 from "../../../public/static/images/404.png"
 
 
 export default class Page404 extends Component {

@@ -12,7 +12,7 @@ export default class OrdersListPage extends Component {
 
     componentDidMount() {
         axios.all([this.getOrederList(), this.getServiceList()])
-
+        this.props.changeBreadcrumbLabel('Заявки')
     }
 
     getOrederList=()=>{
