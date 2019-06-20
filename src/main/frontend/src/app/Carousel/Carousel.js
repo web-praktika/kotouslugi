@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import photo1 from "../../../public/static/images/photo1.jpg";
-import photo2 from "../../../public/static/images/photo2.jpg";
+import photo1 from "../../../public/static/images/photo1.png";
+import photo2 from "../../../public/static/images/photo2.png";
 import "../style.css";
 import {Carousel} from "react-responsive-carousel";
 
