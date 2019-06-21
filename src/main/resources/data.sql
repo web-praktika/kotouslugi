@@ -31,9 +31,9 @@ values (0, 'Семья и дети');
 INSERT INTO category
 values (1, 'Медицина');
 INSERT INTO category
-values (2, 'Социалка');
+values (2, 'Социальные услуги');
 INSERT INTO category
-values (3, 'Котостроительство');
+values (3, 'Недвижимость');
 
 -- service_to_category
 INSERT INTO service_category

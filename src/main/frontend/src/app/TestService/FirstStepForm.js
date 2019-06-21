@@ -37,7 +37,7 @@ export default class FirstStepForm extends Component {
                     <div className="field">
                         <label>Возраст</label>
                         <input
-                            type="text"
+                            type="number"
                             name="age"
                             placeholder="Возраст"
                             onChange={this.props.handleChange}
@@ -84,7 +84,7 @@ export default class FirstStepForm extends Component {
                     <div className="field">
                         <label>Почта</label>
                         <input
-                            type="text"
+                            type="email"
                             name="email"
                             placeholder="Почта"
                             onChange={this.props.handleChange}
@@ -94,7 +94,7 @@ export default class FirstStepForm extends Component {
                     <div className="field">
                         <label>Телефон</label>
                         <input
-                            type="text"
+                            type="tel"
                             name="phone"
                             placeholder="Телефон"
                             onChange={this.props.handleChange}

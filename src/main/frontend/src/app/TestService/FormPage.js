@@ -55,7 +55,6 @@ export default class TestServicePage extends Component {
     };
 
     handleChange = (e) => {
-        console.log(this.state);
         let {fields} = this.state;
         const result = Object.assign({}, fields, {
             [e.target.name]: {
