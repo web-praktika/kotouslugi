@@ -15,7 +15,7 @@
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-flexbox-grid": "2.1.2",
-    "react-input-mask": "2.0.4",
+    "react-input-mask": "^2.0.4",
     "react-redux": "7.0.2",
     "react-responsive-carousel": "^3.1.49",
     "react-router-dom": "5.0.0",

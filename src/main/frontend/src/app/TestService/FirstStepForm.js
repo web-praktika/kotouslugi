@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import InputMask from 'react-input-mask';
 
 export default class FirstStepForm extends Component {
 
@@ -83,23 +84,34 @@ export default class FirstStepForm extends Component {
                 <div className="two fields">
                     <div className="field">
                         <label>Почта</label>
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Почта"
-                            onChange={this.props.handleChange}
+                        <InputMask
+                            mask="*******@****.***"
                             value={fields.email ? fields.email.value : undefined}
-                        />
+                            onChange={this.props.handleChange}>
+                            {() =>
+                                <input
+                                    type="text"
+                                    name="email"
+                                    placeholder="Почта"
+                                />
+                            }
+                        </InputMask>
                     </div>
                     <div className="field">
                         <label>Телефон</label>
-                        <input
-                            type="tel"
-                            name="phone"
-                            placeholder="Телефон"
-                            onChange={this.props.handleChange}
+                        <InputMask
+                            mask="+7(999)999 99 99"
                             value={fields.phone ? fields.phone.value : undefined}
-                        />
+                            onChange={this.props.handleChange}>
+                            {() =>
+                                <input
+                                type="text"
+                                name="phone"
+                                placeholder="Телефон"
+                            />
+                            }
+                        </InputMask>
+
                     </div>
                 </div>
                 <button className="ui icon right labeled button primary right floated" onClick={this.props.changeStepNext}>
