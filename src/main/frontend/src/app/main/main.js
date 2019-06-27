@@ -20,7 +20,7 @@ export default class Main extends  Component {
     }
 //
     render(){
-        return (<div className="ui three cards"><!-- xexxe-->
+        return (<div className="ui three cards">
 
             {this.state.serviceList.map((item) => {
             return <div className="ui card" key={item.id}>{item.name}</div>
