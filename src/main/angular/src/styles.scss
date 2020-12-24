@@ -1,0 +1,32 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 992px;
+  padding: 0 1em;
+  margin: 0 auto;
+}
+
+.loader {
+  width: 300px;
+  height: 225px;
+  margin: 0 auto;
+  background: url(/assets/gif/loader.gif) no-repeat center;
+  background-size: 100%;
+}
+

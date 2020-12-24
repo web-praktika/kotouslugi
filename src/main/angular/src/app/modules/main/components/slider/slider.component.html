@@ -1,0 +1,16 @@
+<div class="slider-wrapper">
+  <div class="slider">
+    <ng-container *ngFor="let item of items; let i = index">
+      <div class="slide" [class.active]="i === current">
+        <img [src]="item.image" alt="">
+      </div>
+    </ng-container>
+  </div>
+  <div class="control previous" (click)="current = current - 1"></div>
+  <div class="control next" (click)="current = current + 1"></div>
+  <div class="pagination">
+    <ng-container *ngFor="let item of items; let i = index">
+      <div class="page" [class.active]="i === current" (click)="current = i"></div>
+    </ng-container>
+  </div>
+</div>
