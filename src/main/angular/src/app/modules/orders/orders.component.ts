@@ -28,7 +28,7 @@ export class OrdersComponent implements OnInit {
       this.orders = data[0].content;
       this.services = data[1];
       this.loading = false;
-    })
+    });
   }
 
   public getServiceIcon(id: number): string {

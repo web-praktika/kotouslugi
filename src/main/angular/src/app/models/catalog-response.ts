@@ -1,5 +1,3 @@
-import { ApiError } from './api-error';
-
 export interface Service {
   id: number;
   name: string;
@@ -11,6 +9,9 @@ export interface Service {
 }
 
 export interface CatalogResponse {
-  error: ApiError;
+  error: {
+    code: number;
+    message?: string;
+  };
   content: Service[];
 }

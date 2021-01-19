@@ -63,7 +63,7 @@ export class ServiceComponent implements OnInit {
         this.data = {
           ...this.petForm.getRawValue(),
           ...this.vetForm.getRawValue()
-        }
+        };
         break;
       case 3:
         this.http.post('/api/requisition/createRequisition', {

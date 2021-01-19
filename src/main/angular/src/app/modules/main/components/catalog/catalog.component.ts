@@ -21,7 +21,7 @@ export class CatalogComponent implements OnInit {
     this.catalog.loadServices().subscribe((data: Service[]) => {
       this.services = data;
       this.loading = false;
-    })
+    });
   }
 
   public getIcon(id: number): string {
