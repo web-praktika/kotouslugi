@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Service } from '../../../../models/catalog-response';
-import { CatalogService } from '../../../shared/services/catalog/catalog.service';
+import { CatalogService } from '../../../../services/catalog/catalog.service';
 
 @Component({
   selector: 'app-catalog',

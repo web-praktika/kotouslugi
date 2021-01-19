@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CatalogService } from '../shared/services/catalog/catalog.service';
+import { CatalogService } from '../../services/catalog/catalog.service';
 import { Service } from '../../models/catalog-response';
 import { forkJoin } from 'rxjs';
 
