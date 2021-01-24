@@ -1,0 +1,23 @@
+.title {
+  padding-bottom: .3em;
+  border-bottom: 1px solid #dededf;
+}
+
+.item {
+  position: relative;
+  padding: 1em;
+  border: 1px solid #dededf;
+  border-radius: 4px;
+  margin-bottom: 1em;
+
+  .actions {
+    position: absolute;
+    top: 1em;
+    right: 0;
+
+    a {
+      margin-right: 1em;
+      cursor: pointer;
+    }
+  }
+}

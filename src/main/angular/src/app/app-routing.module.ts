@@ -2,23 +2,34 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './modules/main/main.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { ServiceComponent } from './modules/service/service.component';
-import { OrdersComponent } from './modules/orders/orders.component';
-import { ServiceGuard } from './guards/service/service.guard';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { VetComponent } from './components/vet/vet.component';
+import { CatListComponent } from './modules/cat-list/cat-list.component';
 
 const routes: Routes = [{
   path: '',
   component: MainComponent
 }, {
-  path: '404',
+  path: 'service/0',
+  redirectTo: 'registration'
+}, {
+  path: 'registration',
+  component: RegistrationComponent
+}, {
+  path: 'cat/:id',
+  component: RegistrationComponent
+}, {
+  path: 'service/1',
+  redirectTo: 'vet'
+}, {
+  path: 'vet',
+  component: VetComponent
+}, {
+  path: 'cat-list',
+  component: CatListComponent
+}, {
+  path: '**',
   component: NotFoundComponent
-}, {
-  path: 'service/:id',
-  component: ServiceComponent,
-  canActivate: [ServiceGuard]
-}, {
-  path: 'orders',
-  component: OrdersComponent
 }];
 
 @NgModule({

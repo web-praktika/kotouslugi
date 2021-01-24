@@ -1,0 +1,87 @@
+<div class="container">
+  <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
+  <form *ngIf="step === 1" [formGroup]="petForm">
+    <h4 class="step-title">Информация о котике</h4>
+    <div class="column">
+      <div class="control">
+        <label for="name" class="label">Кличка</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="name"
+          placeholder="Кличка"
+          formControlName="name"
+        />
+        <div class="error" *ngIf="petForm.get('name').invalid && !petForm.get('name').pristine">
+          <ng-container *ngIf="petForm.get('name').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="petForm.get('name').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+        </div>
+      </div>
+      <div class="control">
+        <label for="breed" class="label">Название породы</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="breed"
+          placeholder="Название породы"
+          formControlName="breed"
+        />
+        <div class="error" *ngIf="petForm.get('breed').invalid && !petForm.get('breed').pristine">
+          <ng-container *ngIf="petForm.get('breed').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="petForm.get('breed').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label for="age" class="label">Возраст</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="age"
+          placeholder="Возраст"
+          formControlName="age"
+        />
+        <div class="error" *ngIf="petForm.get('age').invalid && !petForm.get('age').pristine">
+          <ng-container *ngIf="petForm.get('age').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="petForm.get('age').getError('pattern')">
+            Поле может состоять только из цифр
+          </ng-container>
+        </div>
+      </div>
+      <div class="control">
+        <div class="label">Пол</div>
+        <input class="plain-radio" type="radio" id="male" name="gender" value="M" formControlName="gender"/>
+        <label for="male">Кот</label>
+        <input class="plain-radio" type="radio" id="female" name="gender" value="F" formControlName="gender"/>
+        <label for="female">Кошка</label>
+      </div>
+    </div>
+  </form>
+  <div *ngIf="step === 2">
+    <h4 class="step-title">Подтверждение заявки</h4>
+    <pre>{{cat | json}}</pre>
+  </div>
+  <div class="column buttons">
+    <div class="control">
+      <button *ngIf="step !== 1" class="plain-button" (click)="prev()">Назад</button>
+    </div>
+    <div class="control">
+      <button
+        class="plain-button"
+        (click)="next()"
+        [disabled]="step === 1 && petForm.invalid"
+      >Далее</button>
+    </div>
+  </div>
+</div>

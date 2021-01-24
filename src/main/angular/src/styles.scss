@@ -30,3 +30,56 @@ a {
   background-size: 100%;
 }
 
+.error {
+  color: #ff3a29
+}
+
+.column {
+  display: flex;
+  margin: 0 -1em 1em;
+
+  .control {
+    width: 50%;
+    padding: 0 1em;
+  }
+
+  &.buttons {
+    justify-content: space-between;
+
+    .control {
+      width: auto;
+    }
+  }
+}
+
+.label {
+  display: block;
+  margin-bottom: .2em;
+}
+
+.plain-input {
+  width: 100%;
+  padding: 1em;
+  border: 1px solid #dededf;
+  border-radius: 4px;
+}
+
+.plain-radio {
+  margin-top: 1em;
+
+  & + label {
+    margin: 0 1em 0 .5em;
+  }
+}
+
+.plain-button {
+  padding: 1em;
+  border: none;
+  border-radius: 4px;
+  background: #2185d0;
+  color: #ffffff;
+
+  &[disabled] {
+    background: #a5a5a5;
+  }
+}

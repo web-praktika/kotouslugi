@@ -4,11 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-service',
-  templateUrl: './service.component.html',
-  styleUrls: ['./service.component.scss']
+  selector: 'app-vet',
+  templateUrl: './vet.component.html',
+  styleUrls: ['./vet.component.scss']
 })
-export class ServiceComponent implements OnInit {
+export class VetComponent implements OnInit {
 
   public petForm: FormGroup;
   public vetForm: FormGroup;

@@ -6,23 +6,29 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './components/header/header.component';
 import { MainModule } from './modules/main/main.module';
-import { OrdersModule } from './modules/orders/orders.module';
+import { CatListModule } from './modules/cat-list/cat-list.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { ServiceModule } from './modules/service/service.module';
+import { OrderStepsComponent } from './components/order-steps/order-steps.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { VetComponent } from './components/vet/vet.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    OrderStepsComponent,
+    RegistrationComponent,
+    VetComponent,
     NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     MainModule,
-    OrdersModule,
-    ServiceModule
+    CatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
