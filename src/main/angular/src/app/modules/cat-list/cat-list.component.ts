@@ -21,7 +21,7 @@ export class CatListComponent implements OnInit {
   }
 
   loadList(): void {
-    this.http.get('/api/cat/listCat').subscribe((data: Cat[]) => {
+    this.http.post('/catService/listCat', null).subscribe((data: Cat[]) => {
       this.cats = data;
       this.loading = false;
     });
@@ -29,14 +29,8 @@ export class CatListComponent implements OnInit {
 
   remove(cat: Cat): void {
     if (confirm(`Вы действительно хотите удалить котика #${cat.id}?`)) {
-      this.http.request('delete', '/api/cat/deleteCat', {
-        body: cat,
-      }).subscribe((data: boolean) => {
-        if (data) {
-          this.loadList();
-        } else {
-          alert('Ошибка удаления');
-        }
+      this.http.delete( `/catService/deleteCat?id=${cat.id}`).subscribe((data: boolean) => {
+        this.loadList();
       });
     }
   }

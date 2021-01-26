@@ -22,26 +22,6 @@
         </div>
       </div>
       <div class="control">
-        <label for="breed" class="label">Название породы</label>
-        <input
-          class="plain-input"
-          type="text"
-          id="breed"
-          placeholder="Название породы"
-          formControlName="breed"
-        />
-        <div class="error" *ngIf="petForm.get('breed').invalid && !petForm.get('breed').pristine">
-          <ng-container *ngIf="petForm.get('breed').getError('required')">
-            Поле обязательно для заполнения
-          </ng-container>
-          <ng-container *ngIf="petForm.get('breed').getError('pattern')">
-            Поле может состоять только из букв русского алфавита
-          </ng-container>
-        </div>
-      </div>
-    </div>
-    <div class="column">
-      <div class="control">
         <label for="age" class="label">Возраст</label>
         <input
           class="plain-input"
@@ -58,13 +38,6 @@
             Поле может состоять только из цифр
           </ng-container>
         </div>
-      </div>
-      <div class="control">
-        <div class="label">Пол</div>
-        <input class="plain-radio" type="radio" id="male" name="gender" value="M" formControlName="gender"/>
-        <label for="male">Кот</label>
-        <input class="plain-radio" type="radio" id="female" name="gender" value="F" formControlName="gender"/>
-        <label for="female">Кошка</label>
       </div>
     </div>
   </form>

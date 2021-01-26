@@ -18,6 +18,26 @@ public class CatService {
     @Autowired
     private CatRepository catRepository;
 
+    public List<Cat> listCat() {
+        List<Cat> list = new LinkedList<>();
+        Iterable<Cat> all = catRepository.findAll();
+        all.forEach(cat -> {
+            list.add(cat);
+        });
+        return list;
+    }
+
+    public Long addCat(Cat cat) {
+        try {
+            cat = catRepository.save(cat);
+            logger.info("Добавлен кот = ", cat.getName());
+            return cat.getId();
+        } catch (Exception e) {
+            logger.error(e.getMessage());
+            return null;
+        }
+    }
+
     public Cat getCat(Long id) {
         Optional<Cat> cat = catRepository.findById(id);
         if (cat.isPresent()) {
@@ -26,38 +46,10 @@ public class CatService {
         return null;
     }
 
-    public Long setCat(Cat cat) {
-        try {
-            cat = catRepository.save(cat);
-            logger.info("Добавлен кот %s с идентификатором %d", cat.getName(), cat.getId());
-            return cat.getId();
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            return null;
+    public void deleteCat(Long id) {
+        Optional<Cat> cat = catRepository.findById(id);
+        if (cat.isPresent()) {
+            catRepository.delete(cat.get());
         }
-    }
-
-    public Boolean deleteCat(Cat cat) {
-        try {
-            catRepository.delete(cat);
-            logger.info("Удален кот %s с идентификатором %d", cat.getName(), cat.getId());
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            return false;
-        }
-        return true;
-    }
-
-    public List<Cat> listCat() {
-        Iterable<Cat> all = catRepository.findAll();
-        List<Cat> list = new LinkedList<>();
-        all.forEach(cat -> {
-            Cat myCat = new Cat();
-            myCat.setId(cat.getId());
-            myCat.setName(cat.getName());
-            myCat.setAge(cat.getAge());
-            list.add(myCat);
-        });
-        return list;
     }
 }

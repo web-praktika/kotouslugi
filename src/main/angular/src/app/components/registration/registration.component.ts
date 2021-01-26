@@ -37,15 +37,16 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
 
     this.petForm = this.fb.group({
-      gender: 'M',
       name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
-      breed: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
       age: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/)])
     });
 
     if (this.id) {
-      this.http.get(`/api/cat/getCat?id=${this.id}`).subscribe((data: Cat) => {
-        this.petForm.setValue(data);
+      this.http.get(`/catService/getCat?id=${this.id}`).subscribe((data: Cat) => {
+        this.petForm.setValue({
+          name: data.name,
+          age: data.age
+        });
       })
     }
   }
@@ -62,7 +63,7 @@ export class RegistrationComponent implements OnInit {
 
         break;
       case 2:
-        this.http.post('/api/cat/setCat', {
+        this.http.post('/catService/addCat', {
           ...this.cat,
         }).subscribe(() => {
           if (this.id) {

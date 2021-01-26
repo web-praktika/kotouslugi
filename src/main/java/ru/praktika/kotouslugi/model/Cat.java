@@ -12,7 +12,7 @@ public class Cat {
     @GeneratedValue
     private Long id;
     private String name;
-    private String Age;
+    private String age;
 
     public Long getId() {
         return id;
@@ -31,10 +31,10 @@ public class Cat {
     }
 
     public String getAge() {
-        return Age;
+        return age;
     }
 
     public void setAge(String age) {
-        Age = age;
+        this.age = age;
     }
 }
