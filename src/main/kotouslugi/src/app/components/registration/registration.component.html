@@ -1,0 +1,42 @@
+<div class="container">
+  <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
+  <form *ngIf="step === 1" [formGroup] = "petForm" >
+    <h4 class="step-title">Информация о котике</h4>
+    <div class="column">
+      <div class="control">
+        <label for="name" class="Label">Кличка</label>
+        <input class="plain-input"
+               type="text"
+               id="name"
+               placeholder="Кличка"
+               formControlName="name"
+        />
+      </div>
+      <div class="control">
+        <label for="age" class="Label">Возраст</label>
+        <input class="plain-input"
+               type="text"
+               id="age"
+               placeholder="Возраст"
+               formControlName="age"
+        />
+      </div>
+    </div>
+  </form>
+  <div *ngIf="step === 2">
+    <h4 class="step-title">Подтверждение заявки</h4>
+    <pre> {{cat | json}}</pre>
+  </div>
+  <div class="column buttons">
+    <div class="control">
+      <button *ngIf="step != 1" class="plain-button" (click)="prev()">Назад</button>
+    </div>
+    <div class="control">
+      <button
+        class="plain-button"
+        (click)="next()"
+        [disabled]="step === 1 && petForm.invalid"
+      >Далее</button>
+    </div>
+  </div>
+</div>

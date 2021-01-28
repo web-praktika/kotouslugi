@@ -11,7 +11,8 @@ public class Cat {
     @Id
     @GeneratedValue
     private Long id;
-    private String name,age;
+    private String name;
+    private String age;
 
     public Long getId() {
         return id;
