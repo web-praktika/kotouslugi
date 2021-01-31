@@ -1,0 +1,12 @@
+<div class="steps">
+  <ng-container *ngFor="let step of steps">
+<!--    <pre> {{step | json}}</pre>-->
+    <div class="step" [class.active]="step.id == active">
+      <div class="icon" [style.backgroundImage] = "'url(' + step.icon+ ')'"></div>
+      <div class="info">
+        <div class="title">{{ step.title }}</div>
+        <div class="description" [innerHTML]="step.description"></div>
+      </div>
+    </div>
+  </ng-container>
+</div>
