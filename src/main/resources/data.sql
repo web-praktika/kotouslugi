@@ -23,6 +23,10 @@ INSERT INTO service
 values (5,
         'Зарегистрируй имущество и спи спокойно',
         'Оформление лотка в котореестр');
+INSERT INTO service
+values (6,
+        'ТЕстовые кошкодевочки',
+        'Онлайн кошкодевочки без регистрации и смс');
 
 
 -- category
@@ -34,6 +38,8 @@ INSERT INTO category
 values (2, 'Социальные услуги');
 INSERT INTO category
 values (3, 'Недвижимость');
+INSERT INTO category
+values (4, 'Тест_КоманАда');
 
 -- service_to_category
 INSERT INTO service_category
@@ -41,10 +47,12 @@ values (0, 0);
 INSERT INTO service_category
 values (1, 1);
 INSERT INTO service_category
-values (2, 1);
+values (2, 2);
 INSERT INTO service_category
 values (3, 2);
 INSERT INTO service_category
 values (4, 2);
 INSERT INTO service_category
 values (5, 3);
+INSERT INTO service_category
+values (6, 4);

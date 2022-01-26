@@ -19,8 +19,6 @@ public class Requisition implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Field> fields;
 
-    public Requisition() {
-    }
 
 
     public Requisition(String name, RequisitionStatus status,Integer serviceId) {
@@ -28,6 +26,10 @@ public class Requisition implements Serializable {
         this.status = status;
         this.fields = new LinkedList<>();
         this.serviceId = serviceId;
+    }
+
+    public Requisition() {
+
     }
 
     public int getServiceId() {

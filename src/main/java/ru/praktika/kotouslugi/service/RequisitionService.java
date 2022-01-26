@@ -7,7 +7,6 @@ import ru.praktika.kotouslugi.exception.ServiceException;
 import ru.praktika.kotouslugi.model.Field;
 import ru.praktika.kotouslugi.model.Requisition;
 import ru.praktika.kotouslugi.model.enums.RequisitionStatus;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +26,11 @@ public class RequisitionService {
 
     public int createRequisition(Map<String, Object> request) {
 
-        Requisition requisition = new Requisition("Заявление", RequisitionStatus.DRAFT, 1);
+        Integer serviceId = (Integer) request.get("serviceId");
+        String name = (String) request.get("name");
+        System.out.println("ServiceId:og"+serviceId);
+
+        Requisition requisition = new Requisition(name, RequisitionStatus.DRAFT,serviceId);
         request.forEach((s, o) -> {
             switch (s) {
                 case "name":

@@ -16,7 +16,7 @@ export default class TestServicePage extends Component {
 
     componentDidMount() {
 
-        axios.post('/api/getServiceById',{id:1}).then(({data}) => {
+        axios.post('/api/getServiceById',{id:6}).then(({data}) => {
             this.props.changeBreadcrumbLabel(data.content.name)
         })
     }
@@ -44,10 +44,11 @@ export default class TestServicePage extends Component {
         Object.keys(fields).forEach((item) => {
             preparedFields[item] = fields[item].value
         });
-        params.name = 'Название услуги';
+        //добавить поля
+        params.name = 'NAme_CAtgirl';
         params.fields = preparedFields;
         params.status = "ACCEPTED";
-        params.serviceId=1;
+        params.serviceId=6;
         axios.post('api/requisition/createRequisition', params).then(() => {
             alert("Заявка успешно подана");
             window.location.assign('/')
