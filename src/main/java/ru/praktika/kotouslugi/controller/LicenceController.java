@@ -27,12 +27,12 @@ public class LicenceController {
     }
 
     @RequestMapping(value = "getLicence", method = RequestMethod.GET, produces = "application/json")
-    public Licence getLicence(@RequestParam Long id) {
-        return licenceService.getLicence(id);
+    public Licence getLicence(@RequestParam Long licenceId) {
+        return licenceService.getLicence(licenceId);
     }
 
     @RequestMapping(value = "deleteLicence", method = RequestMethod.DELETE, produces = "application/json")
-    public void deleteLicence(@RequestParam Long id) {
-        licenceService.deleteLicence(id);
+    public void deleteLicence(@RequestParam Long licenceId) {
+        licenceService.deleteLicence(licenceId);
     }
 }
