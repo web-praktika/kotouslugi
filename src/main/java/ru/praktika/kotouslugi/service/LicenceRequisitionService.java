@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.praktika.kotouslugi.dao.LicenceRequisitionRepository;
 import ru.praktika.kotouslugi.exception.ServiceException;
-import ru.praktika.kotouslugi.model.Field;
 import ru.praktika.kotouslugi.model.LicenceRequisition;
 import ru.praktika.kotouslugi.model.enums.LicenceRequisitionStatus;
 
@@ -27,30 +26,30 @@ public class LicenceRequisitionService {
 
     public int createLicenceRequisition(Map<String, Object> request) {
 
-        LicenceRequisition licenceRequisition = new LicenceRequisition("Заявление", LicenceRequisitionStatus.DRAFT, 1);
+        LicenceRequisition licenceRequisition = new LicenceRequisition(LicenceRequisitionStatus.DRAFT);
         request.forEach((s, o) -> {
             switch (s) {
-                case "name":
-                    licenceRequisition.setName(o.toString());
+                case "creationDate":
+                    licenceRequisition.setCreationDate(o.toString());
                     break;
                 case "status":
                     LicenceRequisitionStatus status = LicenceRequisitionStatus.valueOf(o.toString().toUpperCase());
                     licenceRequisition.setStatus(status);
                     break;
-                case "fields":
-                    ((Map<String, Object>) o).forEach((s1, o1) -> {
-                        Field field = new Field(s1, o1.toString());
-                        licenceRequisition.getFields().add(field);
-                    });
+                case "personId":
+                    licenceRequisition.setPersonId((Integer) o);
                     break;
-                case "serviceId":
-                    licenceRequisition.setServiceId((Integer) o);
+                case "licenceId":
+                    licenceRequisition.setLicenceId((Integer) o);
+                    break;
+                case "licenceN":
+                    licenceRequisition.setLicenceN((Integer) o);
                     break;
             }
         });
 
         LicenceRequisition save = licenceRequisitionRepository.save(licenceRequisition);
-        return save.getId();
+        return save.getLicenceN();
     }
 
     public Boolean updateLicenceRequisition(Map<String, Object> request) throws ServiceException {
@@ -64,18 +63,21 @@ public class LicenceRequisitionService {
 
         request.forEach((s, o) -> {
             switch (s) {
-                case "name":
-                    licenceRequisition.setName(o.toString());
+                case "creationDate":
+                    licenceRequisition.setCreationDate(o.toString());
                     break;
                 case "status":
-                    licenceRequisition.setStatus(LicenceRequisitionStatus.valueOf(o.toString().toUpperCase()));
+                    LicenceRequisitionStatus status = LicenceRequisitionStatus.valueOf(o.toString().toUpperCase());
+                    licenceRequisition.setStatus(status);
                     break;
-                case "fields":
-                    licenceRequisition.getFields().clear();
-                    ((Map<String, Object>) o).forEach((s1, o1) -> {
-                        Field field = new Field(s1, o1.toString());
-                        licenceRequisition.getFields().add(field);
-                    });
+                case "personId":
+                    licenceRequisition.setPersonId((Integer) o);
+                    break;
+                case "licenceId":
+                    licenceRequisition.setLicenceId((Integer) o);
+                    break;
+                case "licenceN":
+                    licenceRequisition.setLicenceN((Integer) o);
                     break;
             }
         });

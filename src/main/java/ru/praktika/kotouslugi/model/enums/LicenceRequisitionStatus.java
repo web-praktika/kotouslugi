@@ -2,6 +2,7 @@ package ru.praktika.kotouslugi.model.enums;
 
 public enum LicenceRequisitionStatus {
 
+    DRAFT("создана"),
     FILED("подана"),
     REJECTED("отклонена"),
     ACCEPTED("одобрена"),

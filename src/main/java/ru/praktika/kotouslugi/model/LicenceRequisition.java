@@ -4,54 +4,53 @@ import ru.praktika.kotouslugi.model.enums.LicenceRequisitionStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
 
 @Entity
-@Table(name = "Licence_requisition")
+@Table(name = "licenceRequisition")
 public class LicenceRequisition implements Serializable {
     @Id
     @GeneratedValue
-    private int id;
-    private String name;
+    private int licenceN;
     private LicenceRequisitionStatus status;
-    private int serviceId;
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private List<Field> fields;
-
-    public LicenceRequisition() {
-    }
+    private int licenceId;
+    private int personId;
+    private String creationDate;
 
 
-    public LicenceRequisition(String name, LicenceRequisitionStatus status, Integer serviceId) {
-        this.name = name;
+    public LicenceRequisition(LicenceRequisitionStatus status) {
         this.status = status;
-        this.fields = new LinkedList<>();
-        this.serviceId = serviceId;
     }
 
-    public int getServiceId() {
-        return serviceId;
+    public int getLicenceN() {
+        return licenceN;
     }
 
-    public void setServiceId(int serviceId) {
-        this.serviceId = serviceId;
+    public void setLicenceN(int licenceN) {
+        this.licenceN = licenceN;
     }
 
-    public int getId() {
-        return id;
+    public int getLicenceId() {
+        return licenceId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setLicenceId(int licenceId) {
+        this.licenceId = licenceId;
     }
 
-    public String getName() {
-        return name;
+    public int getPersonId() {
+        return personId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPersonId(int personId) {
+        this.personId = personId;
+    }
+
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
 
     public LicenceRequisitionStatus getStatus() {
@@ -62,11 +61,5 @@ public class LicenceRequisition implements Serializable {
         this.status = status;
     }
 
-    public List<Field> getFields() {
-        return fields;
-    }
 
-    public void setFields(List<Field> fields) {
-        this.fields = fields;
-    }
 }
