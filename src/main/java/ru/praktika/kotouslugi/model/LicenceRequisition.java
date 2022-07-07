@@ -60,6 +60,5 @@ public class LicenceRequisition implements Serializable {
     public void setStatus(LicenceRequisitionStatus status) {
         this.status = status;
     }
-
-
+    
 }

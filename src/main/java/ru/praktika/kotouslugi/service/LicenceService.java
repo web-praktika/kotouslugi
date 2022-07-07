@@ -38,16 +38,16 @@ public class LicenceService {
         }
     }
 
-    public Licence getLicence(Long id) {
-        Optional<Licence> licence = licenceRepository.findById(id);
+    public Licence getLicence(Long licenceId) {
+        Optional<Licence> licence = licenceRepository.findById(licenceId);
         if (licence.isPresent()) {
             return licence.get();
         }
         return null;
     }
 
-    public void deleteLicence(Long id) {
-        Optional<Licence> licence = licenceRepository.findById(id);
+    public void deleteLicence(Long licenceId) {
+        Optional<Licence> licence = licenceRepository.findById(licenceId);
         if (licence.isPresent()) {
             licenceRepository.delete(licence.get());
         }
