@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/licence_requisition")
+@RequestMapping("/api/licenceRequisition")
 @Api(description = "Методы для работы с заявлениями котоуслуг")
 public class LicenceRequisitionController extends BaseController {
 
