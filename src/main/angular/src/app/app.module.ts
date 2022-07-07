@@ -12,6 +12,8 @@ import { OrderStepsComponent } from './components/order-steps/order-steps.compon
 import { RegistrationComponent } from './components/registration/registration.component';
 import { VetComponent } from './components/vet/vet.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrdersModule } from './modules/orders/orders.module';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     MainModule,
+    OrdersModule,
     CatListModule
   ],
   providers: [],
