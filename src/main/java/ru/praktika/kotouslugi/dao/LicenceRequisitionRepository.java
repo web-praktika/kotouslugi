@@ -1,7 +1,7 @@
 package ru.praktika.kotouslugi.dao;
 
 import org.springframework.data.repository.CrudRepository;
-import ru.praktika.kotouslugi.model.Requisition;
+import ru.praktika.kotouslugi.model.LicenceRequisition;
 
-public interface RequisitionRepository extends CrudRepository<Requisition, Integer> {
+public interface LicenceRequisitionRepository extends CrudRepository<LicenceRequisition, Integer> {
 }

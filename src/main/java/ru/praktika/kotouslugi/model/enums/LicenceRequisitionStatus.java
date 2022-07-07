@@ -1,6 +1,6 @@
 package ru.praktika.kotouslugi.model.enums;
 
-public enum RequisitionStatus {
+public enum LicenceRequisitionStatus {
 
     DRAFT("черновик"),
     FILED("подана"),
@@ -13,7 +13,7 @@ public enum RequisitionStatus {
 
     private String message;
 
-    RequisitionStatus(String message) {
+    LicenceRequisitionStatus(String message) {
         this.message = message;
     }
 

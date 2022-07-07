@@ -1,6 +1,6 @@
 package ru.praktika.kotouslugi.model;
 
-import ru.praktika.kotouslugi.model.enums.RequisitionStatus;
+import ru.praktika.kotouslugi.model.enums.LicenceRequisitionStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,22 +8,22 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
-@Table(name = "requisition")
-public class Requisition implements Serializable {
+@Table(name = "Licence_requisition")
+public class LicenceRequisition implements Serializable {
     @Id
     @GeneratedValue
     private int id;
     private String name;
-    private RequisitionStatus status;
+    private LicenceRequisitionStatus status;
     private int serviceId;
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Field> fields;
 
-    public Requisition() {
+    public LicenceRequisition() {
     }
 
 
-    public Requisition(String name, RequisitionStatus status,Integer serviceId) {
+    public LicenceRequisition(String name, LicenceRequisitionStatus status, Integer serviceId) {
         this.name = name;
         this.status = status;
         this.fields = new LinkedList<>();
@@ -54,11 +54,11 @@ public class Requisition implements Serializable {
         this.name = name;
     }
 
-    public RequisitionStatus getStatus() {
+    public LicenceRequisitionStatus getStatus() {
         return status;
     }
 
-    public void setStatus(RequisitionStatus status) {
+    public void setStatus(LicenceRequisitionStatus status) {
         this.status = status;
     }
 
