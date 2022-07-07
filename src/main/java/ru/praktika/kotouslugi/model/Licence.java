@@ -1,15 +1,24 @@
 package ru.praktika.kotouslugi.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "licence")
 public class Licence {
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator = "sequence-generator-1")
+    @GenericGenerator(
+            name = "sequence-generator-1",
+            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
+            parameters = {
+                    @Parameter(name = "sequence_name", value = "licence_seq"),
+                    @Parameter(name = "initial_value", value = "10000001"),
+                    @Parameter(name = "increment_size", value = "1")
+            }
+    )
     private Long licenceId;
     private String name;
     private String description;

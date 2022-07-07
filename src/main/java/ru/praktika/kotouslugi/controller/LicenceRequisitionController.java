@@ -42,7 +42,7 @@ public class LicenceRequisitionController extends BaseController {
             @ApiResponse(code = 200, message = "OK", response = BaseResponse.class),
             @ApiResponse(code = 401, message = "Не авторизованный пользователь"),
             @ApiResponse(code = 500, message = "Внутренняя ошибка") })
-    public BaseResponse<Integer> createLicenceRequisition(@ApiParam(name = "request", value = "Тело запроса", required = true)
+    public BaseResponse<Long> createLicenceRequisition(@ApiParam(name = "request", value = "Тело запроса", required = true)
                                                    @RequestBody Map<String, Object> request) {
         return wrapper((s) -> licenceRequisitionService.createLicenceRequisition(request));
     }

@@ -3,10 +3,14 @@ package ru.praktika.kotouslugi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.praktika.kotouslugi.dao.LicenceRequisitionRepository;
+import ru.praktika.kotouslugi.dao.PersonRepository;
 import ru.praktika.kotouslugi.exception.ServiceException;
 import ru.praktika.kotouslugi.model.LicenceRequisition;
+import ru.praktika.kotouslugi.model.Person;
 import ru.praktika.kotouslugi.model.enums.LicenceRequisitionStatus;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +20,8 @@ public class LicenceRequisitionService {
 
     @Autowired
     private LicenceRequisitionRepository licenceRequisitionRepository;
+    @Autowired
+    private PersonRepository personRepository;
 
     public List<LicenceRequisition> listLicenceRequisition() {
         List<LicenceRequisition> result = new LinkedList<>();
@@ -24,29 +30,35 @@ public class LicenceRequisitionService {
         return result;
     }
 
-    public int createLicenceRequisition(Map<String, Object> request) {
+    public Long createLicenceRequisition(Map<String, Object> request) {
 
         LicenceRequisition licenceRequisition = new LicenceRequisition(LicenceRequisitionStatus.DRAFT);
         request.forEach((s, o) -> {
             switch (s) {
-                case "creationDate":
-                    licenceRequisition.setCreationDate(o.toString());
-                    break;
                 case "status":
                     LicenceRequisitionStatus status = LicenceRequisitionStatus.valueOf(o.toString().toUpperCase());
                     licenceRequisition.setStatus(status);
                     break;
                 case "personId":
-                    licenceRequisition.setPersonId((Integer) o);
+                    Long personId = (Long) o;
+                    Person person = personRepository.findById(personId).orElse(null);
+                    if (person == null)
+                        try {
+                            throw new ServiceException("Указанный паспорт не найден: " + personId);
+                        } catch (ServiceException e) {
+                            throw new RuntimeException(e);
+                        }
+                    licenceRequisition.setPersonId((Long) o);
                     break;
                 case "licenceId":
-                    licenceRequisition.setLicenceId((Integer) o);
+                    licenceRequisition.setLicenceId((Long) o);
                     break;
                 case "licenceN":
-                    licenceRequisition.setLicenceN((Integer) o);
+                    licenceRequisition.setLicenceN((Long) o);
                     break;
             }
         });
+        licenceRequisition.setCreationDate(new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime()));
 
         LicenceRequisition save = licenceRequisitionRepository.save(licenceRequisition);
         return save.getLicenceN();
@@ -56,31 +68,29 @@ public class LicenceRequisitionService {
         String id = String.valueOf(request.get("id"));
         if (id == null || id.isEmpty() || id.equals("null"))
             throw new ServiceException("Не указан id заявки");
-        Integer idLicenceRequisite = Integer.parseInt(id);
+        Long idLicenceRequisite = Long.parseLong(id);
         LicenceRequisition licenceRequisition = licenceRequisitionRepository.findById(idLicenceRequisite).orElse(null);
         if (licenceRequisition == null)
             throw new ServiceException("Указанная заявка не найдена: " + idLicenceRequisite);
 
         request.forEach((s, o) -> {
             switch (s) {
-                case "creationDate":
-                    licenceRequisition.setCreationDate(o.toString());
-                    break;
                 case "status":
                     LicenceRequisitionStatus status = LicenceRequisitionStatus.valueOf(o.toString().toUpperCase());
                     licenceRequisition.setStatus(status);
                     break;
                 case "personId":
-                    licenceRequisition.setPersonId((Integer) o);
+                    licenceRequisition.setPersonId((Long) o);
                     break;
                 case "licenceId":
-                    licenceRequisition.setLicenceId((Integer) o);
+                    licenceRequisition.setLicenceId((Long) o);
                     break;
                 case "licenceN":
-                    licenceRequisition.setLicenceN((Integer) o);
+                    licenceRequisition.setLicenceN((Long) o);
                     break;
             }
         });
+        licenceRequisition.setCreationDate(new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime()));
         licenceRequisitionRepository.save(licenceRequisition);
 
         return true;

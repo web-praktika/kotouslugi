@@ -1,5 +1,6 @@
 package ru.praktika.kotouslugi.model;
 
+import org.hibernate.annotations.GenericGenerator;
 import ru.praktika.kotouslugi.model.enums.LicenceRequisitionStatus;
 
 import javax.persistence.*;
@@ -10,10 +11,10 @@ import java.io.Serializable;
 public class LicenceRequisition implements Serializable {
     @Id
     @GeneratedValue
-    private int licenceN;
+    private Long licenceN;
     private LicenceRequisitionStatus status;
-    private int licenceId;
-    private int personId;
+    private Long licenceId;
+    private Long personId;
     private String creationDate;
 
 
@@ -21,27 +22,27 @@ public class LicenceRequisition implements Serializable {
         this.status = status;
     }
 
-    public int getLicenceN() {
+    public Long getLicenceN() {
         return licenceN;
     }
 
-    public void setLicenceN(int licenceN) {
+    public void setLicenceN(Long licenceN) {
         this.licenceN = licenceN;
     }
 
-    public int getLicenceId() {
+    public Long getLicenceId() {
         return licenceId;
     }
 
-    public void setLicenceId(int licenceId) {
+    public void setLicenceId(Long licenceId) {
         this.licenceId = licenceId;
     }
 
-    public int getPersonId() {
+    public Long getPersonId() {
         return personId;
     }
 
-    public void setPersonId(int personId) {
+    public void setPersonId(Long personId) {
         this.personId = personId;
     }
 
@@ -60,5 +61,5 @@ public class LicenceRequisition implements Serializable {
     public void setStatus(LicenceRequisitionStatus status) {
         this.status = status;
     }
-    
+
 }
