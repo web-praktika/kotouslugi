@@ -1,0 +1,39 @@
+.step-title {
+  padding-bottom: .5em;
+  border-bottom: 1px solid #dededf;
+  margin-bottom: 1em;
+}
+
+.grid{
+  display: grid;
+  grid-template-rows: 300px 300px;
+  grid-template-columns: 300px 300px 300px;
+  grid-gap: 40px;
+}
+
+.content__img{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.control__bth{
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+//.success{
+//  background-color: aquamarine;
+//  border-radius: 10px;
+//  padding: 3px;
+//  margin: 3px;
+//}
+//
+//.info{
+//  margin-left: 10px;
+//}
+//
+//.applicationInfo{
+//  margin: 4px 0 6px 15px;
+//  text-decoration-color: #1f2020;
+//}

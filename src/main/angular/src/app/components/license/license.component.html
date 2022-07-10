@@ -1,0 +1,122 @@
+<div class="container">
+  <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
+  <form *ngIf="step === 1" [formGroup]="petForm">
+    <h4 class="step-title">Персональная информация Котика</h4>
+    <div class="column">
+      <div class="control">
+        <label for="name" class="label">Кличка</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="name"
+          placeholder="Кличка"
+          formControlName="name"
+        />
+      </div>
+      <div class="control">
+        <label for="lastName" class="label">Название породы</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="lastName"
+          placeholder="Название породы"
+          formControlName="lastName"
+        />
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label for="age" class="label">Возраст в кошачьих годах</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="age"
+          placeholder="Возраст"
+          formControlName="age"
+        />
+      </div>
+<!--      <div class="control">-->
+<!--        <div class="label">Пол</div>-->
+<!--        <input class="plain-radio" type="radio" id="male" name="sex" value="male" formControlName="sex"/>-->
+<!--        <label for="male">Кот</label>-->
+<!--        <input class="plain-radio" type="radio" id="female" name="sex" value="female" formControlName="sex"/>-->
+<!--        <label for="female">Кошка</label>-->
+<!--      </div>-->
+    </div>
+    <h4 class="step-title">Информация для уведомления на Кусь</h4>
+    <div class="column">
+      <div class="control">
+        <label for="email" class="label">Почта</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="email"
+          placeholder="Почта"
+          formControlName="email"
+        />
+      </div>
+      <div class="control">
+        <label for="phone" class="label">Телефон</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="phone"
+          placeholder="Телефон"
+          formControlName="phone"
+        />
+      </div>
+    </div>
+  </form>
+  <form *ngIf="step === 2" [formGroup]="peopleForm">
+    <h4 class="step-title">Выбор кого кусь и времени</h4>
+    <div class="column">
+      <div class="control">
+        <label for="doctorName" class="label">ФИО кого Кусь</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="doctorName"
+          placeholder="ФИО человека"
+          formControlName="PeopleName"
+        />
+      </div>
+      <div class="control">
+        <label for="time" class="label">Время для Кусь</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="time"
+          placeholder="часы:минуты"
+          formControlName="time"
+        />
+      </div>
+    </div>
+    <h4 class="step-title">Информация правильного Кусь</h4>
+    <div class="grid">
+      <img src="./assets/biteInstructions/biteStep1.png" alt="правильный Кусь" class="content__img grid-item">
+      <img src="./assets/biteInstructions/biteStep2.png" alt="правильный Кусь" class="content__img grid-item">
+      <img src="./assets/biteInstructions/biteStep3.png" alt="правильный Кусь" class="content__img grid-item">
+      <img src="./assets/biteInstructions/biteStep4.png" alt="правильный Кусь" class="content__img grid-item">
+      <img src="./assets/biteInstructions/biteStep5.png" alt="правильный Кусь" class="content__img grid-item">
+      <img src="./assets/biteInstructions/biteStep6.png" alt="правильный Кусь" class="content__img grid-item">
+    </div>
+  </form>
+  <div *ngIf="step === 3">
+    <h4 class="step-title">Подтверждение заявки</h4>
+    <div class="success">
+      <div class="applicationInfo"> Имя самого красивого котика: {{data.name}}</div>
+      <div class="applicationInfo"> Порода: {{data.lastName}}</div>
+      <div class="applicationInfo"> Возраст: {{data.age}}</div>
+      <div class="applicationInfo"> Электронная почта для уведомления: {{data.email}}</div>
+      <div class="applicationInfo"> Номер телефона для уведомления: {{data.phone}}</div>
+    </div>
+  </div>
+  <div class="column buttons">
+    <div class="control  control__bth">
+      <button *ngIf="step !== 1" class="plain-button" (click)="prev()">Назад</button>
+    </div>
+    <div class="control control__bth">
+      <button class="plain-button" [disabled]="petForm.invalid" (click)="next()">Далее</button>
+    </div>
+  </div>
+</div>

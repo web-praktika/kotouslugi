@@ -1,0 +1,90 @@
+<div class="container">
+  <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
+  <form *ngIf="step === 1" [formGroup]="petForm">
+    <h4 class="step-title">Персональная информация</h4>
+    <div class="column">
+      <div class="control">
+        <label for="name" class="label">Кличка</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="name"
+          placeholder="Кличка"
+          formControlName="name"
+        />
+      </div>
+      <div class="control">
+        <label for="PassportData" class="label">Номер паспорта (4 цифры без № и дефиса)</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="PassportData"
+          placeholder="1234"
+          formControlName="PassportData"
+        />
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label class="label">тип лицензии</label>
+        <select  formControlName="selectedValue" class="plain-input">
+          <option  [ngValue]="null">Не выбрано</option>
+          <option *ngFor="let item of selectedValueArray" [value]="item.id">{{item.title}}</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="age" class="label">Возраст</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="age"
+          placeholder="Возраст"
+          formControlName="age"
+        />
+        <div *ngIf="petForm.invalid && petForm.touched" style="color: brown">Должно быть число</div>
+      </div>
+    </div>
+  </form>
+  <form *ngIf="step === 2" [formGroup]="flyingHeight">
+    <h4 class="step-title">Выбор времени и высоты полета</h4>
+    <div class="column">
+      <div class="control">
+        <label for="height" class="label">Высота прыжка на жертву в метрах</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="height"
+          placeholder="10"
+          formControlName="height"
+        />
+      </div>
+      <div class="control">
+        <label for="time" class="label">Время ожидаемое для полета в минутах</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="time"
+          placeholder="минуты"
+          formControlName="time"
+        />
+      </div>
+    </div>
+  </form>
+  <div *ngIf="step === 3">
+    <h4 class="step-title">Подтверждение заявки</h4>
+    <div class="success">
+      <div class="applicationInfo"> Имя самого красивого котика: {{data.name}}</div>
+      <div class="applicationInfo"> Паспортные данные: №{{data.PassportData}}</div>
+      <div class="applicationInfo"> Возраст: {{data.age}}</div>
+      <div class="applicationInfo"> Tип лицензии : {{selectedValueArray[data.selectedValue].title }}</div>
+    </div>
+  </div>
+  <div class="column buttons">
+    <div class="control">
+      <button *ngIf="step !== 1" class="plain-button" (click)="prev()">Назад</button>
+    </div>
+    <div class="control">
+      <button class="plain-button" [disabled]="petForm.invalid" (click)="next()">Далее</button>
+    </div>
+  </div>
+</div>

@@ -11,8 +11,10 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { OrderStepsComponent } from './components/order-steps/order-steps.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { VetComponent } from './components/vet/vet.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { OrdersModule } from './modules/orders/orders.module';
+import { LicenseComponent } from './components/license/license.component';
+import { HeightAttackComponent } from './components/height-attack/height-attack.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { OrdersModule } from './modules/orders/orders.module';
     OrderStepsComponent,
     RegistrationComponent,
     VetComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LicenseComponent,
+    HeightAttackComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,8 @@ import { OrdersModule } from './modules/orders/orders.module';
     ReactiveFormsModule,
     MainModule,
     OrdersModule,
-    CatListModule
+    CatListModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

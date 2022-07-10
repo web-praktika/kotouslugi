@@ -6,6 +6,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { VetComponent } from './components/vet/vet.component';
 import { CatListComponent } from './modules/cat-list/cat-list.component';
 import { OrdersComponent } from './modules/orders/orders.component';
+import {LicenseComponent} from './components/license/license.component';
+import {HeightAttackComponent} from './components/height-attack/height-attack.component';
 
 const routes: Routes = [{
   path: '',
@@ -31,10 +33,17 @@ const routes: Routes = [{
   }, {
     path: 'cat-list',
     component: CatListComponent
+  },{
+     path: 'service/6',
+    component: LicenseComponent
+  },{
+    path: 'service/7',
+    component: HeightAttackComponent
   }, {
     path: '**',
     component: NotFoundComponent
-}];
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
