@@ -25,13 +25,8 @@ values (5,
         'Оформление лотка в котореестр');
 INSERT INTO service
 values (6,
-        'Официальное разрешение на один сильный Кусь',
-        'Оформления лицензии на Кусь');
-INSERT INTO service
-values (7,
-        'Официальное разрешение на одну атаку с высоты',
-        'Разрешения на внезапную атаку с высоты');
-
+        'Сделай кусь официально',
+        'Оформление лицензий');
 
 -- category
 INSERT INTO category
@@ -42,6 +37,8 @@ INSERT INTO category
 values (2, 'Социальные услуги');
 INSERT INTO category
 values (3, 'Недвижимость');
+INSERT INTO category
+values (4, 'Разрешения');
 
 -- service_to_category
 INSERT INTO service_category
@@ -57,6 +54,18 @@ values (4, 2);
 INSERT INTO service_category
 values (5, 3);
 INSERT INTO service_category
-values (6, 2);
-INSERT INTO service_category
-values (7, 2);
+values (6, 4);
+
+-- person
+INSERT into person
+VALUES (1111,'2001-01-01','Жак','Фреско');
+INSERT into person
+VALUES (1112,'2001-01-02','Леопольд','Дружелюбов');
+INSERT into person
+VALUES (1113,'2001-01-03','Гарфилд','Лазаньо');
+INSERT into person
+VALUES (1114,'2001-01-04','Кузя','Шерстенович');
+
+-- licence_requistion
+INSERT into licence_requisition
+VALUES (1,'2022-01-01',10000000,1111,1);
