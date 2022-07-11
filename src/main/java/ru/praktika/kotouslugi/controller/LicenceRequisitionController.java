@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/licenceRequisition")
-@Api(description = "Методы для работы с заявлениями котоуслуг")
+@Api(description = "Заявки на лицензию")
 public class LicenceRequisitionController extends BaseController {
 
     @Autowired
@@ -20,10 +20,6 @@ public class LicenceRequisitionController extends BaseController {
 
     @RequestMapping(value = "listLicenceRequisition", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    @ApiOperation(value = "Список реквизитов заявления",
-            notes = "Список реквизитов заявления",
-            response = BaseResponse.class,
-            tags = {"Котоуслуги","Заявления"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = BaseResponse.class),
             @ApiResponse(code = 401, message = "Не авторизованный пользователь"),
@@ -34,31 +30,22 @@ public class LicenceRequisitionController extends BaseController {
 
     @RequestMapping(value = "createLicenceRequisition", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    @ApiOperation(value = "Создать заявление",
-            notes = "Создать заявление",
-            response = BaseResponse.class,
-            tags = {"Котоуслуги","Заявления"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = BaseResponse.class),
             @ApiResponse(code = 401, message = "Не авторизованный пользователь"),
             @ApiResponse(code = 500, message = "Внутренняя ошибка") })
     public BaseResponse<Long> createLicenceRequisition(@ApiParam(name = "request", value = "Тело запроса", required = true)
-                                                   @RequestBody Map<String, Object> request) {
-        return wrapper((s) -> licenceRequisitionService.createLicenceRequisition(request));
+                                                   @RequestBody LicenceRequisition licenceRequisition) {
+        return wrapper((s) -> licenceRequisitionService.createLicenceRequisition(licenceRequisition));
     }
 
     @RequestMapping(value = "updateLicenceRequisition", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
-    @ApiOperation(value = "Обновить заявление",
-            notes = "Обновить заявление",
-            response = BaseResponse.class,
-            tags = {"Котоуслуги","Заявления"})
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK", response = BaseResponse.class),
             @ApiResponse(code = 401, message = "Не авторизованный пользователь"),
             @ApiResponse(code = 500, message = "Внутренняя ошибка") })
-    public BaseResponse<Boolean> updateLicenceRequisition(@ApiParam(name = "request", value = "Тело запроса", required = true)
-                                                   @RequestBody Map<String, Object> request) {
-        return wrapper((s) -> licenceRequisitionService.updateLicenceRequisition(request));
+    public BaseResponse<Boolean> updateLicenceRequisition(@RequestBody LicenceRequisition licenceRequisition) {
+        return wrapper((s) -> licenceRequisitionService.updateLicenceRequisition(licenceRequisition));
     }
 }

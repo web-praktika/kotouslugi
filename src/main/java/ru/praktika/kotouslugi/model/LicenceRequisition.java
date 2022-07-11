@@ -13,10 +13,51 @@ public class LicenceRequisition implements Serializable {
     @GeneratedValue
     private Long licenceN;
     private LicenceRequisitionStatus status;
-    private Long licenceId;
-    private Long personId;
     private String creationDate;
+    private String name;
+    private Long PassportData;
+    private String LastName;
+    private Long age;
+    private String SelectedValue;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getPassportData() {
+        return PassportData;
+    }
+    public void setPassportData(Long PassportData) {
+        this.PassportData = PassportData;
+    }
+    public void setSelectedValue(String SelectedValue) {
+        this.SelectedValue = SelectedValue;
+    }
+
+    public String getSelectedValue() {
+        return SelectedValue;
+    }
+
+
+    public String getLastName() {
+        return LastName;
+    }
+
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
+    }
+
+    public Long getAge() {
+        return age;
+    }
+
+    public void setAge(Long age) {
+        this.age = age;
+    }
 
     public LicenceRequisition(LicenceRequisitionStatus status) {
         this.status = status;
@@ -28,22 +69,6 @@ public class LicenceRequisition implements Serializable {
 
     public void setLicenceN(Long licenceN) {
         this.licenceN = licenceN;
-    }
-
-    public Long getLicenceId() {
-        return licenceId;
-    }
-
-    public void setLicenceId(Long licenceId) {
-        this.licenceId = licenceId;
-    }
-
-    public Long getPersonId() {
-        return personId;
-    }
-
-    public void setPersonId(Long personId) {
-        this.personId = personId;
     }
 
     public String getCreationDate() {

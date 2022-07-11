@@ -9,21 +9,13 @@ import javax.persistence.*;
 @Table(name = "licence")
 public class Licence {
     @Id
-    @GeneratedValue(generator = "sequence-generator-1")
-    @GenericGenerator(
-            name = "sequence-generator-1",
-            strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator",
-            parameters = {
-                    @Parameter(name = "sequence_name", value = "licence_seq"),
-                    @Parameter(name = "initial_value", value = "10000001"),
-                    @Parameter(name = "increment_size", value = "1")
-            }
-    )
+    @GeneratedValue
     private Long licenceId;
     private String name;
-    private String description;
-    private String requirements;
-    private Long expiration;
+    private Long PassportData;
+    private String LastName;
+    private Long age;
+    private String SelectedValue;
 
     public Long getLicenceId() {
         return licenceId;
@@ -41,27 +33,35 @@ public class Licence {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public Long getPassportData() {
+        return PassportData;
+    }
+    public void setPassportData(Long PassportData) {
+        this.PassportData = PassportData;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSelectedValue(String SelectedValue) {
+        this.SelectedValue = SelectedValue;
     }
 
-    public String getRequirements() {
-        return requirements;
+    public String getSelectedValue() {
+        return SelectedValue;
     }
 
-    public void setRequirements(String requirements) {
-        this.requirements = requirements;
+
+    public String getLastName() {
+        return LastName;
     }
 
-    public Long getExpiration() {
-        return expiration;
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
     }
 
-    public void setExpiration(Long expiration) {
-        this.expiration = expiration;
+    public Long getAge() {
+        return age;
+    }
+
+    public void setAge(Long age) {
+        this.age = age;
     }
 }
