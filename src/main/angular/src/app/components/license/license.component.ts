@@ -39,11 +39,11 @@ export class LicenseComponent implements OnInit {
 
   ngOnInit(): void {
     this.petForm = this.fb.group({
-      name: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required, Validators.pattern(/^([А-ЯЁ]{1}[а-яё]{3})/)]),
+      lastName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Zа-яА-Я]+$/)]),
       age: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('', [Validators.required]),
+      phone: new FormControl('+7', [Validators.required, Validators.pattern(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{10,15}$/)]),
     });
 
     this.peopleForm = this.fb.group({

@@ -1,7 +1,8 @@
 <div *ngIf="loading" class="loader"></div>
 <div *ngIf="!loading" class="container">
   <h3 class="title">Список заявок</h3>
-  <div class="order" *ngFor="let order of orders">
+  <div class="order" *ngFor="let order of orders"
+       [ngStyle]="{'background-color': (order.status === 'ACCEPTED') ? '#85EF89' : '#FF8282'}">
     <div class="service-info">
       <div class="icon">
         <img [src]="getServiceIcon(order.serviceId)" alt="">
@@ -11,6 +12,8 @@
         <div>Статус: {{order.status === 'ACCEPTED' ? 'Принята' : 'Отклонена'}}</div>
       </div>
     </div>
-    {{order.fields | json}}
+      <div *ngFor="let el of order.fields | keyvalue">
+        {{el.value | json}}
+    </div>
   </div>
 </div>

@@ -43,8 +43,9 @@ export class HeightAttackComponent implements OnInit {
 
   ngOnInit(): void {
     this.petForm = this.fb.group({
-      name: new FormControl('', [Validators.required]),
-      PassportData: new FormControl('', [Validators.required,Validators.maxLength(4)]),
+      name: new FormControl('', [Validators.required,Validators.pattern(/^([А-ЯЁ]{1}[а-яё]{3})/)]),
+      PassportData: new FormControl('', [Validators.required,
+        Validators.maxLength(4),Validators.pattern(/^[0-9]{4}/)]),
       age: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]),
       selectedValue: new FormControl('', )
     });
@@ -60,6 +61,20 @@ export class HeightAttackComponent implements OnInit {
     {id: 2, title: 'смена игры на охоту'}
   ]
 
+
+
+  writeInfo ( Form: any){
+    let textInfoArray = [
+      'Поля со звездочкой обязательны к заполнению',
+      'Проверьте корректность введенных данных',
+    ]
+    if (Form.invalid && Form.touched){
+      return textInfoArray[1];
+    }else{
+      return textInfoArray[0]
+    }
+  }
+
   public next(): void {
     switch (this.step) {
       case 1:
@@ -74,7 +89,7 @@ export class HeightAttackComponent implements OnInit {
         break;
       case 3:
         // Api вставить /api/requisition/createRequisition
-        this.http.post('', {
+        this.http.post('/api/licenceRequisition/createLicenceRequisition', {
           fields: this.data,
           name: 'Название услуги',
           serviceId: 1,
