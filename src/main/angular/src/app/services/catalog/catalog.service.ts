@@ -32,7 +32,11 @@ export class CatalogService {
   }, {
     id: 7,
     src: '/assets/icons/cat_moustache.png'
-  }];
+  },{
+    id: 8,
+    src: '/assets/icons/cat_cage.png'
+  }
+  ];
 
   constructor(
     private http: HttpClient

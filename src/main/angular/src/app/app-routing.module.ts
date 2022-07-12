@@ -8,6 +8,7 @@ import { CatListComponent } from './modules/cat-list/cat-list.component';
 import { OrdersComponent } from './modules/orders/orders.component';
 import {LicenseComponent} from './components/license/license.component';
 import {HeightAttackComponent} from './components/height-attack/height-attack.component';
+import {GameComponent} from "./components/game/game.component";
 
 const routes: Routes = [{
   path: '',
@@ -39,6 +40,9 @@ const routes: Routes = [{
   },{
     path: 'service/7',
     component: HeightAttackComponent
+  }, {
+    path: 'service/8',
+    component: GameComponent
   }, {
     path: '**',
     component: NotFoundComponent

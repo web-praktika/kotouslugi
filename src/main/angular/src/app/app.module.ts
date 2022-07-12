@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { OrdersModule } from './modules/orders/orders.module';
 import { LicenseComponent } from './components/license/license.component';
 import { HeightAttackComponent } from './components/height-attack/height-attack.component';
+import { GameComponent } from './components/game/game.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { HeightAttackComponent } from './components/height-attack/height-attack.
     VetComponent,
     NotFoundComponent,
     LicenseComponent,
-    HeightAttackComponent
+    HeightAttackComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

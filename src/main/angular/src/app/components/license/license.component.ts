@@ -37,13 +37,17 @@ export class LicenseComponent implements OnInit {
     private http: HttpClient
   ) { }
 
+  typeLicense1 = '№2002 лицензия на один Кусь'
+
   ngOnInit(): void {
     this.petForm = this.fb.group({
       name: new FormControl('', [Validators.required, Validators.pattern(/^([А-ЯЁ]{1}[а-яё]{3})/)]),
-      lastName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Zа-яА-Я]+$/)]),
-      age: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('+7', [Validators.required, Validators.pattern(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{10,15}$/)]),
+      PassportData: new FormControl('', [Validators.required,
+        Validators.maxLength(4),Validators.pattern(/^[0-9]{4}/)]),
+      age: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]),
+      selectedValue: new FormControl('№1001' ),
+      email: new FormControl(''),
+      phone: new FormControl('+7', [Validators.pattern(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{10,15}$/)]),
     });
 
     this.peopleForm = this.fb.group({
@@ -61,7 +65,6 @@ export class LicenseComponent implements OnInit {
         this.step++;
         this.data = {
           ...this.petForm.getRawValue(),
-          // ...this.peopleForm.getRawValue()
         }
         break;
       case 3:
@@ -76,6 +79,18 @@ export class LicenseComponent implements OnInit {
           this.router.navigate(['/']);
         });
         break;
+    }
+  }
+
+  writeInfo ( Form: any){
+    let textInfoArray = [
+      'Поля со звездочкой обязательны к заполнению',
+      'Проверьте корректность введенных данных',
+    ]
+    if (Form.invalid && Form.touched){
+      return textInfoArray[1];
+    }else{
+      return textInfoArray[0]
     }
   }
 

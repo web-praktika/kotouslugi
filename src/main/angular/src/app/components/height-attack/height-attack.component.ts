@@ -31,23 +31,23 @@ export class HeightAttackComponent implements OnInit {
   }];
   public step = 1;
 
-
-
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private http: HttpClient
   ) { }
 
-
+  typeLicense1 = '№1001 разрешение на одну атаку с высоты'
 
   ngOnInit(): void {
     this.petForm = this.fb.group({
-      name: new FormControl('', [Validators.required,Validators.pattern(/^([А-ЯЁ]{1}[а-яё]{3})/)]),
-      PassportData: new FormControl('', [Validators.required,
-        Validators.maxLength(4),Validators.pattern(/^[0-9]{4}/)]),
       age: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]),
-      selectedValue: new FormControl('', )
+      name: new FormControl('',
+        [Validators.required,Validators.pattern(/^([А-ЯЁ]{1}[а-яё]{3})/)]),
+      lastName: new FormControl('', [Validators.required]),
+      passportData: new FormControl('', [Validators.required,
+        Validators.maxLength(4),Validators.pattern(/^[0-9]{4}/)]),
+      selectedValue: new FormControl('1001' ),
     });
 
     this.flyingHeight = this.fb.group({
@@ -55,12 +55,6 @@ export class HeightAttackComponent implements OnInit {
       time: ''
     });
   }
-
-  selectedValueArray = [
-    {id: 1, title: 'внезапная атака с высот'},
-    {id: 2, title: 'смена игры на охоту'}
-  ]
-
 
 
   writeInfo ( Form: any){
@@ -88,7 +82,6 @@ export class HeightAttackComponent implements OnInit {
         };
         break;
       case 3:
-        // Api вставить /api/requisition/createRequisition
         this.http.post('/api/licenceRequisition/createLicenceRequisition', {
           fields: this.data,
           name: 'Название услуги',
@@ -101,7 +94,6 @@ export class HeightAttackComponent implements OnInit {
         break;
     }
   }
-
   public prev(): void {
     this.step--;
   }

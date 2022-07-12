@@ -8,18 +8,6 @@ values (1,
         'Подходи ответственно к здоровью питомца. Здоровый кот - мало хлопот.',
         'Запись на приём к ветеринару');
 INSERT INTO service
-values (2,
-        'Уже забыли как выглядит чистый кот. Тогда мы идём к вам.',
-        'Помыть кота');
--- INSERT INTO service
--- values (3,
---         'Оформи заявление на получение корбки уже сегодня',
---         'Социальная помощь котосемьям');
--- INSERT INTO service
--- values (4,
---         'То лапы ломит, то хвост отваливается? Пора на заслуженный отдых',
---         'Пенсионный котофонд');
-INSERT INTO service
 values (5,
         'Зарегистрируй имущество и спи спокойно',
         'Оформление лотка в котореестр');
@@ -29,8 +17,12 @@ values (6,
     'Оформления лицензии на Кусь');
 INSERT INTO service
 values (7,
-        'Официальное разрешение на одну атаку с высоты и охоту',
-        'Разрешения для наглых котиков');
+        'Разрешения для наглых котиков',
+        'Разрешение на одну атаку с высоты');
+INSERT INTO service
+values (8,
+        'Разрешения очень для наглых котиков',
+        'Внезапная смена игры на охоту на человеков');
 
 -- category
 INSERT INTO category
@@ -50,17 +42,13 @@ values (0, 0);
 INSERT INTO service_category
 values (1, 1);
 INSERT INTO service_category
-values (2, 1);
-INSERT INTO service_category
--- values (3, 2);
--- INSERT INTO service_category
--- values (4, 2);
--- INSERT INTO service_category
 values (5, 3);
 INSERT INTO service_category
 values (6, 2);
 INSERT INTO service_category
 values (7, 4);
+INSERT INTO service_category
+values (8, 4);
 
 -- person
 INSERT into person

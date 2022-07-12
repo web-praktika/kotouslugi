@@ -6,8 +6,8 @@
 
 .grid{
   display: grid;
-  grid-template-rows: 300px 300px;
-  grid-template-columns: 300px 300px 300px;
+  grid-template-rows: 250px 250px;
+  grid-template-columns: 250px 250px 250px;
   grid-gap: 40px;
 }
 
@@ -17,23 +17,3 @@
   height: 100%;
 }
 
-.control__bth{
-  margin-top: 10px;
-  margin-bottom: 20px;
-}
-
-//.success{
-//  background-color: aquamarine;
-//  border-radius: 10px;
-//  padding: 3px;
-//  margin: 3px;
-//}
-//
-//.info{
-//  margin-left: 10px;
-//}
-//
-//.applicationInfo{
-//  margin: 4px 0 6px 15px;
-//  text-decoration-color: #1f2020;
-//}

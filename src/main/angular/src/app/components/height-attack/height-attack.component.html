@@ -4,7 +4,7 @@
     <h4 class="step-title">Персональная информация Котика</h4>
     <div class="column">
       <div class="control">
-        <label for="name" class="label">Кличка *</label>
+        <label for="name" class="label">Кличка (кириллица) *</label>
         <input
           class="plain-input"
           type="text"
@@ -14,24 +14,27 @@
         />
       </div>
       <div class="control">
-        <label for="PassportData" class="label">Номер паспорта (4 цифры без № и дефиса) *</label>
+        <label for="passportData" class="label">Номер паспорта (4 цифры без № и дефиса) *</label>
         <input
           class="plain-input"
           type="text"
-          id="PassportData"
+          id="passportData"
           placeholder="1234"
-          formControlName="PassportData"
+          formControlName="passportData"
         />
       </div>
     </div>
     <div class="column">
-      <div class="control">
-        <label class="label">Тип лицензии *</label>
-        <select  formControlName="selectedValue" class="plain-input">
-          <option  [ngValue]="null">Не выбрано</option>
-          <option *ngFor="let item of selectedValueArray" [value]="item.id">{{item.title}}</option>
-        </select>
-      </div>
+    <div class="control">
+      <label for="lastName" class="label">Название породы *</label>
+      <input
+        class="plain-input"
+        type="text"
+        id="lastName"
+        placeholder="Название породы"
+        formControlName="lastName"
+      />
+    </div>
       <div class="control">
         <label for="age" class="label">Возраст в кошачьих годах *</label>
         <input
@@ -41,14 +44,21 @@
           placeholder="Возраст"
           formControlName="age"
         />
+      </div>
     </div>
+    <div class="column">
+      <div class="control">
+        <label class="label">Тип лицензии</label>
+        <div class="licenseType plain-input">
+          Внезапная атака с применением воздушных кошачьих сил Разрешение №1001
+        </div>
+      </div>
     </div>
     <div class="column">
       <div class="control">
         <span>{{writeInfo(petForm)}}</span>
       </div>
     </div>
-
   </form>
   <form *ngIf="step === 2" [formGroup]="flyingHeight">
     <h4 class="step-title">Выбор времени и высоты полета</h4>
@@ -79,16 +89,17 @@
     <h4 class="step-title">Подтверждение заявки</h4>
     <div class="success">
       <div class="applicationInfo"> Имя самого красивого котика: {{data.name}}</div>
-      <div class="applicationInfo"> Паспортные данные: №{{data.PassportData}}</div>
+      <div class="applicationInfo"> Порода: {{data.lastName}}</div>
+      <div class="applicationInfo"> Паспортные данные: №{{data.passportData}}</div>
       <div class="applicationInfo"> Возраст: {{data.age}}</div>
-      <div class="applicationInfo"> Tип лицензии : {{selectedValueArray[data.selectedValue].title }}</div>
+      <div class="applicationInfo"> Tип лицензии : {{typeLicense1}}</div>
     </div>
   </div>
   <div class="column buttons">
-    <div class="control">
+    <div class="control control__bth">
       <button *ngIf="step !== 1" class="plain-button" (click)="prev()">Назад</button>
     </div>
-    <div class="control">
+    <div class="control control__bth">
       <button class="plain-button" [disabled]="petForm.invalid" (click)="next()">Далее</button>
     </div>
   </div>
