@@ -1,0 +1,17 @@
+.step-title {
+  padding-bottom: .5em;
+  border-bottom: 1px solid #dededf;
+  margin-bottom: 1em;
+}
+.grid__attak{
+  display: grid;
+  grid-template-rows: 250px;
+  grid-template-columns: 245px 245px 245px 245px;
+  grid-gap: 10px;
+}
+
+.content__img{
+  object-fit: cover;
+  width: 90%;
+  height: 90%;
+}
