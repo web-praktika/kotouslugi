@@ -16,6 +16,7 @@ import { OrdersModule } from './modules/orders/orders.module';
 import { LicenseComponent } from './components/license/license.component';
 import { HeightAttackComponent } from './components/height-attack/height-attack.component';
 import { GameComponent } from './components/game/game.component';
+import {SendPostComponentService} from "./services/send-post-component.service";
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { GameComponent } from './components/game/game.component';
     CatListModule,
     FormsModule
   ],
-  providers: [],
+  providers: [SendPostComponentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

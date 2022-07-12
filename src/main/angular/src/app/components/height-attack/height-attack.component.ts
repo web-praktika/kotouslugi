@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, FormsModule, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {SendPostComponentService} from "../../services/send-post-component.service";
 
 @Component({
   selector: 'app-height-attack',
@@ -34,7 +35,8 @@ export class HeightAttackComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private sendPostComp: SendPostComponentService
   ) { }
 
   typeLicense1 = '№1001 разрешение на одну атаку с высоты'
@@ -78,22 +80,10 @@ export class HeightAttackComponent implements OnInit {
         this.step++;
         this.data = {
           ...this.petForm.getRawValue()
-          // ...this.flyingHeight.getRawValue()
         };
         break;
       case 3:
-        this.http.post('/api/licenceRequisition/listLicenceRequisition', this.data)
-          .subscribe(() => {
-            alert('Заявка успешно подана');
-            this.router.navigate(['/']);
-          });
-        this.http.post('/api/licenceRequisition/listLicenceRequisition', {
-          fields: this.data,
-          status: 'ACCEPTED'
-        });
-        this.http.post('/api/requisition/updateRequisition', {
-          fields: this.data,
-        });
+        this.sendPostComp.postSend(this.data, this.router);
         break;
     }
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {SendPostComponentService} from "../../services/send-post-component.service";
 
 @Component({
   selector: 'app-license',
@@ -34,7 +35,8 @@ export class LicenseComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private http: HttpClient
+    private http: HttpClient,
+    private sendPostComp: SendPostComponentService
   ) { }
 
   typeLicense1 = '№2002 лицензия на один Кусь'
@@ -46,7 +48,7 @@ export class LicenseComponent implements OnInit {
       PassportData: new FormControl('', [Validators.required,
         Validators.maxLength(4),Validators.pattern(/^[0-9]{4}/)]),
       age: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]),
-      selectedValue: new FormControl('№1001' ),
+      selectedValue: new FormControl('2002' ),
       email: new FormControl(''),
       phone: new FormControl('+7', [Validators.pattern(/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{10,15}$/)]),
     });
@@ -69,21 +71,7 @@ export class LicenseComponent implements OnInit {
         }
         break;
       case 3:
-
-        this.http.post('/api/licenceRequisition/listLicenceRequisition', this.data)
-          .subscribe(() => {
-            alert('Заявка успешно подана');
-            this.router.navigate(['/']);
-          });
-
-       this.http.post('/api/licenceRequisition/listLicenceRequisition', {
-          fields: this.data,
-          status: 'ACCEPTED'
-        });
-
-       this.http.post('/api/requisition/updateRequisition', {
-          fields: this.data,
-        });
+        this.sendPostComp.postSend(this.data, this.router);
         break;
       }
     }

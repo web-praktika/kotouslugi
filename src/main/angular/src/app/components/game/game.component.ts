@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {SendPostComponentService} from "../../services/send-post-component.service";
 
 @Component({
   selector: 'app-game',
@@ -31,11 +32,15 @@ export class GameComponent implements OnInit {
   }];
   public step = 1;
 
+
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private http: HttpClient
-  ) { }
+    private http: HttpClient,
+    private sendPostComp: SendPostComponentService
+  ) {}
+
 
   typeLicense3 = '№3003 лицензия смена игры на охоту'
 
@@ -70,18 +75,7 @@ export class GameComponent implements OnInit {
         }
         break;
       case 3:
-      this.http.post('/api/licenceRequisition/listLicenceRequisition', this.data)
-        .subscribe(() => {
-        alert('Заявка успешно подана');
-        this.router.navigate(['/']);
-      });
-        this.http.post('/api/licenceRequisition/listLicenceRequisition', {
-          fields: this.data,
-          status: 'ACCEPTED'
-        })
-        this.http.post('/api/requisition/updateRequisition', {
-          fields: this.data,
-        });
+        this.sendPostComp.postSend(this.data, this.router);
       break;
     }
   }
