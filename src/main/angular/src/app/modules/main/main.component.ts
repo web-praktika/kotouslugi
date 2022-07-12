@@ -15,8 +15,10 @@ export class MainComponent implements OnInit {
     image: '/assets/png/bnr2.png'
   }, {
     image: '/assets/png/bnr3.png'
-  }]
+  }];
+
   constructor() { }
+
   ngOnInit(): void {
   }
 

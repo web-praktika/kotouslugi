@@ -42,6 +42,7 @@ export class LicenseComponent implements OnInit {
   ngOnInit(): void {
     this.petForm = this.fb.group({
       name: new FormControl('', [Validators.required, Validators.pattern(/^([А-ЯЁ]{1}[а-яё]{3})/)]),
+      lastName: new FormControl('', [Validators.required]),
       PassportData: new FormControl('', [Validators.required,
         Validators.maxLength(4),Validators.pattern(/^[0-9]{4}/)]),
       age: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+$/)]),
@@ -68,16 +69,19 @@ export class LicenseComponent implements OnInit {
         }
         break;
       case 3:
+
         this.http.post('/api/licenceRequisition/listLicenceRequisition', this.data)
           .subscribe(() => {
             alert('Заявка успешно подана');
             this.router.navigate(['/']);
           });
-        this.http.post('/api/licenceRequisition/listLicenceRequisition', {
+
+       this.http.post('/api/licenceRequisition/listLicenceRequisition', {
           fields: this.data,
           status: 'ACCEPTED'
         });
-        this.http.post('/api/requisition/updateRequisition', {
+
+       this.http.post('/api/requisition/updateRequisition', {
           fields: this.data,
         });
         break;
