@@ -56,6 +56,7 @@ export class GameComponent implements OnInit {
       time: ''
     });
   }
+  response:any
 
   public next(): void {
     switch (this.step) {
@@ -69,17 +70,19 @@ export class GameComponent implements OnInit {
         }
         break;
       case 3:
-
-        this.http.post('/api/licenceRequisition/createLicenceRequisition', {
+      this.http.post('/api/licenceRequisition/listLicenceRequisition', this.data)
+        .subscribe(() => {
+        alert('Заявка успешно подана');
+        this.router.navigate(['/']);
+      });
+        this.http.post('/api/licenceRequisition/listLicenceRequisition', {
           fields: this.data,
-          name: 'Название услуги',
-          serviceId: 1,
           status: 'ACCEPTED'
-        }).subscribe(() => {
-          alert('Заявка успешно подана');
-          this.router.navigate(['/']);
+        })
+        this.http.post('/api/requisition/updateRequisition', {
+          fields: this.data,
         });
-        break;
+      break;
     }
   }
 

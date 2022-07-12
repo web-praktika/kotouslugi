@@ -68,19 +68,21 @@ export class LicenseComponent implements OnInit {
         }
         break;
       case 3:
-        // Api вставить /api/requisition/createRequisition
-        this.http.post('', {
+        this.http.post('/api/licenceRequisition/listLicenceRequisition', this.data)
+          .subscribe(() => {
+            alert('Заявка успешно подана');
+            this.router.navigate(['/']);
+          });
+        this.http.post('/api/licenceRequisition/listLicenceRequisition', {
           fields: this.data,
-          name: 'Название услуги',
-          serviceId: 1,
           status: 'ACCEPTED'
-        }).subscribe(() => {
-          alert('Заявка успешно подана');
-          this.router.navigate(['/']);
+        });
+        this.http.post('/api/requisition/updateRequisition', {
+          fields: this.data,
         });
         break;
+      }
     }
-  }
 
   writeInfo ( Form: any){
     let textInfoArray = [
