@@ -33,19 +33,14 @@ public class LicenceRequisitionService {
     }
 
     public Long createLicenceRequisition(LicenceRequisition licenceRequisition) {
-        try {
-            licenceRequisition.setStatus(LicenceRequisitionStatus.DRAFT);
-            licenceRequisition.setCreationDate(new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime()));
-            Optional<Person> person = personRepository.findById(licenceRequisition.getPassportData());
-            if (person.isPresent()) {
-                licenceRequisition = licenceRequisitionRepository.save(licenceRequisition);
-                return licenceRequisition.getLicenceN();
-            }
-            return null;
-        } catch (Exception e) {
-            return null;
+        licenceRequisition.setStatus(LicenceRequisitionStatus.DRAFT);
+        licenceRequisition.setCreationDate((new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime())).toString());
+        Optional<Person> person = personRepository.findById(licenceRequisition.getPassportData());
+        if (person.isPresent()) {
+            LicenceRequisition newLicenceRequisition = licenceRequisitionRepository.save(licenceRequisition);
+            return newLicenceRequisition.getLicenceN();
         }
-
+        return null;
     }
 
     public Boolean updateLicenceRequisition(LicenceRequisition licenceRequisition) throws ServiceException {

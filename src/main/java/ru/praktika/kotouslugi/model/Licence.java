@@ -1,8 +1,5 @@
 package ru.praktika.kotouslugi.model;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
-
 import javax.persistence.*;
 
 @Entity

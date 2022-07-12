@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/licenceRequisition")
 @Api(description = "Заявки на лицензию")
-public class LicenceRequisitionController extends BaseController {
+public class LicenceRequisitionController {
 
     @Autowired
     private LicenceRequisitionService licenceRequisitionService;

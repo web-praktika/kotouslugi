@@ -1,14 +1,12 @@
 package ru.praktika.kotouslugi.model;
 
-import org.hibernate.annotations.GenericGenerator;
 import ru.praktika.kotouslugi.model.enums.LicenceRequisitionStatus;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "licenceRequisition")
-public class LicenceRequisition implements Serializable {
+public class LicenceRequisition {
     @Id
     @GeneratedValue
     private Long licenceN;
@@ -59,8 +57,11 @@ public class LicenceRequisition implements Serializable {
         this.age = age;
     }
 
-    public LicenceRequisition(LicenceRequisitionStatus status) {
+    public void setStatus(LicenceRequisitionStatus status) {
         this.status = status;
+    }
+    public LicenceRequisitionStatus getStatus() {
+        return status;
     }
 
     public Long getLicenceN() {
@@ -78,13 +79,4 @@ public class LicenceRequisition implements Serializable {
     public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
-
-    public LicenceRequisitionStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(LicenceRequisitionStatus status) {
-        this.status = status;
-    }
-
 }
