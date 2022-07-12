@@ -22,7 +22,7 @@ export class LicenseComponent implements OnInit {
   }, {
     id: 2,
     icon: '/assets/svg/bitten.svg',
-    title: 'Информация о человеке, которого сделать нежный Кусь',
+    title: 'Информация о человеке, которому сделать нежный Кусь',
     description: 'Укажите человека и время Кусь'
   }, {
     id: 3,
