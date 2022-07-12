@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class LicenceRequisitionService {
@@ -24,75 +24,41 @@ public class LicenceRequisitionService {
     private PersonRepository personRepository;
 
     public List<LicenceRequisition> listLicenceRequisition() {
-        List<LicenceRequisition> result = new LinkedList<>();
-        Iterable<LicenceRequisition> requisitions = licenceRequisitionRepository.findAll();
-        requisitions.forEach(result::add);
-        return result;
-    }
-
-    public Long createLicenceRequisition(Map<String, Object> request) {
-
-        LicenceRequisition licenceRequisition = new LicenceRequisition(LicenceRequisitionStatus.DRAFT);
-        request.forEach((s, o) -> {
-            switch (s) {
-                case "status":
-                    LicenceRequisitionStatus status = LicenceRequisitionStatus.valueOf(o.toString().toUpperCase());
-                    licenceRequisition.setStatus(status);
-                    break;
-                case "personId":
-                    Long personId = (Long) o;
-                    Person person = personRepository.findById(personId).orElse(null);
-                    if (person == null)
-                        try {
-                            throw new ServiceException("Указанный паспорт не найден: " + personId);
-                        } catch (ServiceException e) {
-                            throw new RuntimeException(e);
-                        }
-                    licenceRequisition.setPersonId((Long) o);
-                    break;
-                case "licenceId":
-                    licenceRequisition.setLicenceId((Long) o);
-                    break;
-                case "licenceN":
-                    licenceRequisition.setLicenceN((Long) o);
-                    break;
-            }
+        List<LicenceRequisition> list = new LinkedList<>();
+        Iterable<LicenceRequisition> all = licenceRequisitionRepository.findAll();
+        all.forEach(licenceRequisition -> {
+            list.add(licenceRequisition);
         });
-        licenceRequisition.setCreationDate(new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime()));
-
-        LicenceRequisition save = licenceRequisitionRepository.save(licenceRequisition);
-        return save.getLicenceN();
+        return list;
     }
 
-    public Boolean updateLicenceRequisition(Map<String, Object> request) throws ServiceException {
-        String id = String.valueOf(request.get("id"));
+    public Long createLicenceRequisition(LicenceRequisition licenceRequisition) {
+        try {
+            licenceRequisition.setStatus(LicenceRequisitionStatus.DRAFT);
+            licenceRequisition.setCreationDate(new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime()));
+            Optional<Person> person = personRepository.findById(licenceRequisition.getPassportData());
+            if (person.isPresent()) {
+                licenceRequisition = licenceRequisitionRepository.save(licenceRequisition);
+                return licenceRequisition.getLicenceN();
+            }
+            return null;
+        } catch (Exception e) {
+            return null;
+        }
+
+    }
+
+    public Boolean updateLicenceRequisition(LicenceRequisition licenceRequisition) throws ServiceException {
+        String id = String.valueOf(licenceRequisition.getLicenceN());
         if (id == null || id.isEmpty() || id.equals("null"))
             throw new ServiceException("Не указан id заявки");
-        Long idLicenceRequisite = Long.parseLong(id);
-        LicenceRequisition licenceRequisition = licenceRequisitionRepository.findById(idLicenceRequisite).orElse(null);
-        if (licenceRequisition == null)
+        Long idLicenceRequisite = licenceRequisition.getLicenceN();
+        licenceRequisition = licenceRequisitionRepository.findById(idLicenceRequisite).orElse(null);
+        if (licenceRequisition == null) {
             throw new ServiceException("Указанная заявка не найдена: " + idLicenceRequisite);
-
-        request.forEach((s, o) -> {
-            switch (s) {
-                case "status":
-                    LicenceRequisitionStatus status = LicenceRequisitionStatus.valueOf(o.toString().toUpperCase());
-                    licenceRequisition.setStatus(status);
-                    break;
-                case "personId":
-                    licenceRequisition.setPersonId((Long) o);
-                    break;
-                case "licenceId":
-                    licenceRequisition.setLicenceId((Long) o);
-                    break;
-                case "licenceN":
-                    licenceRequisition.setLicenceN((Long) o);
-                    break;
-            }
-        });
+        }
         licenceRequisition.setCreationDate(new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime()));
         licenceRequisitionRepository.save(licenceRequisition);
-
         return true;
     }
 }

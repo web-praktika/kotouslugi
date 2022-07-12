@@ -59,7 +59,3 @@ INSERT into person
 VALUES (1113,'2001-01-03','Гарфилд','Лазаньо');
 INSERT into person
 VALUES (1114,'2001-01-04','Кузя','Шерстенович');
-
--- licence_requistion
-INSERT into licence_requisition
-VALUES (1,'2022-01-01',10000000,1111,1);
