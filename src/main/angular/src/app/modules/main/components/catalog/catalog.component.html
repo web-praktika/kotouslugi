@@ -1,0 +1,22 @@
+<div *ngIf="loading; else content" class="loader"></div>
+<ng-template #content>
+  <h3 class="title">
+    Котолог услуг
+  </h3>
+  <div class="items">
+    <ng-container *ngFor="let item of items">
+      <a class="item" [routerLink]="'/service/' + item.id">
+        <div class="main-info">
+          <div class="icon">
+            <img [src]="getIcon(item.id)" alt="">
+          </div>
+          <div class="info">
+            <h4 class="name">{{item.name}}</h4>
+            <div class="category">{{item.categories[0].name}}</div>
+          </div>
+        </div>
+        <div class="description">{{item.description}}</div>
+      </a>
+    </ng-container>
+  </div>
+</ng-template>

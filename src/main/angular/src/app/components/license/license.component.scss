@@ -1,0 +1,19 @@
+.step-title {
+  padding-bottom: .5em;
+  border-bottom: 1px solid #dededf;
+  margin-bottom: 1em;
+}
+
+.grid{
+  display: grid;
+  grid-template-rows: 250px 250px;
+  grid-template-columns: 250px 250px 250px;
+  grid-gap: 40px;
+}
+
+.content__img{
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+

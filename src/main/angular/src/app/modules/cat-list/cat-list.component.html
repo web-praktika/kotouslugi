@@ -1,0 +1,16 @@
+<div *ngIf="loading" class="loader"></div>
+<div *ngIf="!loading" class="container">
+  <h3 class="title">Список котиков</h3>
+  <div *ngIf="cats.length === 0; else list">
+    Список котиков пуст 😿
+  </div>
+  <ng-template #list>
+    <div class="item" *ngFor="let cat of cats">
+      <pre>{{cat | json}}</pre>
+      <div class="actions">
+        <a [routerLink]="['/cat/' + cat.id]">Редактировать</a>
+        <a (click)="remove(cat)">Удалить</a>
+      </div>
+    </div>
+  </ng-template>
+</div>

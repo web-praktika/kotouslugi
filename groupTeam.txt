@@ -1,0 +1,7 @@
+Team: )))
+1)Алена Суходоева - Team leader
+2)Роман Кузнецов - Analyst
+3)Никита Птицин - Backend
+4)Максим Кузинов - Frontend
+5)Владимир Талисман - Backend
+6)Павел К - Backend
