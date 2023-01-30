@@ -13,6 +13,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { VetComponent } from './components/vet/vet.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdersModule } from './modules/orders/orders.module';
+import { KotopravaComponent } from './components/kotoprava/kotoprava.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { OrdersModule } from './modules/orders/orders.module';
     OrderStepsComponent,
     RegistrationComponent,
     VetComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    KotopravaComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,271 @@
+<div class="container">
+    <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
+    <form *ngIf="step === 1" [formGroup]="petForm">
+        <h4 class="step-title">Информация о Вас</h4>
+        <div class="column">
+            <div class="control">
+                <label for="name" class="label">Кличка</label>
+                <input
+                        class="plain-input"
+                        type="text"
+                        id="name"
+                        placeholder="Позвольте узнать ваше имя"
+                        formControlName="name"
+                />
+                <div class="error" *ngIf="petForm.get('name').invalid && !petForm.get('name').pristine">
+                    <ng-container *ngIf="petForm.get('name').getError('required')">
+                        Поле обязательно для заполнения
+                    </ng-container>
+                    <ng-container *ngIf="petForm.get('name').getError('pattern')">
+                        Поле может состоять только из букв русского алфавита
+                    </ng-container>
+                </div>
+            </div>
+            <div class="control">
+                <label for="breed" class="label">Порода</label>
+                <input
+                        class="plain-input"
+                        type="text"
+                        id="breed"
+                        placeholder="Насколько ты необычный?"
+                        formControlName="breed"
+                />
+                <div class="error" *ngIf="petForm.get('breed').invalid && !petForm.get('breed').pristine">
+                    <ng-container *ngIf="petForm.get('breed').getError('required')">
+                        Поле обязательно для заполнения
+                    </ng-container>
+                    <ng-container *ngIf="petForm.get('breed').getError('pattern')">
+                        Поле может состоять только из букв русского алфавита
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="control">
+                <label for="age" class="label">Возраст</label>
+                <input
+                        class="plain-input"
+                        type="text"
+                        id="age"
+                        placeholder="Сколько годиков?"
+                        formControlName="age"
+                />
+                <div class="error" *ngIf="petForm.get('age').invalid && !petForm.get('age').pristine">
+                    <ng-container *ngIf="petForm.get('age').getError('required')">
+                        Поле обязательно для заполнения
+                    </ng-container>
+                    <ng-container *ngIf="petForm.get('age').getError('pattern')">
+                        Поле может состоять только из цифр от 1 до 50
+                    </ng-container>
+                </div>
+            </div>
+            <div class="control">
+                <div class="label">Пол</div>
+                <input class="plain-radio" type="radio" id="male" name="sex" value="male" formControlName="sex"/>
+                <label for="male">Котик</label>
+                <input class="plain-radio" type="radio" id="female" name="sex" value="female" formControlName="sex"/>
+                <label for="female">Кошечка</label>
+            </div>
+        </div>
+    </form>
+    <form *ngIf="step === 2" [formGroup]="passportForm">
+        <h4 class="step-title">Паспортные данные</h4>
+        <div class="column">
+            <div class="control">
+                <label for="passportId" class="label">Номер и серия паспорта</label>
+                <input
+                        class="plain-input"
+                        type="text"
+                        id="passportId"
+                        maxlength="10"
+                        minlength="10"
+                        placeholder="Первые 6 цифрр - номер, следующие 4 - серия"
+                        formControlName="passportId"
+                />
+                <div class="error" *ngIf="passportForm.get('passportId').invalid && !passportForm.get('passportId').pristine">
+                    <ng-container *ngIf="passportForm.get('passportId').getError('required')">
+                        Поле обязательно для заполнения
+                    </ng-container>
+                    <ng-container *ngIf="passportForm.get('passportId').getError('pattern')">
+                        Поле может содержать только цифры
+                    </ng-container>
+                </div>
+            </div>
+            <div class="control">
+                <label for="passportDate" class="label">Дата получения паспорта</label>
+                <input
+                        class="plain-input"
+                        type="date"
+                        id="passportDate"
+                        formControlName="passportDate"
+                />
+            </div>
+        </div>
+        <div class="column">
+            <div class="control">
+                <label for="numDepartment" class="label">Номер отделения, где был выдан паспорт</label>
+                <input
+                        class="plain-input"
+                        type="text"
+                        maxlength="6"
+                        id="numDepartment"
+                        placeholder="Где выдали-то?"
+                        formControlName="numDepartment"
+                />
+                <div class="error" *ngIf="passportForm.get('numDepartment').invalid && !passportForm.get('numDepartment').pristine">
+                    <ng-container *ngIf="passportForm.get('numDepartment').getError('required')">
+                        Поле обязательно для заполнения
+                    </ng-container>
+                    <ng-container *ngIf="passportForm.get('numDepartment').getError('pattern')">
+                        Поле может содержать только цифры
+                    </ng-container>
+                </div>
+            </div>
+            <div class="control">
+                <label for="registration" class="label">Адрес вашей регистрации</label>
+                <input
+                        class="plain-input"
+                        type="text"
+                        id="registration"
+                        placeholder="ГородУлицаДомКвартира"
+                        formControlName="registration"
+                />
+                <div class="error" *ngIf="passportForm.get('registration').invalid && !passportForm.get('registration').pristine">
+                    <ng-container *ngIf="passportForm.get('registration').getError('required')">
+                        Поле обязательно для заполнения
+                    </ng-container>
+                    <ng-container *ngIf="passportForm.get('registration').getError('pattern')">
+                        Поле может состоять только из букв русского алфавита
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form *ngIf="step === 3" [formGroup]="certificatesForm">
+        <h4 class="step-title">Данные о сертификате</h4>
+        <div class="column">
+            <div class="control">
+                <label for="educationPlace" class="label">Место прохождения обучения вождению</label>
+                <input
+                        class="plain-input"
+                        type="text"
+                        id="educationPlace"
+                        placeholder="ГородНазвание авто-школы"
+                        formControlName="educationPlace"
+                />
+                <div class="error" *ngIf="certificatesForm.get('educationPlace').invalid && !certificatesForm.get('educationPlace').pristine">
+                    <ng-container *ngIf="certificatesForm.get('educationPlace').getError('required')">
+                        Поле обязательно для заполнения
+                    </ng-container>
+                    <ng-container *ngIf="certificatesForm.get('educationPlace').getError('pattern')">
+                        Поле может состоять только из букв русского алфавита
+                    </ng-container>
+                </div>
+            </div>
+            <div class="control">
+                <label for="eduCertificateNumber" class="label">Номер сертификата</label>
+                <input
+                        class="plain-input"
+                        type="text"
+                        id="eduCertificateNumber"
+                        maxlength="12"
+                        placeholder="Двенадцать цифр на сертификате"
+                        formControlName="eduCertificateNumber"
+                />
+                <div class="error" *ngIf="certificatesForm.get('eduCertificateNumber').invalid && !certificatesForm.get('eduCertificateNumber').pristine">
+                    <ng-container *ngIf="certificatesForm.get('eduCertificateNumber').getError('required')">
+                        Поле обязательно для заполнения
+                    </ng-container>
+                    <ng-container *ngIf="certificatesForm.get('eduCertificateNumber').getError('pattern')">
+                        Поле может состоять только из цифр
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="control">
+                <label for="eduCertificateDate" class="label">Дата получения сертификата</label>
+                <input
+                        class="plain-input"
+                        type="date"
+                        id="eduCertificateDate"
+                        formControlName="eduCertificateDate"
+                />
+            </div>
+        </div>
+        <h4 class="step-title">Данные о мед.обследовании</h4>
+        <div class="column">
+            <div class="control">
+                <label for="medCertificateNumber" class="label">Номер справки</label>
+                <input
+                        class="plain-input"
+                        type="text"
+                        id="medCertificateNumber"
+                        maxlength="9"
+                        placeholder="Девять цифр на справке"
+                        formControlName="medCertificateNumber"
+                />
+                <div class="error" *ngIf="certificatesForm.get('medCertificateNumber').invalid && !certificatesForm.get('medCertificateNumber').pristine">
+                    <ng-container *ngIf="certificatesForm.get('medCertificateNumber').getError('required')">
+                        Поле обязательно для заполнения
+                    </ng-container>
+                    <ng-container *ngIf="certificatesForm.get('medCertificateNumber').getError('pattern')">
+                        Поле может состоять только из цифр
+                    </ng-container>
+                </div>
+            </div>
+            <div class="control">
+                <label for="medCertificateDate" class="label">Дата получения справки</label>
+                <input
+                        class="plain-input"
+                        type="date"
+                        id="medCertificateDate"
+                        formControlName="medCertificateDate"
+                />
+            </div>
+        </div>
+    </form>
+    <from *ngIf="step === 4" [formGroup]="otdelsForm">
+        <h4 class="step-title">Где и когда получим котоправа?</h4>
+        <div class="column">
+            <div class="control">
+                <label class="label">Город</label>
+                <select name="addressOtdel">
+                    <option value="">Выбор адреса</option>
+                    <option value="3601">Воронеж, ул.Шишкова, 54</option>
+                    <option value="3603">Воронеж, ул.Ленина, 36</option>
+                    <option value="1506">Москва, ул.9 января, 190</option>
+                    <option value="1505">Москва, ул.Пушкина, 15</option>
+                    <option value="1784">Санкт-Петербург, ул.Ленина, 31</option>
+                    <option value="1782">Санкт-Петербург, ул.Победы, 124</option>
+                </select>
+            </div>
+            <div class="control">
+                <label for="dateOtdel" class="label">Дата получения прав</label>
+                <input
+                        class="plain-input"
+                        type="date"
+                        min="03.02.2023"
+                        id="dateOtdel"
+                        formControlName="dateOtdel"
+                />
+            </div>
+        </div>
+    </from>
+    <div class="column buttons">
+        <div class="control">
+            <button *ngIf="step !== 1 && step !== 5" class="plain-button" (click)="prev()">Назад</button>
+        </div>
+        <div class="control">
+            <button *ngIf="step !== 5" class="plain-button" (click)="next()">Далее</button>
+        </div>
+    </div>
+    <div class="column buttons">
+        <div class="control">
+            <button *ngIf="step === 5" class="plain-button" (click)="prev()">Назад</button>
+        </div>
+        <div class="control">
+            <button *ngIf="step === 5" class="plain-button" (click)="next()">Подтвердить</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+.step-title {
+  padding-bottom: .5em;
+  border-bottom: 1px solid #dededf;
+  margin-bottom: 1em;
+}
+
+.plain-button {
+  padding: 1.5em;
+  border: none;
+  border-radius: 7px;
+  background: #2185d0;
+  color: #ffffff;
+
+  &[disabled] {
+    background: #a5a5a5;
+  }
+}
+
+select {
+        margin-bottom: 10px;
+        margin-top: 1px;
+        outline: 0;
+        width: 100%;
+        background: #ffffff;
+        color:  #000000;
+        border: 1px solid #dededf;
+        padding: 1em;
+        border-radius: 4px;
+      }

@@ -23,6 +23,10 @@ INSERT INTO service
 values (5,
         'Зарегистрируй имущество и спи спокойно',
         'Оформление лотка в котореестр');
+INSERT INTO service
+values (6,
+        'Не смотри под хвост  - смотри на ГИБДД пост',
+        'Оформление котоправ');
 
 
 -- category
@@ -34,6 +38,8 @@ INSERT INTO category
 values (2, 'Социальные услуги');
 INSERT INTO category
 values (3, 'Недвижимость');
+INSERT INTO category
+values (4, 'Движимость');
 
 -- service_to_category
 INSERT INTO service_category
@@ -48,3 +54,18 @@ INSERT INTO service_category
 values (4, 2);
 INSERT INTO service_category
 values (5, 3);
+INSERT INTO service_category
+values (6, 4);
+
+INSERT INTO otdels_gibdd
+values (3603, 'ул.Ленина, 36', 'Воронеж');
+INSERT INTO otdels_gibdd
+values (3601, 'ул.Шишкова, 54', 'Воронеж');
+INSERT INTO otdels_gibdd
+values (1505, 'ул.Пушкина, 15', 'Москва');
+INSERT INTO otdels_gibdd
+values (1782, 'ул.Победы, 124', 'Санкт-Петербург');
+INSERT INTO otdels_gibdd
+values (1784, 'ул.Ленина, 31', 'Санкт-Петербург');
+INSERT INTO otdels_gibdd
+values (1506, 'ул.9 января, 190', 'Москва');
