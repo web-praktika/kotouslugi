@@ -7,19 +7,19 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.praktika.kotouslugi.model.TestEntity;
+import ru.praktika.kotouslugi.model.Passport_dataEntity;
 import ru.praktika.kotouslugi.model.response.BaseResponse;
-import ru.praktika.kotouslugi.service.TestService;
+import ru.praktika.kotouslugi.service.Passport_dataService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/test")
+@RequestMapping("/api/create_passport/s3")
 @Api("Тестовый контроллер")
-public class TestController extends BaseController{
+public class Passport_dataController extends BaseController{
 
     @Autowired
-    private TestService testService;
+    private Passport_dataService Passport_dataService;
 
     @PostMapping(value = "save", produces = "application/json")
     @ResponseBody
@@ -29,8 +29,8 @@ public class TestController extends BaseController{
             @ApiResponse(code = 401, message = "Не авторизованный пользователь"),
             @ApiResponse(code = 500, message = "Внутренняя ошибка") })
     public void saveTestEntity(@ApiParam(name = "request", value = "тело запроса", required = true)
-                              @RequestBody TestEntity testEntity){
-        testService.saveTestEntity(testEntity);
+                               @RequestBody Passport_dataEntity Passport_dataEntity){
+        Passport_dataService.savePassport_dataEntity(Passport_dataEntity);
 
     }
 
@@ -41,7 +41,7 @@ public class TestController extends BaseController{
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 401, message = "Не авторизованный пользователь"),
             @ApiResponse(code = 500, message = "Внутренняя ошибка") })
-    public BaseResponse<List<TestEntity>> getTestEntityList() {
-        return wrapper(s -> testService.getEntityList());
+    public BaseResponse<List<Passport_dataEntity>> getTestEntityList() {
+        return wrapper(s -> Passport_dataService.getEntityList());
     }
 }
