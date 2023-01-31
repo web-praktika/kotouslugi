@@ -12,7 +12,7 @@ public class Cat_inf1Entity {
     private Integer CAT_ID;
     private String NAME;
     private String SEX;
-    private String BREDD;
+    private String BREED;
     private String CAT_COLOR;
 
     public Cat_inf1Entity() {
@@ -38,11 +38,11 @@ public class Cat_inf1Entity {
     }
     public void setSEX(String SEX) { this.SEX = SEX; }
 
-    public String getBREDD() {
-        return BREDD;
+    public String getBREED() {
+        return BREED;
     }
-    public void setBREDD(String BREDD) {
-        this.BREDD = BREDD;
+    public void setBREED(String BREED) {
+        this.BREED = BREED;
     }
 
     public String getCAT_COLOR() {

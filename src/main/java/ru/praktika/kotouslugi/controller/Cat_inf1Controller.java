@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/create_passport/s1")
-@Api("Тестовый контроллер")
+@Api("CAT_INF1 контроллер")
 public class Cat_inf1Controller extends BaseController{
 
     @Autowired
@@ -23,7 +23,7 @@ public class Cat_inf1Controller extends BaseController{
 
     @PostMapping(value = "save", produces = "application/json")
     @ResponseBody
-    @ApiOperation(value = "Сохранение тестовых данных", tags = "Котоуслуги, Test")
+    @ApiOperation(value = "Сохранение CAT_INF1 данных", tags = "Котоуслуги, CAT_INF1")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 401, message = "Не авторизованный пользователь"),
@@ -36,7 +36,7 @@ public class Cat_inf1Controller extends BaseController{
 
     @GetMapping(value = "get", produces = "application/json")
     @ResponseBody
-    @ApiOperation(value = "Получение тестовых данных", tags = "Котоуслуги, Test")
+    @ApiOperation(value = "Получение CAT_INF1 данных", tags = "Котоуслуги, CAT_INF1")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "OK"),
             @ApiResponse(code = 401, message = "Не авторизованный пользователь"),
