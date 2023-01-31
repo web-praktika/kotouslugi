@@ -3,6 +3,7 @@ package ru.praktika.kotouslugi.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Date;
@@ -11,61 +12,38 @@ import java.sql.Date;
 @Table(name="certificates")
 public class Certificates {
     @Id
-    private Integer catId;
-    private String nameEducationPlace;
-    private Long educationCertificateNumber;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private Date educationCertificateDate;
-    private Long medCertificateNumber;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private Date medCertificateDate;
+    @GeneratedValue
+    private Long id;
+    private String parameter;
+    private String value;
 
+    public Certificates() { }
 
-    public Integer getCatId() {
-        return catId;
+    public Certificates(String parameter, String value) {
+        this.parameter = parameter;
+        this.value = value;
+    }
+    public Long getId() {
+        return id;
     }
 
-    public void setCatId(Integer catId) {
-        this.catId = catId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getNameEducationPlace() {
-        return nameEducationPlace;
+    public String getParameter() {
+        return parameter;
     }
 
-    public void setNameEducationPlace(String nameEducationPlace) {
-        this.nameEducationPlace = nameEducationPlace;
+    public void setParameter(String parameter) {
+        this.parameter = parameter;
     }
 
-    public Long getEducationCertificateNumber() {
-        return educationCertificateNumber;
+    public String getValue() {
+        return value;
     }
 
-    public void setEducationCertificateNumber(Long educationCertificateNumber) {
-        this.educationCertificateNumber = educationCertificateNumber;
-    }
-
-    public Date getEducationCertificateDate() {
-        return educationCertificateDate;
-    }
-
-    public void setEducationCertificateDate(Date educationCertificateDate) {
-        this.educationCertificateDate = educationCertificateDate;
-    }
-
-    public Long getMedCertificateNumber() {
-        return medCertificateNumber;
-    }
-
-    public void setMedCertificateNumber(Long medCertificateNumber) {
-        this.medCertificateNumber = medCertificateNumber;
-    }
-
-    public Date getMedCertificateDate() {
-        return medCertificateDate;
-    }
-
-    public void setMedCertificateDate(Date medCertificateDate) {
-        this.medCertificateDate = medCertificateDate;
+    public void setValue(String value) {
+        this.value = value;
     }
 }

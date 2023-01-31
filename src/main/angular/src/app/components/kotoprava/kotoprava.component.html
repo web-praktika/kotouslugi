@@ -47,6 +47,7 @@
                         class="plain-input"
                         type="text"
                         id="age"
+                        maxlength="2"
                         placeholder="Сколько годиков?"
                         formControlName="age"
                 />
@@ -55,7 +56,7 @@
                         Поле обязательно для заполнения
                     </ng-container>
                     <ng-container *ngIf="petForm.get('age').getError('pattern')">
-                        Поле может состоять только из цифр от 1 до 50
+                        Поле может состоять только из цифр от 1 до 99
                     </ng-container>
                 </div>
             </div>
@@ -96,6 +97,7 @@
                 <input
                         class="plain-input"
                         type="date"
+                        max="2023-02-03"
                         id="passportDate"
                         formControlName="passportDate"
                 />
@@ -188,6 +190,8 @@
                 <input
                         class="plain-input"
                         type="date"
+                        max="2023-02-03"
+                        min="2022-02-03"
                         id="eduCertificateDate"
                         formControlName="eduCertificateDate"
                 />
@@ -219,18 +223,23 @@
                 <input
                         class="plain-input"
                         type="date"
+                        max="2023-02-03"
+                        min="2023-01-03"
                         id="medCertificateDate"
                         formControlName="medCertificateDate"
                 />
             </div>
         </div>
     </form>
-    <from *ngIf="step === 4" [formGroup]="otdelsForm">
+    <form *ngIf="step === 4" [formGroup]="otdelsForm">
         <h4 class="step-title">Где и когда получим котоправа?</h4>
         <div class="column">
             <div class="control">
-                <label class="label">Город</label>
-                <select name="addressOtdel">
+                <label class="label">Место получения</label>
+                <select
+                        name="addressOtdel"
+                        id="addressOtdel"
+                        formControlName="addressOtdel">
                     <option value="">Выбор адреса</option>
                     <option value="3601">Воронеж, ул.Шишкова, 54</option>
                     <option value="3603">Воронеж, ул.Ленина, 36</option>
@@ -245,27 +254,111 @@
                 <input
                         class="plain-input"
                         type="date"
-                        min="03.02.2023"
+                        min="2023-02-03"
+                        max="2023-04-01"
                         id="dateOtdel"
                         formControlName="dateOtdel"
                 />
             </div>
         </div>
-    </from>
+        <div class="column">
+            <div class="control">
+                <label class="label">Время получения прав</label>
+                <select
+                        name="timeOtdel"
+                        id="timeOtdel"
+                        formControlName="timeOtdel">
+                    <option value="">Выбор времени</option>
+                    <option value="13:00">13:00</option>
+                    <option value="13:30">13:30</option>
+                    <option value="14:00">14:00</option>
+                    <option value="14:30">14:30</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="16:30">16:00</option>
+                </select>
+            </div>
+        </div>
+    </form>
+    <div *ngIf="step === 5">
+        <h4 class="step-title">Подтверждение заявки</h4>
+        <p>Кличка:   {{dataPet.name | json}}</p>
+        <p>Порода:   {{dataPet.breed | json}}</p>
+        <p>Пол:   {{dataPet.sex | json}}</p>
+        <p>Возраст:   {{dataPet.age | json}}</p>
+        <p>Номер и серия паспорта:   {{dataPassport.passportId | json}}</p>
+        <p>Дата получения паспорта:   {{dataPassport.passportDate | json}}</p>
+        <p>Номер отделения, где был получен паспорт:   {{dataPassport.numDepartment | json}}</p>
+        <p>Адрес регистрации:   {{dataPassport.registration | json}}</p>
+        <p>Название авто-школы:   {{dataCertificates.educationPlace | json}}</p>
+        <p>Номер сертификата:   {{dataCertificates.eduCertificateNumber | json}}</p>
+        <p>Дата получения сертификата:   {{dataCertificates.eduCertificateDate | json}}</p>
+        <p>Номер медецинской справки:   {{dataCertificates.medCertificateNumber | json}}</p>
+        <p>Дата получения медецинской справки:   {{dataCertificates.medCertificateDate | json}}</p>
+        <p>Номер отделения ГИБДД:   {{dataOtdel.addressOtdel | json}}</p>
+        <p>Дата получения прав:   {{dataOtdel.dateOtdel | json}}</p>
+        <p>Время получения прав:   {{dataOtdel.timeOtdel | json}}</p>
+    </div>
     <div class="column buttons">
         <div class="control">
-            <button *ngIf="step !== 1 && step !== 5" class="plain-button" (click)="prev()">Назад</button>
+            <button *ngIf="step !== 1 && step !== 2 && step !== 3 && step !== 4 && step !== 5 "
+                    class="plain-button" (click)="prev()">Назад</button>
         </div>
         <div class="control">
-            <button *ngIf="step !== 5" class="plain-button" (click)="next()">Далее</button>
+            <button
+                    *ngIf="step === 1"
+                    class="plain-button"
+                    (click)="next()"
+                    [disabled]="step === 1 && petForm.invalid"
+            >Далее</button>
         </div>
     </div>
     <div class="column buttons">
         <div class="control">
-            <button *ngIf="step === 5" class="plain-button" (click)="prev()">Назад</button>
+            <button *ngIf="step === 2" class="plain-button" (click)="prev()">Назад</button>
         </div>
         <div class="control">
-            <button *ngIf="step === 5" class="plain-button" (click)="next()">Подтвердить</button>
+            <button
+                    *ngIf="step === 2"
+                    class="plain-button"
+                    (click)="next()"
+                    [disabled]="step === 2 && passportForm.invalid"
+            >Далее</button>
         </div>
+    </div>
+    <div class="column buttons">
+        <div class="control">
+            <button *ngIf="step === 3" class="plain-button" (click)="prev()">Назад</button>
+        </div>
+        <div class="control">
+            <button
+                    *ngIf="step === 3"
+                    class="plain-button"
+                    (click)="next()"
+                    [disabled]="step === 3 && certificatesForm.invalid"
+            >Далее</button>
+        </div>
+    </div>
+    <div class="column buttons">
+        <div class="control">
+            <button *ngIf="step === 4" class="plain-button" (click)="prev()">Назад</button>
+        </div>
+        <div class="control">
+            <button
+                    *ngIf="step === 4"
+                    class="plain-button"
+                    (click)="next()"
+                    [disabled]="step === 4 && otdelsForm.invalid"
+            >Далее</button>
+        </div>
+    </div>
+    <div class="column buttons">
+            <div class="control">
+                <button *ngIf="step === 5" class="plain-button" (click)="prev()">Назад</button>
+            </div>
+            <div class="control">
+                <button *ngIf="step === 5" class="plain-button" (click)="next()">Подтвердить</button>
+            </div>
+
     </div>
 </div>

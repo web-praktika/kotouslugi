@@ -14,6 +14,10 @@ export class KotopravaComponent implements OnInit {
   public passportForm: FormGroup;
   public certificatesForm: FormGroup;
   public otdelsForm: FormGroup;
+  public dataPet: any;
+  public dataPassport: any;
+  public dataCertificates: any;
+  public dataOtdel: any;
   public readonly steps = [{
       id: 1,
       icon: '/assets/icons/cat_purr.png',
@@ -43,15 +47,17 @@ export class KotopravaComponent implements OnInit {
     public step = 1;
 
   constructor(
-  private fb: FormBuilder,
-  private router: Router) { }
+      private fb: FormBuilder,
+      private router: Router,
+      private http: HttpClient
+  ) { }
 
   ngOnInit(): void {
     this.petForm = this.fb.group({
         name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
         breed: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
         sex: 'male',
-        age:  new FormControl('', [Validators.required, Validators.pattern(/^[1-50]+$/)])
+        age:  new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/)])
     });
 
     this.passportForm = this.fb.group({
@@ -89,16 +95,30 @@ export class KotopravaComponent implements OnInit {
         break;
     case 4:
         this.step++;
+        this.dataPet = { ...this.petForm.getRawValue() };
+        this.dataOtdel = { ...this.otdelsForm.getRawValue() };
+        this.dataCertificates = { ...this.certificatesForm.getRawValue() };
+        this.dataPassport = { ...this.passportForm.getRawValue()  };
         break;
     case 5:
-        alert('Ну всё получается, заявку подали, права будут');
-        this.router.navigate(['/']);
-        break;
+        this.http.post('/api/kotopravaRequisition/createPravaRequisition', {
+                  kittens: this.dataPet,
+                  passports: this.dataPassport,
+                  certificates: this.dataCertificates,
+                  num_otdelGIBDD: this.dataOtdel.addressOtdel,
+                  date_otdelGIBDD: this.dataOtdel.dateOtdel,
+                  time_otdelGIBDD: this.dataOtdel.timeOtdel,
+                  name: 'Оформление котоправ',
+                  status: 'ACCEPTED'
+                }).subscribe(() => {
+                  alert('Ну всё получается, заявку подали, права будут');
+                  this.router.navigate(['/']);
+                });
+                break;
     }
   }
 
-    public prev(): void {
-        this.step--;
-      }
-
+  public prev(): void {
+      this.step--;
+  }
 }

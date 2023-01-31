@@ -3,6 +3,7 @@ package ru.praktika.kotouslugi.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.sql.Date;
@@ -12,55 +13,41 @@ import java.sql.Date;
 public class CatPassport {
 
     @Id
-    private Integer catId;
-    private Long passportId;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private Date datePassport;
-    private Integer numberDepartment;
-    private String registration;
+    @GeneratedValue
+    private Long id;
+    private String parameter;
+    private String value;
 
     public CatPassport() {
 
     }
 
-    public Integer getCatId() {
-        return catId;
+    public CatPassport(String parameter, String value) {
+        this.parameter = parameter;
+        this.value = value;
     }
 
-    public void setCatId(Integer catId) {
-        this.catId = catId;
+    public Long getId() {
+        return id;
     }
 
-    public Long getPassportId() {
-        return passportId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setPassportId(Long passportId) {
-        this.passportId = passportId;
+    public String getParameter() {
+        return parameter;
     }
 
-
-    public Integer getNumberDepartment() {
-        return numberDepartment;
+    public void setParameter(String parameter) {
+        this.parameter = parameter;
     }
 
-    public void setNumberDepartment(Integer numberDepartment) {
-        this.numberDepartment = numberDepartment;
+    public String getValue() {
+        return value;
     }
 
-    public String getRegistration() {
-        return registration;
-    }
-
-    public void setRegistration(String registration) {
-        this.registration = registration;
-    }
-
-    public Date getDatePassport() {
-        return datePassport;
-    }
-
-    public void setDatePassport(Date datePassport) {
-        this.datePassport = datePassport;
+    public void setValue(String value) {
+        this.value = value;
     }
 }

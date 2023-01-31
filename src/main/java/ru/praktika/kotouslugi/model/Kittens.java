@@ -2,8 +2,6 @@ package ru.praktika.kotouslugi.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,23 +9,24 @@ import javax.persistence.Table;
 @Table(name="kittens")
 public class Kittens {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @GeneratedValue
+    private Long id;
     private String name;
-    private String breed;
-    private String sex;
-    private Integer age;
+    private String value;
 
     public Kittens() {
 
     }
 
-    public Integer getId() {
+    public Kittens(String name, String value) {
+        this.name = name;
+        this.value = value;
+    }
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -39,27 +38,12 @@ public class Kittens {
         this.name = name;
     }
 
-    public String getBreed() {
-        return breed;
+
+    public String getValue() {
+        return value;
     }
 
-    public void setBreed(String breed) {
-        this.breed = breed;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setValue(String value) {
+        this.value = value;
     }
 }
