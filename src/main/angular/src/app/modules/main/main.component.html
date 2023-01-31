@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="search">
+    <input type="text" placeholder="Поиск..." [(ngModel)]="search">
+  </div>
+  <app-slider [items]="sliderItems"></app-slider>
+  <app-catalog [search]="search"></app-catalog>
+</div>
