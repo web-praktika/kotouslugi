@@ -6,6 +6,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { VetComponent } from './components/vet/vet.component';
 import { CatListComponent } from './modules/cat-list/cat-list.component';
 import { OrdersComponent } from './modules/orders/orders.component';
+import { CreatePassportComponent } from './components/create-passport/create-passport.component';
 
 const routes: Routes = [{
   path: '',
@@ -31,6 +32,9 @@ const routes: Routes = [{
   }, {
     path: 'cat-list',
     component: CatListComponent
+  }, {
+    path: 'cat-passport',
+    component: CreatePassportComponent
   }, {
     path: '**',
     component: NotFoundComponent
