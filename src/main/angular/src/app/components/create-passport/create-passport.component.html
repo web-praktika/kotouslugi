@@ -1,0 +1,70 @@
+<div class="container">
+  <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
+  <div class="creating">
+    <h2 class="create-title">Пора оформить вашему коту пасспорт!</h2>
+    <h3 class="create-subtitle">
+      Для этого необходимо заполнить некоторые данные...
+    </h3>
+    <form class="form" [formGroup]="passportForm" *ngIf="step === 1">
+      <div class="form__name form__group">
+        <label>Кличка</label>
+        <input type="text" formControlName="name">
+      </div>
+      <div class="form__group form__sex">
+        <label>Пол</label>
+        <input class="radio" type="radio" id="male" name="sex" value="male" formControlName="sex"/>
+        <label for="male">Кот</label>
+        <input class="radio" type="radio" id="female" name="sex" value="female" formControlName="sex"/>
+        <label for="female">Кошка</label>
+      </div>
+      <div class="form__breed form__group">
+        <label>Порода</label>
+        <input type="text" formControlName="breed">
+      </div>
+      <div class="form__color form__group">
+        <label>Окрас</label>
+        <input type="text" formControlName="color">
+      </div>
+      <div class="form__photo form__group">
+        <label>Фотография</label>
+        <p><input type="file" class="form_img" formControlName="photo"></p>
+      </div>
+    </form>
+    <div *ngIf="step === 2">
+      <h4 class="confirm__title">Подтверждение заявки</h4>
+      <div class="passport__view form">
+        <div class="passport__photo">
+          Фото
+        </div>
+        <label>Кличка</label>
+        <div class="passport__name field">
+          {{passport.name}}
+        </div>
+        <label>Пол</label>
+        <div class="passport__sex field">
+          {{passport.sex === 'male' ? 'Кот' : 'Кошка'}} 
+        </div>
+        <label>Порода</label>
+        <div class="passport__breed field">
+          {{passport.breed}}
+        </div>
+        <label>Окрас</label>
+        <div class="passport__color field">
+          {{passport.color}}
+        </div>
+      </div>
+    </div>
+    <div class="column buttons">
+      <div class="control">
+        <button *ngIf="step !== 1" class="form__button" (click)="prev()">Назад</button>
+      </div>
+      <div class="control">
+        <button
+          class="form__button"
+          (click)="next()"
+          [disabled]="step === 1 && passportForm.invalid"
+        >Далее</button>
+      </div>
+    </div>
+  </div>
+</div>

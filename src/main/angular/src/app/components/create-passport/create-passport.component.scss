@@ -1,0 +1,84 @@
+.create-subtitle{
+  font-size: 20px;
+  color: gray;
+  margin-top: 0.5rem;
+}
+.create-title{
+  font-size: 26px;
+  margin: 1rem 0 0 0;
+}
+.form{
+  background-color: #F5F5F5;
+  padding: 1rem;
+  border-radius: 15px;
+  border: 2px solid #534f4f;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  &__group{
+    margin-bottom: 10px;
+  }
+  &__button{
+    background: rgb(62, 62, 207);
+    width: 100px;
+    padding: 1rem 0 1rem 0;
+    border-radius: 15px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    transition: .3s linear;
+    &:hover{
+      transform: translateY(-10px);
+      background: rgb(50, 50, 110);
+      transition: .3s linear;
+    }
+    &__sex{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+input{
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 15px;
+  font-size: 16px;
+  padding: 0 0.5rem 0 0.5rem;
+}
+.form__img{
+  border-radius: none;
+}
+label{
+  margin-top: 10px;
+}
+.field{
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 15px;
+  font-size: 16px;
+  padding: 0.5rem 0.5rem 0 0.5rem;
+  background-color: white;
+  border: 2px solid black;
+}
+.confirm__title{
+  margin: 0 auto;
+  text-align: center;
+  font-size: 24px;
+
+}
+.passport__photo{
+  margin: 0 auto 20px auto;
+  text-align: center;
+  padding-top: 1.5rem;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: gray;
+}
+.radio{
+  display: inline;
+  width: 2rem;
+}
