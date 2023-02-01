@@ -2,14 +2,32 @@
   <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
   <div class="creating">
     <div *ngIf="step === 1">
-      <h2 class="create-title">Пора оформить вашему коту пасспорт!</h2>
-      <h3 class="create-subtitle">
+      <div class="service__field" (click)="handleServiceTypeGet()">
+        <h2 class="passport-title">Оформление паспорта</h2>
+        <h3 class="passport-subtitle">
+          Вы хотите оформить своему коту паспорт
+        </h3>
+      </div>
+      <div class="service__field" (click)="handleServiceTypeReplacement()">
+        <h2 class="passport-title">Замена паспорта</h2>
+        <h3 class="passport-subtitle">
+          По достижению 14 лет по кошачим годам необходимо заменить паспорт
+        </h3>
+      </div>
+    </div>
+    <div *ngIf="step === 2">
+      <h2 class="passport-title">
+        Пора <span *ngIf="serviceType === 'get'">оформить</span>
+        <span *ngIf="serviceType === 'replacement'">заменить</span> паспорт
+        вашему коту!
+      </h2>
+      <h3 class="passport-subtitle">
         Для этого необходимо заполнить некоторые данные...
       </h3>
       <form class="form" [formGroup]="passportForm">
         <div class="form__name form__group">
           <label>Кличка</label>
-          <input type="text" formControlName="name" />
+          <input type="text" formControlName="name" class="form__input" />
           <div
             class="error"
             *ngIf="
@@ -25,9 +43,10 @@
             </ng-container>
           </div>
         </div>
-        <div class="form__group form__sex">
+        <div class="form__group form__sex" *ngIf="serviceType === 'get'">
           <label>Пол</label>
           <input
+            class="form__input"
             class="radio"
             type="radio"
             id="male"
@@ -37,6 +56,7 @@
           />
           <label for="male">Кот</label>
           <input
+            class="form__input"
             class="radio"
             type="radio"
             id="female"
@@ -46,9 +66,9 @@
           />
           <label for="female">Кошка</label>
         </div>
-        <div class="form__breed form__group">
+        <div class="form__breed form__group" *ngIf="serviceType === 'get'">
           <label>Порода</label>
-          <input type="text" formControlName="breed" />
+          <input type="text" formControlName="breed" class="form__input" />
           <div
             class="error"
             *ngIf="
@@ -66,9 +86,9 @@
             </ng-container>
           </div>
         </div>
-        <div class="form__color form__group">
+        <div class="form__color form__group" *ngIf="serviceType === 'get'">
           <label>Окрас</label>
-          <input type="text" formControlName="cat_COLOR" />
+          <input type="text" formControlName="cat_COLOR" class="form__input" />
           <div
             class="error"
             *ngIf="
@@ -88,44 +108,154 @@
             </ng-container>
           </div>
         </div>
+        <div class="form__photo form__group">
+          <label>Ссылка на фото котика</label>
+          <input type="text" formControlName="photo" class="form__input" />
+        </div>
+        <div class="form__father form__group" *ngIf="serviceType === 'get'">
+          <label>Папа</label>
+          <input type="text" formControlName="father" class="form__input" />
+          <div
+            class="error"
+            *ngIf="
+              passportForm.get('father').invalid &&
+              !passportForm.get('father').pristine
+            "
+          >
+            <ng-container
+              *ngIf="passportForm.get('father').getError('required')"
+            >
+              Поле обязательно для заполнения
+            </ng-container>
+            <ng-container
+              *ngIf="passportForm.get('father').getError('pattern')"
+            >
+              Поле может состоять только из букв русского алфавита
+            </ng-container>
+          </div>
+        </div>
+        <div class="form__mother form__group" *ngIf="serviceType === 'get'">
+          <label>Мама</label>
+          <input type="text" formControlName="mother" class="form__input" />
+          <div
+            class="error"
+            *ngIf="
+              passportForm.get('mother').invalid &&
+              !passportForm.get('mother').pristine
+            "
+          >
+            <ng-container
+              *ngIf="passportForm.get('mother').getError('required')"
+            >
+              Поле обязательно для заполнения
+            </ng-container>
+            <ng-container
+              *ngIf="passportForm.get('mother').getError('pattern')"
+            >
+              Поле может состоять только из букв русского алфавита
+            </ng-container>
+          </div>
+        </div>
+        <div class="form__marital-status form__group">
+          <label>Семейное положение</label>
+          <select formControlName="marital_STATUS" class="form__input">
+            <option value="Не состою в браке">Не состою в браке</option>
+            <option value="Состою в браке">Состою в браке</option>
+            <option value="Есть котята">Есть котята</option>
+            <option value="Разведён/Разведена">Разведён/Разведена</option>
+          </select>
+        </div>
+        <div
+          class="form__replacement-reason form__group"
+          *ngIf="serviceType === 'replacement'"
+        >
+          <label>Причина замены паспорта</label>
+          <select formControlName="reason_FOR_REPLACEMENT" class="form__input">
+            <option value="Достижение 14-летнего возраста по кошачьим годам">
+              Достижение 14-летнего возраста по кошачьим годам
+            </option>
+            <option value="Изменение семейного положения">
+              Изменение семейного положения
+            </option>
+            <option value="Смена клички">Смена клички</option>
+            <option value="Утеря паспорта">Утеря паспорта</option>
+          </select>
+        </div>
       </form>
     </div>
-    <div *ngIf="step === 2">
-      <h4 class="create-title">Подтверждение заявки</h4>
-      <h3 class="create-subtitle">
+    <div *ngIf="step === 3">
+      <h4 class="passport-title">Подтверждение заявки</h4>
+      <h3 class="passport-subtitle">
         Если тут что-то не так - нажмите "назад" и исправьте нужные поля
       </h3>
       <div class="passport__view form">
-        <img class="passport__photo" src="{{ passport.photo }}" alt="">
+        <img class="passport__photo" src="{{ passport.photo }}" alt="" />
         <label>Кличка</label>
         <div class="passport__name field">
           {{ passport.name }}
         </div>
-        <label>Пол</label>
-        <div class="passport__sex field">
+        <label *ngIf="serviceType === 'get'">Пол</label>
+        <div class="passport__sex field" *ngIf="serviceType === 'get'">
           {{ passport.sex === "male" ? "Кот" : "Кошка" }}
         </div>
-        <label>Порода</label>
-        <div class="passport__breed field">
+        <label *ngIf="serviceType === 'get'">Порода</label>
+        <div class="passport__breed field" *ngIf="serviceType === 'get'">
           {{ passport.breed }}
         </div>
-        <label>Окрас</label>
-        <div class="passport__color field">
+        <label *ngIf="serviceType === 'get'">Окрас</label>
+        <div class="passport__color field" *ngIf="serviceType === 'get'">
           {{ passport.cat_COLOR }}
+        </div>
+        <label *ngIf="serviceType === 'get'">Папа</label>
+        <div class="passport__father field" *ngIf="serviceType === 'get'">
+          {{ passport.father }}
+        </div>
+        <label *ngIf="serviceType === 'get'">Мама</label>
+        <div class="passport__mother field" *ngIf="serviceType === 'get'">
+          {{ passport.mother }}
+        </div>
+        <label>Семейное положение</label>
+        <div class="passport__marital-status field">
+          {{ passport.marital_STATUS }}
+        </div>
+        <label *ngIf="serviceType === 'replacement'"
+          >Причина замены паспорта</label
+        >
+        <div
+          class="passport__reason_FOR_REPLACEMENT field"
+          *ngIf="serviceType === 'replacement'"
+        >
+          {{ passport.reason_FOR_REPLACEMENT }}
         </div>
       </div>
     </div>
-    <div class="column buttons">
+    <div class="column buttons" *ngIf="step !== 1">
       <div class="control">
-        <button *ngIf="step !== 1" class="form__button" (click)="prev()">
+        <button
+          *ngIf="step !== 1"
+          class="plain-button form__button"
+          (click)="prev()"
+        >
           Назад
         </button>
       </div>
       <div class="control">
         <button
-          class="form__button"
+          *ngIf="serviceType === 'get'"
+          class="plain-button form__button"
           (click)="next()"
-          [disabled]="step === 1 && passportForm.invalid"
+          [disabled]="passportForm.invalid"
+        >
+          Далее
+        </button>
+        <button
+          *ngIf="serviceType === 'replacement'"
+          class="plain-button form__button"
+          (click)="next()"
+          [disabled]="
+            passportForm.get('name').getError('required') ||
+            passportForm.get('name').getError('pattern')
+          "
         >
           Далее
         </button>
