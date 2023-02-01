@@ -56,7 +56,7 @@ export class KotopravaComponent implements OnInit {
     this.petForm = this.fb.group({
         name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
         breed: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
-        sex: 'male',
+        sex: 'Котик',
         age:  new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/)])
     });
 
