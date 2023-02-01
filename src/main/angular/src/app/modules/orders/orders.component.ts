@@ -22,22 +22,13 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit(): void {
     forkJoin([
-      this.http.post('/api/requisition/listRequisition', null),
+      this.http.post('/api/kotopravaRequisition/listPravaRequisition', null),
       this.catalog.loadServices()
-    ]).subscribe((data: [any, Service[]]) => {
+    ]).subscribe((data: [any, Service[]],) => {
       this.orders = data[0].content;
       this.services = data[1];
       this.loading = false;
     });
-
-    forkJoin([
-          this.http.post('/api/kotopravaRequisition/listPravaRequisition', null),
-          this.catalog.loadServices()
-        ]).subscribe((data: [any, Service[]]) => {
-          this.orders = data[0].content;
-          this.services = data[1];
-          this.loading = false;
-        });
   }
 
   public getServiceIcon(id: number): string {

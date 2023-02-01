@@ -10,13 +10,17 @@ export class MainComponent implements OnInit {
 
   public search = '';
   public sliderItems: SliderItem[] = [{
-    image: '/assets/png/bnr6.png'
+    image: '/assets/png/bnr1.png'
   }, {
-    image: '/assets/png/bnr4.png'
+    image: '/assets/png/bnr2.png'
+  }, {
+    image: '/assets/png/bnr3.png'
+  }, {
+    image: '/assets/png/bnr6.png'
   }, {
     image: '/assets/png/bnr5.png'
   }, {
-    image: '/assets/png/bnr3.png'
+    image: '/assets/png/bnr4.png'
   }]
 
   constructor() { }
