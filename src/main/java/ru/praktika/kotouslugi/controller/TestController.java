@@ -48,7 +48,7 @@ public class TestController extends BaseController {
             @ApiResponse(code = 401, message = "Не авторизованный пользователь"),
             @ApiResponse(code = 500, message = "Внутренняя ошибка") })
     public BaseResponse<List<TestEntity>> getTestEntityList() {
-        return wrapper(s -> TestService.getEntityList());
+        return wrapper(s -> testService.getEntityList());
     }
 
 }

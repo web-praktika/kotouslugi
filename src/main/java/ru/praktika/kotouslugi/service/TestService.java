@@ -12,13 +12,13 @@ import java.util.List;
 public class TestService {
 
     @Autowired
-    private static TestRepository testRepository;
+    private TestRepository testRepository;
 
     public void saveTestEntity(TestEntity testEntity) {
         testRepository.save(testEntity);
     }
 
-    public static List<TestEntity> getEntityList() {
+    public List<TestEntity> getEntityList() {
         List<TestEntity> testEntityList = new ArrayList<>();
         Iterable<TestEntity> entities = testRepository.findAll();
         entities.forEach(testEntityList::add);
