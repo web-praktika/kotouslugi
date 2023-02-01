@@ -103,6 +103,8 @@ export class CreatePassportComponent implements OnInit {
           this.passport.cat_COLOR = "Не изменён";
           this.passport.father = "Не изменён";
           this.passport.mother = "Не изменён";
+        }else {
+          this.passport.reason_FOR_REPLACEMENT = 'Первичная выдача';
         }
         break;
       case 3:
