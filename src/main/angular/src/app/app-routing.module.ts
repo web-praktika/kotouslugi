@@ -6,6 +6,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { VetComponent } from './components/vet/vet.component';
 import { CatListComponent } from './modules/cat-list/cat-list.component';
 import { OrdersComponent } from './modules/orders/orders.component';
+import { CrossingComponent } from './components/crossing/crossing.component';
 
 const routes: Routes = [{
   path: '',
