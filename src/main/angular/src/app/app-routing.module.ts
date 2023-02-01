@@ -32,6 +32,9 @@ const routes: Routes = [{
     path: 'cat-list',
     component: CatListComponent
   }, {
+    path: 'crossing',
+    component: CrossingComponent
+  }, {
     path: '**',
     component: NotFoundComponent
 }];
