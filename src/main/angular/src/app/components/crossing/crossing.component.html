@@ -1,1 +1,30 @@
-<p>crossing works!</p>
+<div class ="container">
+  <form action="petForm">
+  <div>
+    <h4 class="step-title">Персональная информация</h4>
+    <div class="column">
+      <div сlass="control">
+        <label for="name" class="label">Кличка</label>
+        <input
+          type="text"
+          class="plain-input"
+          id="name"
+          placeholder=""
+          formControlName="name"
+        />
+      </div>
+      <div class="control">
+        <label for="lastName" class="label">Название породы</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="lastName"
+          placeholder="Мейн-кунка"
+          formControlName="lastName"
+        />
+      </div>
+    </div>
+
+  </div>
+  </form>
+</div>
