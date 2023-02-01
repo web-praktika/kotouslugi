@@ -109,6 +109,7 @@ export class KotopravaComponent implements OnInit {
                   date_otdelGIBDD: this.dataOtdel.dateOtdel,
                   time_otdelGIBDD: this.dataOtdel.timeOtdel,
                   name: 'Оформление котоправ',
+                  serviceId: 6,
                   status: 'ACCEPTED'
                 }).subscribe(() => {
                   alert('Ну всё получается, заявку подали, права будут');

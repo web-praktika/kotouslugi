@@ -23,13 +23,14 @@ public class KotopravaRequisition implements Serializable {
     private String numGIBDD;
     private String dateGIBDD;
     private String timeGIBDD;
+    private int serviceId;
 
     public KotopravaRequisition() {
 
     }
 
     public KotopravaRequisition(String name, RequisitionStatus status,
-                                String numGIBDD, String dateGIBDD, String timeGIBDD){
+                                String numGIBDD, String dateGIBDD, String timeGIBDD,Integer serviceId){
         this.name = name;
         this.status = status;
         this.kittens = new LinkedList<>();
@@ -38,6 +39,7 @@ public class KotopravaRequisition implements Serializable {
         this.numGIBDD = numGIBDD;
         this.dateGIBDD = dateGIBDD;
         this.timeGIBDD = timeGIBDD;
+        this.serviceId = serviceId;
     }
 
     public Long getId() {
@@ -110,5 +112,13 @@ public class KotopravaRequisition implements Serializable {
 
     public void setCertificates(List<Certificates> certificates) {
         this.certificates = certificates;
+    }
+
+    public int getServiceId() {
+        return serviceId;
+    }
+
+    public void setServiceId(int serviceId) {
+        this.serviceId = serviceId;
     }
 }

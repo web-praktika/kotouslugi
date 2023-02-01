@@ -16,13 +16,14 @@
   <div class="order" *ngFor="let order of listPrava">
     <div class="service-info">
       <div class="icon">
-        <img [src]="getServiceIcon(order.id)" alt="">
+        <img [src]="getServiceIcon(6)" alt="">
       </div>
       <div class="info">
-        <h4 class="name">{{getServiceName(order.id)}}</h4>
-        <div>Статус: {{order.status === 'ACCEPTED' ? 'Принята' : 'Отклонена'}}</div>
+        <h4 class="name">{{getServiceName(6)}}</h4>
+        <div>Статус: {{order.status === 'ACCEPTED' ? 'Принята' : 'На рассмотрении'}}</div>
       </div>
     </div>
-    {{order.kittens | json}}
+    {{order.kittens | json}} {{order.passports | json}} {{order.certificates | json}}
+    {{order.num_otdelGIBDD | json}} {{order.date_otdelGIBDD | json}} {{order.time_otdelGIBDD | json}}
   </div>
 </div>

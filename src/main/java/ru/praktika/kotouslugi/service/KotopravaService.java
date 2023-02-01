@@ -24,7 +24,7 @@ public class KotopravaService {
     }
 
     public Long createPravaRequisition(Map<String, Object> request){
-        KotopravaRequisition kotopravaRequisition = new KotopravaRequisition("Заявление", RequisitionStatus.DRAFT, " ", " ", " ");
+        KotopravaRequisition kotopravaRequisition = new KotopravaRequisition("Заявление", RequisitionStatus.DRAFT, " ", " ", " ", 6);
         request.forEach((s, o) -> {
             switch (s) {
                 case "name":
@@ -60,6 +60,9 @@ public class KotopravaService {
                     break;
                 case "time_otdelGIBDD":
                     kotopravaRequisition.setTimeGIBDD(o.toString());
+                    break;
+                case "serviceId":
+                    kotopravaRequisition.setServiceId((Integer) o);
                     break;
             }
         });
