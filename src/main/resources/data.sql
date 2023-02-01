@@ -57,6 +57,8 @@ values (5, 3);
 INSERT INTO service_category
 values (6, 4);
 
+
+-- предзаполденение отделов ГИБДД
 INSERT INTO otdels_gibdd
 values (3603, 'ул.Ленина, 36', 'Воронеж');
 INSERT INTO otdels_gibdd

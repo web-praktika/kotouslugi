@@ -24,7 +24,8 @@ public class KotopravaService {
     }
 
     public Long createPravaRequisition(Map<String, Object> request){
-        KotopravaRequisition kotopravaRequisition = new KotopravaRequisition("Заявление", RequisitionStatus.DRAFT, " ", " ", " ", 6);
+        KotopravaRequisition kotopravaRequisition = new KotopravaRequisition("Заявление",
+                RequisitionStatus.DRAFT, " ", " ", " ", 6);
         request.forEach((s, o) -> {
             switch (s) {
                 case "name":
