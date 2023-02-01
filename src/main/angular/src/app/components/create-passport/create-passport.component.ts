@@ -14,6 +14,7 @@ export class CreatePassportComponent implements OnInit {
   public passportForm: FormGroup;
   public passport: Passport;
   public readonly id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+  public registered_cats: Passport;
   public readonly steps = [{
     id: 1,
     icon: '/assets/svg/paw.svg',
@@ -23,7 +24,7 @@ export class CreatePassportComponent implements OnInit {
     id: 2,
     icon: '/assets/svg/tasks.svg',
     title: 'Проверка информации',
-    description: 'Проверьте корректность заполнения заявки'
+    description: 'Проверьте корректность заполненных данных'
   }];
   public step = 1;
 
@@ -37,12 +38,22 @@ export class CreatePassportComponent implements OnInit {
 
   ngOnInit(): void {
     this.passportForm = this.fb.group({
-      name: '',
+      name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
       sex: 'male',
-      breed: '',
-      color: '',
-      photo: ''
+      breed: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
+      cat_COLOR: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
+      photo: 'https://i.artfile.ru/2048x1365_979558_[www.ArtFile.ru].jpg'
     });
+    if (this.id) {
+      this.http.get(`/catService/getCat?id=${this.id}`).subscribe((data: Passport) => {
+        this.passportForm.setValue({
+          name: data.name,
+          sex: data.sex,
+          breed: data.breed,
+          cat_COLOR: data.cat_COLOR,
+        });
+      })
+    }
   }
   public next(): void {
     switch (this.step) {
@@ -56,7 +67,13 @@ export class CreatePassportComponent implements OnInit {
 
         break;
       case 2:
-        this.http.post('/catService/addCat', {
+        this.http.post('/api/requisition/createRequisition', {
+          fields: this.passport,
+          name: 'Выдача пасспорта',
+          serviceId: 440,
+          status: 'ACCEPTED'
+        })
+        this.http.post('/api/create_passport/s1/save', {
           ...this.passport,
         }).subscribe(() => {
           if (this.id) {

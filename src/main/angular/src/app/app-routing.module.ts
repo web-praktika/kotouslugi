@@ -33,7 +33,7 @@ const routes: Routes = [{
     path: 'cat-list',
     component: CatListComponent
   }, {
-    path: 'cat-passport',
+    path: 'service/440',
     component: CreatePassportComponent
   }, {
     path: '**',

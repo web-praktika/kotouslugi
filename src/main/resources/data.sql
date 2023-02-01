@@ -24,7 +24,7 @@ values (5,
         'Зарегистрируй имущество и спи спокойно',
         'Оформление лотка в котореестр');
 INSERT INTO service
-values (6,
+values (440,
         'Тебе нужен главный документ',
         'Оформление и замена пасспорта');
 
@@ -53,4 +53,4 @@ values (4, 2);
 INSERT INTO service_category
 values (5, 3);
 INSERT INTO service_category
-values (6, 2);
+values (440, 2);
