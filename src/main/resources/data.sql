@@ -26,7 +26,7 @@ values (5,
 INSERT INTO service
 values (6,
         'Проведи интересный эксперимент',
-        'Скрести кота и бегимота');
+        'Скрести кота и бегемота');
 
 -- category
 INSERT INTO category

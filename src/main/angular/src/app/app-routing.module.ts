@@ -33,6 +33,9 @@ const routes: Routes = [{
     path: 'cat-list',
     component: CatListComponent
   }, {
+      path: 'service/6',
+      redirectTo: 'crossing'
+    }, {
     path: 'crossing',
     component: CrossingComponent
   }, {
