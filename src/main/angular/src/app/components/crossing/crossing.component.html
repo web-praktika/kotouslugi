@@ -1,6 +1,6 @@
 <div class ="container">
+
   <form action="petForm">
-  <div>
     <h4 class="step-title">Персональная информация</h4>
     <div class="column">
       <div сlass="control">
@@ -9,11 +9,11 @@
           type="text"
           class="plain-input"
           id="name"
-          placeholder=""
+          placeholder="Борзый"
           formControlName="name"
         />
       </div>
-      <div class="control">
+      <div class="control" id="control1">
         <label for="lastName" class="label">Название породы</label>
         <input
           class="plain-input"
@@ -22,9 +22,11 @@
           placeholder="Мейн-кунка"
           formControlName="lastName"
         />
+        </div>
       </div>
-    </div>
 
-  </div>
+      <div class="control">
+        <button class="plain-button" >Далее</button>
+      </div>
   </form>
 </div>
