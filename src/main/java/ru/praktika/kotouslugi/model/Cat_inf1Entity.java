@@ -14,6 +14,7 @@ public class Cat_inf1Entity {
     private String SEX;
     private String BREED;
     private String CAT_COLOR;
+    private String PHOTO;
 
     public Cat_inf1Entity() {
 
@@ -45,11 +46,10 @@ public class Cat_inf1Entity {
         this.BREED = BREED;
     }
 
-    public String getCAT_COLOR() {
-        return CAT_COLOR;
-    }
-    public void setCAT_COLOR(String CAT_COLOR) {
-        this.CAT_COLOR = CAT_COLOR;
-    }
+    public String getCAT_COLOR() { return CAT_COLOR; }
+    public void setCAT_COLOR(String CAT_COLOR) { this.CAT_COLOR = CAT_COLOR; }
+
+    public String getPHOTO() { return PHOTO; }
+    public void setPHOTO(String PHOTO) { this.CAT_COLOR = PHOTO; }
 
 }
