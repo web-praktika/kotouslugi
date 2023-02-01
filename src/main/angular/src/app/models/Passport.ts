@@ -4,4 +4,5 @@ export interface Passport {
     breed: string;
     cat_COLOR: string;
     sex: string;
+    photo: string;
   }

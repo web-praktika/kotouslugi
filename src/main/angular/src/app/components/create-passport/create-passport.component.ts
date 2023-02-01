@@ -42,7 +42,7 @@ export class CreatePassportComponent implements OnInit {
       sex: 'male',
       breed: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
       cat_COLOR: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
-      photo: ''
+      photo: 'https://i.artfile.ru/2048x1365_979558_[www.ArtFile.ru].jpg'
     });
     if (this.id) {
       this.http.get(`/catService/getCat?id=${this.id}`).subscribe((data: Passport) => {
@@ -72,10 +72,7 @@ export class CreatePassportComponent implements OnInit {
           name: 'Выдача пасспорта',
           serviceId: 440,
           status: 'ACCEPTED'
-        }).subscribe(() => {
-          alert('Заявка успешно подана');
-          this.router.navigate(['/']);
-        });
+        })
         this.http.post('/api/create_passport/s1/save', {
           ...this.passport,
         }).subscribe(() => {
