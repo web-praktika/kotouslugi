@@ -26,6 +26,9 @@ export class CatalogService {
   }, {
     id: 5,
     src: '/assets/icons/cat_poo.png'
+  }, {
+    id: 440,
+    src: '/assets/icons/cat_walk.png'
   }];
 
   constructor(

@@ -1,93 +1,134 @@
 <div class="container">
   <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
   <div class="creating">
-    <h2 class="create-title">Пора оформить вашему коту пасспорт!</h2>
-    <h3 class="create-subtitle">
-      Для этого необходимо заполнить некоторые данные...
-    </h3>
-    <form class="form" [formGroup]="passportForm" *ngIf="step === 1">
-      <div class="form__name form__group">
-        <label>Кличка</label>
-        <input type="text" formControlName="name">
-        <div class="error" *ngIf="passportForm.get('name').invalid && !passportForm.get('name').pristine">
-          <ng-container *ngIf="passportForm.get('name').getError('required')">
-            Поле обязательно для заполнения
-          </ng-container>
-          <ng-container *ngIf="passportForm.get('name').getError('pattern')">
-            Поле может состоять только из букв русского алфавита
-          </ng-container>
+    <div *ngIf="step === 1">
+      <h2 class="create-title">Пора оформить вашему коту пасспорт!</h2>
+      <h3 class="create-subtitle">
+        Для этого необходимо заполнить некоторые данные...
+      </h3>
+      <form class="form" [formGroup]="passportForm">
+        <div class="form__name form__group">
+          <label>Кличка</label>
+          <input type="text" formControlName="name" />
+          <div
+            class="error"
+            *ngIf="
+              passportForm.get('name').invalid &&
+              !passportForm.get('name').pristine
+            "
+          >
+            <ng-container *ngIf="passportForm.get('name').getError('required')">
+              Поле обязательно для заполнения
+            </ng-container>
+            <ng-container *ngIf="passportForm.get('name').getError('pattern')">
+              Поле может состоять только из букв русского алфавита
+            </ng-container>
+          </div>
         </div>
-      </div>
-      <div class="form__group form__sex">
-        <label>Пол</label>
-        <input class="radio" type="radio" id="male" name="sex" value="male" formControlName="sex"/>
-        <label for="male">Кот</label>
-        <input class="radio" type="radio" id="female" name="sex" value="female" formControlName="sex"/>
-        <label for="female">Кошка</label>
-      </div>
-      <div class="form__breed form__group">
-        <label>Порода</label>
-        <input type="text" formControlName="breed">
-        <div class="error" *ngIf="passportForm.get('breed').invalid && !passportForm.get('breed').pristine">
-          <ng-container *ngIf="passportForm.get('breed').getError('required')">
-            Поле обязательно для заполнения
-          </ng-container>
-          <ng-container *ngIf="passportForm.get('breed').getError('pattern')">
-            Поле может состоять только из букв русского алфавита
-          </ng-container>
+        <div class="form__group form__sex">
+          <label>Пол</label>
+          <input
+            class="radio"
+            type="radio"
+            id="male"
+            name="sex"
+            value="male"
+            formControlName="sex"
+          />
+          <label for="male">Кот</label>
+          <input
+            class="radio"
+            type="radio"
+            id="female"
+            name="sex"
+            value="female"
+            formControlName="sex"
+          />
+          <label for="female">Кошка</label>
         </div>
-      </div>
-      <div class="form__color form__group">
-        <label>Окрас</label>
-        <input type="text" formControlName="color">
-        <div class="error" *ngIf="passportForm.get('color').invalid && !passportForm.get('color').pristine">
-          <ng-container *ngIf="passportForm.get('color').getError('required')">
-            Поле обязательно для заполнения
-          </ng-container>
-          <ng-container *ngIf="passportForm.get('color').getError('pattern')">
-            Поле может состоять только из букв русского алфавита
-          </ng-container>
+        <div class="form__breed form__group">
+          <label>Порода</label>
+          <input type="text" formControlName="breed" />
+          <div
+            class="error"
+            *ngIf="
+              passportForm.get('breed').invalid &&
+              !passportForm.get('breed').pristine
+            "
+          >
+            <ng-container
+              *ngIf="passportForm.get('breed').getError('required')"
+            >
+              Поле обязательно для заполнения
+            </ng-container>
+            <ng-container *ngIf="passportForm.get('breed').getError('pattern')">
+              Поле может состоять только из букв русского алфавита
+            </ng-container>
+          </div>
         </div>
-      </div>
-      <div class="form__photo form__group">
-        <label>Фотография</label>
-        <p><input type="file" class="form_img" formControlName="photo"></p>
-      </div>
-    </form>
+        <div class="form__color form__group">
+          <label>Окрас</label>
+          <input type="text" formControlName="cat_COLOR" />
+          <div
+            class="error"
+            *ngIf="
+              passportForm.get('cat_COLOR').invalid &&
+              !passportForm.get('cat_COLOR').pristine
+            "
+          >
+            <ng-container
+              *ngIf="passportForm.get('cat_COLOR').getError('required')"
+            >
+              Поле обязательно для заполнения
+            </ng-container>
+            <ng-container
+              *ngIf="passportForm.get('cat_COLOR').getError('pattern')"
+            >
+              Поле может состоять только из букв русского алфавита
+            </ng-container>
+          </div>
+        </div>
+      </form>
+    </div>
     <div *ngIf="step === 2">
-      <h4 class="confirm__title">Подтверждение заявки</h4>
+      <h4 class="create-title">Подтверждение заявки</h4>
+      <h3 class="create-subtitle">
+        Если тут что-то не так - нажмите "назад" и исправьте нужные поля
+      </h3>
       <div class="passport__view form">
-        <div class="passport__photo">
-          Фото
-        </div>
+        <div class="passport__photo">Фото</div>
         <label>Кличка</label>
         <div class="passport__name field">
-          {{passport.name}}
+          {{ passport.name }}
         </div>
         <label>Пол</label>
         <div class="passport__sex field">
-          {{passport.sex === 'male' ? 'Кот' : 'Кошка'}} 
+          {{ passport.sex === "male" ? "Кот" : "Кошка" }}
         </div>
         <label>Порода</label>
         <div class="passport__breed field">
-          {{passport.breed}}
+          {{ passport.breed }}
         </div>
         <label>Окрас</label>
         <div class="passport__color field">
-          {{passport.color}}
+          {{ passport.cat_COLOR }}
         </div>
       </div>
     </div>
     <div class="column buttons">
       <div class="control">
-        <button *ngIf="step !== 1" class="form__button" (click)="prev()">Назад</button>
+        <button *ngIf="step !== 1" class="form__button" (click)="prev()">
+          Назад
+        </button>
       </div>
       <div class="control">
         <button
           class="form__button"
           (click)="next()"
           [disabled]="step === 1 && passportForm.invalid"
-        >Далее</button>
+        >
+          Далее
+        </button>
       </div>
     </div>
   </div>
