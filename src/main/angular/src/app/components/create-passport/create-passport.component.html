@@ -158,7 +158,7 @@
         </div>
         <div class="form__marital-status form__group">
           <label>Семейное положение</label>
-          <select formControlName="marital_status" class="form__input">
+          <select formControlName="marital_STATUS" class="form__input">
             <option value="Не состою в браке">Не состою в браке</option>
             <option value="Состою в браке">Состою в браке</option>
             <option value="Есть котята">Есть котята</option>
@@ -170,7 +170,7 @@
           *ngIf="serviceType === 'replacement'"
         >
           <label>Причина замены паспорта</label>
-          <select formControlName="reason_for_replacement" class="form__input">
+          <select formControlName="reason_FOR_REPLACEMENT" class="form__input">
             <option value="Достижение 14-летнего возраста по кошачьим годам">
               Достижение 14-летнего возраста по кошачьим годам
             </option>
@@ -216,16 +216,16 @@
         </div>
         <label>Семейное положение</label>
         <div class="passport__marital-status field">
-          {{ passport.marital_status }}
+          {{ passport.marital_STATUS }}
         </div>
         <label *ngIf="serviceType === 'replacement'"
           >Причина замены паспорта</label
         >
         <div
-          class="passport__reason_for_replacement field"
+          class="passport__reason_FOR_REPLACEMENT field"
           *ngIf="serviceType === 'replacement'"
         >
-          {{ passport.reason_for_replacement }}
+          {{ passport.reason_FOR_REPLACEMENT }}
         </div>
       </div>
     </div>

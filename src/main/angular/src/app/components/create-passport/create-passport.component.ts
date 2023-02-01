@@ -75,9 +75,9 @@ export class CreatePassportComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^[А-яЁё]+$/),
       ]),
-      reason_for_replacement:
+      reason_FOR_REPLACEMENT:
         "Достижение 14-летнего возраста по кошачьим годам",
-      marital_status: "Не состою в браке",
+        marital_STATUS: "Не состою в браке",
     });
   }
   public handleServiceTypeGet(): void {
@@ -106,11 +106,13 @@ export class CreatePassportComponent implements OnInit {
         }
         break;
       case 3:
-        this.http.post("/api/requisition/createRequisition", {
+        this.http.post('/api/requisition/createRequisition', {
           fields: this.passport,
-          name: "Выдача пасспорта",
+          name: 'Получение/замена паспорта',
           serviceId: 440,
-          status: "ACCEPTED",
+          status: 'ACCEPTED'
+        }).subscribe(() => {
+          this.router.navigate(['/']);
         });
         this.http
           .post("/api/create_passport/s1/save", {

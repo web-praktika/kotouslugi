@@ -7,6 +7,6 @@ export interface Passport {
   photo: string;
   father: string;
   mother: string;
-  reason_for_replacement: string;
-  marital_status: string;
+  reason_FOR_REPLACEMENT: string;
+  marital_STATUS: string;
 }
