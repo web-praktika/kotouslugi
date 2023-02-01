@@ -13,4 +13,16 @@
     </div>
     {{order.fields | json}}
   </div>
+  <div class="order" *ngFor="let order of listPrava">
+    <div class="service-info">
+      <div class="icon">
+        <img [src]="getServiceIcon(order.id)" alt="">
+      </div>
+      <div class="info">
+        <h4 class="name">{{getServiceName(order.id)}}</h4>
+        <div>Статус: {{order.status === 'ACCEPTED' ? 'Принята' : 'Отклонена'}}</div>
+      </div>
+    </div>
+    {{order.kittens | json}}
+  </div>
 </div>

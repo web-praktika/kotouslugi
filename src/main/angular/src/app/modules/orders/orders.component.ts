@@ -13,6 +13,7 @@ export class OrdersComponent implements OnInit {
 
   public loading = true;
   public orders: any;
+  public listPrava: any;
   public services: any;
 
   constructor(
@@ -23,10 +24,12 @@ export class OrdersComponent implements OnInit {
   ngOnInit(): void {
     forkJoin([
       this.http.post('/api/requisition/listRequisition', null),
+      this.http.post('/api/kotopravaRequisition/listPravaRequisition', null),
       this.catalog.loadServices()
-    ]).subscribe((data: [any, Service[]]) => {
+    ]).subscribe((data: [any, any, Service[]]) => {
       this.orders = data[0].content;
-      this.services = data[1];
+      this.listPrava = data[1].content;
+      this.services = data[2];
       this.loading = false;
     });
   }
