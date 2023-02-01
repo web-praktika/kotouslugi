@@ -50,6 +50,6 @@ public class Cat_inf1Entity {
     public void setCAT_COLOR(String CAT_COLOR) { this.CAT_COLOR = CAT_COLOR; }
 
     public String getPHOTO() { return PHOTO; }
-    public void setPHOTO(String PHOTO) { this.CAT_COLOR = PHOTO; }
+    public void setPHOTO(String PHOTO) { this.PHOTO = PHOTO; }
 
 }
