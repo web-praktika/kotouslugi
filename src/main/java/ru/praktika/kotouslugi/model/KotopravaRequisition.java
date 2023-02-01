@@ -11,7 +11,7 @@ import java.util.List;
 public class KotopravaRequisition implements Serializable {
     @Id
     @GeneratedValue
-    private Long id;
+    private int id;
     private String name;
     private RequisitionStatus status;
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
@@ -42,11 +42,11 @@ public class KotopravaRequisition implements Serializable {
         this.serviceId = serviceId;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

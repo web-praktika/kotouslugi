@@ -23,7 +23,7 @@ public class KotopravaService {
         return result;
     }
 
-    public Long createPravaRequisition(Map<String, Object> request){
+    public Integer createPravaRequisition(Map<String, Object> request){
         KotopravaRequisition kotopravaRequisition = new KotopravaRequisition("Заявление",
                 RequisitionStatus.DRAFT, " ", " ", " ", 6);
         request.forEach((s, o) -> {
