@@ -9,6 +9,14 @@
       <div class="form__name form__group">
         <label>Кличка</label>
         <input type="text" formControlName="name">
+        <div class="error" *ngIf="passportForm.get('name').invalid && !passportForm.get('name').pristine">
+          <ng-container *ngIf="passportForm.get('name').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="passportForm.get('name').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+        </div>
       </div>
       <div class="form__group form__sex">
         <label>Пол</label>
@@ -20,10 +28,26 @@
       <div class="form__breed form__group">
         <label>Порода</label>
         <input type="text" formControlName="breed">
+        <div class="error" *ngIf="passportForm.get('breed').invalid && !passportForm.get('breed').pristine">
+          <ng-container *ngIf="passportForm.get('breed').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="passportForm.get('breed').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+        </div>
       </div>
       <div class="form__color form__group">
         <label>Окрас</label>
         <input type="text" formControlName="color">
+        <div class="error" *ngIf="passportForm.get('color').invalid && !passportForm.get('color').pristine">
+          <ng-container *ngIf="passportForm.get('color').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="passportForm.get('color').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+        </div>
       </div>
       <div class="form__photo form__group">
         <label>Фотография</label>

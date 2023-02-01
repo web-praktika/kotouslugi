@@ -14,6 +14,7 @@ export class CreatePassportComponent implements OnInit {
   public passportForm: FormGroup;
   public passport: Passport;
   public readonly id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+  public registered_cats: Passport;
   public readonly steps = [{
     id: 1,
     icon: '/assets/svg/paw.svg',
@@ -23,7 +24,7 @@ export class CreatePassportComponent implements OnInit {
     id: 2,
     icon: '/assets/svg/tasks.svg',
     title: 'Проверка информации',
-    description: 'Проверьте корректность заполнения заявки'
+    description: 'Проверьте корректность заполненных данных'
   }];
   public step = 1;
 
@@ -37,12 +38,22 @@ export class CreatePassportComponent implements OnInit {
 
   ngOnInit(): void {
     this.passportForm = this.fb.group({
-      name: '',
+      name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
       sex: 'male',
-      breed: '',
-      color: '',
+      breed: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
+      color: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
       photo: ''
     });
+    if (this.id) {
+      this.http.get(`/catService/getCat?id=${this.id}`).subscribe((data: Passport) => {
+        this.passportForm.setValue({
+          name: data.name,
+          sex: data.sex,
+          breed: data.breed,
+          color: data.color,
+        });
+      })
+    }
   }
   public next(): void {
     switch (this.step) {
@@ -56,7 +67,7 @@ export class CreatePassportComponent implements OnInit {
 
         break;
       case 2:
-        this.http.post('/catService/addCat', {
+        this.http.post('/create_passport/s1/save', {
           ...this.passport,
         }).subscribe(() => {
           if (this.id) {
