@@ -54,8 +54,8 @@ export class KotopravaComponent implements OnInit {
 
   ngOnInit(): void {
     this.petForm = this.fb.group({
-        name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
-        breed: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
+        name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё\s]+$/)]),
+        breed: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё\s]+$/)]),
         sex: 'Котик',
         age:  new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/)])
     });
@@ -64,11 +64,11 @@ export class KotopravaComponent implements OnInit {
         passportId: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/)]),
         passportDate: '',
         numDepartment: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/)]),
-        registration: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё\d]+$/)])
+        registration: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё\d\s\.]+$/)])
     });
 
     this.certificatesForm = this.fb.group({
-        educationPlace: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
+        educationPlace: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё\s]+$/)]),
         eduCertificateNumber: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/)]),
         eduCertificateDate: '',
         medCertificateNumber: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/)]),
