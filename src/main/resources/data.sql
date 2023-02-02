@@ -91,7 +91,7 @@ values(10, 'Бирманская кошка');
 INSERT INTO BREEDS
 values(11, 'Бурмилла');
 
--- breed
+-- cities
 INSERT INTO CITIES
 values(1, 'Воронеж');
 INSERT INTO CITIES
@@ -100,10 +100,3 @@ INSERT INTO CITIES
 values(3, 'Курск');
 INSERT INTO CITIES
 values(4, 'Белгород');
-
-INSERT INTO OWNERS_INFORMATION(NAME,SURNAME)
-values('ddd', 'Бурмилла');
-INSERT INTO CATS_INFORMATION(OWNER_ID ,NAME,SEX,VACCINATION_CERTIFICATE)
-values(1, '','','Бурмилла');
-INSERT INTO OWNERS_ADDRESS(OWNER_ID ,CITY ,DISTRICT ,BUILDING, STREET )
-values(1, '','','Бурмилла','');

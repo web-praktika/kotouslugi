@@ -18,7 +18,7 @@ public class CreateUser {
     private String NAME;
     @Column(name = "SURNAME", columnDefinition = "VARCHAR(20)", nullable = false)
     private String SURNAME;
-    @Column(name = "MIDDLE_NAME", columnDefinition = "VARCHAR(50)", nullable = true)
+    @Column(name = "MIDDLE_NAME", columnDefinition = "VARCHAR(50)", nullable = false)
     private String MIDDLE_NAME;
     @Column(name = "PHONE_NUMBER", columnDefinition = "VARCHAR(20)", nullable = true)
     private String PHONE_NUMBER;
