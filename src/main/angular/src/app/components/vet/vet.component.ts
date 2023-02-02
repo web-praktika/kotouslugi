@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class VetComponent implements OnInit {
 
+  public sex = '';
   public petForm: FormGroup;
   public vetForm: FormGroup;
   public data: any;
@@ -57,6 +58,10 @@ export class VetComponent implements OnInit {
     switch (this.step) {
       case 1:
         this.step++;
+        this.sex = this.petForm.get('sex').value;
+        if(this.sex == 'male')
+          this.step++;
+        alert(this.petForm.get('sex').value)
         break;
       case 2:
         this.step++;
@@ -77,10 +82,14 @@ export class VetComponent implements OnInit {
         });
         break;
     }
+    //alert(this.petForm.get('sex').value)
   }
 
   public prev(): void {
-    this.step--;
+    if(this.sex != 'male')
+      this.step--;
+    else
+      this.step -= 2;
   }
 
 }

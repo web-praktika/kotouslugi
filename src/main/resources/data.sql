@@ -23,6 +23,18 @@ INSERT INTO service
 values (5,
         'Зарегистрируй имущество и спи спокойно',
         'Оформление лотка в котореестр');
+INSERT INTO service
+values (6,
+        'Зарегистрируйся и зарегестрируй своего котика',
+        'Регистрация');
+INSERT INTO service
+values (7,
+        'Добавь котика если ещё не сделал этого',
+        'Регистрация котика');
+INSERT INTO service
+values (8,
+        'Надоел котик? Тогда сдай его другому владельцу',
+        'Миграция котов');
 
 
 -- category
@@ -48,3 +60,50 @@ INSERT INTO service_category
 values (4, 2);
 INSERT INTO service_category
 values (5, 3);
+INSERT INTO service_category
+values (6, 2);
+INSERT INTO service_category
+values (7, 2);
+INSERT INTO service_category
+values (8, 2);
+
+-- breed
+INSERT INTO BREEDS
+values(1, 'Шотландская вислоухая');
+INSERT INTO BREEDS
+values(2, 'Бенгальская кошка');
+INSERT INTO BREEDS
+values(3, 'Сиамская кошка');
+INSERT INTO BREEDS
+values(4, 'Абиссинская кошка');
+INSERT INTO BREEDS
+values(5, 'Русская голубая');
+INSERT INTO BREEDS
+values(6, 'Сибирская кошка');
+INSERT INTO BREEDS
+values(7, 'Невская маскарадная');
+INSERT INTO BREEDS
+values(8, 'Персидская кошка');
+INSERT INTO BREEDS
+values(9, 'Турецкая ангора');
+INSERT INTO BREEDS
+values(10, 'Бирманская кошка');
+INSERT INTO BREEDS
+values(11, 'Бурмилла');
+
+-- breed
+INSERT INTO CITIES
+values(1, 'Воронеж');
+INSERT INTO CITIES
+values(2, 'Москва');
+INSERT INTO CITIES
+values(3, 'Курск');
+INSERT INTO CITIES
+values(4, 'Белгород');
+
+INSERT INTO OWNERS_INFORMATION(NAME,SURNAME)
+values('ddd', 'Бурмилла');
+INSERT INTO CATS_INFORMATION(OWNER_ID ,NAME,SEX,VACCINATION_CERTIFICATE)
+values(1, '','','Бурмилла');
+INSERT INTO OWNERS_ADDRESS(OWNER_ID ,CITY ,DISTRICT ,BUILDING, STREET )
+values(1, '','','Бурмилла','');

@@ -13,7 +13,9 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { VetComponent } from './components/vet/vet.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdersModule } from './modules/orders/orders.module';
-
+import { TestComponent } from './components/test/test.component';
+import { AddCatComponent } from './components/add-cat/add-cat.component';
+import { CatMigrationComponent } from './components/cat-migration/cat-migration.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import { OrdersModule } from './modules/orders/orders.module';
     OrderStepsComponent,
     RegistrationComponent,
     VetComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    TestComponent,
+    AddCatComponent,
+    CatMigrationComponent
   ],
   imports: [
     BrowserModule,

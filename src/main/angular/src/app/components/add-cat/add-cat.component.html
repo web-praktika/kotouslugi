@@ -1,0 +1,118 @@
+<div class ="container">
+  <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
+  <form *ngIf="step === 1" [formGroup]="catAddForm">
+    <h3 class="function-title column">Добавление кошечки</h3>
+    <div class="column">
+      <div class="control">
+        <label for="owners" class="label">ФИО пользователя</label>
+        <select id="owners" class="plain-select" style='color:gray' oninput='style.color="black"' formControlName="owner_ID">
+          <option value="" disabled selected hidden>ФИО</option>
+          <option *ngFor="let dt of ownersSurnames" [ngValue]="dt.id">{{ dt.surname + ' ' + dt.name + ' ' + dt.middle_NAME}}</option>
+        </select>
+        <div class="error" *ngIf="catAddForm.get('owner_ID').invalid && !catAddForm.get('owner_ID').pristine">
+          <ng-container *ngIf="catAddForm.get('owner_ID').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label for="name" class="label">Кличка котика</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="catName"
+          placeholder="Кличка"
+          formControlName="name"
+        />
+        <div class="error" *ngIf="catAddForm.get('name').invalid && !catAddForm.get('name').pristine">
+          <ng-container *ngIf="catAddForm.get('name').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="catAddForm.get('name').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label for="breeds" class="label">Порода</label>
+        <select id="breeds" class="plain-select" style='color:gray' oninput='style.color="black"' formControlName="breed">
+          <option value="" disabled selected hidden>Порода</option>
+          <option *ngFor="let dt of breeds" [ngValue]="dt.text" >{{ dt.text }}</option>
+        </select>
+        <div class="error" *ngIf="catAddForm.get('breed').invalid && !catAddForm.get('breed').pristine">
+          <ng-container *ngIf="catAddForm.get('breed').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+        </div>
+      </div>
+      <div class="control">
+        <label for="catAge" class="label">Возраст</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="catAge"
+          placeholder="Возраст"
+          formControlName="age"
+        />
+        <div class="error" *ngIf="catAddForm.get('age').invalid && !catAddForm.get('age').pristine">
+          <ng-container *ngIf="catAddForm.get('age').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="catAddForm.get('age').getError('pattern')">
+            Поле может состоять только из цифр
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label for="weight" class="label">Вес</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="catWeight"
+          placeholder="Вес"
+          formControlName="weight"
+        />
+        <div class="error" *ngIf="catAddForm.get('weight').invalid && !catAddForm.get('weight').pristine">
+          <ng-container *ngIf="catAddForm.get('weight').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="catAddForm.get('weight').getError('pattern')">
+            Поле может состоять только из цифр
+          </ng-container>
+        </div>
+      </div>
+      <div class="control">
+        <div class="label">Пол</div>
+        <input class="plain-radio" type="radio" id="male" name="sex" value="Кот" formControlName="sex"/>
+        <label for="male">Кот</label>
+        <input class="plain-radio" type="radio" id="female" name="sex" value="Кошка" formControlName="sex"/>
+        <label for="female">Кошка</label>
+      </div>
+      <div class="control">
+        <div class="label">Имеется ли сертификат о вакцинации</div>
+        <input class="plain-radio" type="radio" id="vaccination_yes" name="vaccination_CERTIFICATE" value="Да" formControlName="vaccination_CERTIFICATE"/>
+        <label for="vaccination_yes">Да</label>
+        <input class="plain-radio" type="radio" id="vaccination_no" name="vaccination_CERTIFICATE" value="Нет" formControlName="vaccination_CERTIFICATE"/>
+        <label for="vaccination_no">Нет</label>
+      </div>
+    </div>
+  </form>
+  <div *ngIf="step === 2">
+    <h4 class="step-title">Подтверждение заявки</h4>
+    <pre>{{data | json}}</pre>
+  </div>
+  <div class="column buttons">
+    <div class="control">
+      <button *ngIf="step !== 1" class="plain-button" (click)="prev()">Назад</button>
+    </div>
+    <div class="control">
+      <button class="plain-button" (click)="goToNextStep()" [disabled]="catAddForm.invalid">Далее</button>
+    </div>
+  </div>
+</div>

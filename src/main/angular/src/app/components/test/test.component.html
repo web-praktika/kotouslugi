@@ -1,0 +1,275 @@
+<div class ="container">
+  <!--
+ // <div class ="row">1</div>
+  //<div class ="row">2</div>
+  -<h4><p>{{titlePage}}</p></h4>
+  <button class = "plain-button" (click) = "saveData()">Тест</button>
+  <div *ngIf="isShow">{{sc}}</div> -->
+  <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
+  <form style="" *ngIf="step === 1" [formGroup]="ownerRegistrationForm">
+  <h3 class="function-title column">Персональная информация</h3>
+    <div class="column" >
+      <div class="control" >
+        <label for="surname" class="label">Фамилия</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="surname"
+          placeholder="Фамилия"
+          formControlName="surname"
+        />
+        <div class="error" *ngIf="ownerRegistrationForm.get('surname').invalid && !ownerRegistrationForm.get('surname').pristine">
+          <ng-container *ngIf="ownerRegistrationForm.get('surname').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('surname').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="control">
+        <label for="name" class="label">Имя</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="name"
+          placeholder="Имя"
+          formControlName="name"
+        />
+        <div class="error" *ngIf="ownerRegistrationForm.get('name').invalid && !ownerRegistrationForm.get('name').pristine">
+          <ng-container *ngIf="ownerRegistrationForm.get('name').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('name').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+        </div>
+      </div>
+      <div class="control">
+        <label for="middle_NAME" class="label">Отчество</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="middle_NAME"
+          placeholder="Отчество"
+          formControlName="middle_NAME"
+        />
+        <div class="error" *ngIf="ownerRegistrationForm.get('middle_NAME').invalid && !ownerRegistrationForm.get('middle_NAME').pristine">
+
+          <ng-container *ngIf="ownerRegistrationForm.get('middle_NAME').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+        </div>
+      </div>
+    </div>
+      <div class="column">
+        <div class="control">
+          <label for="cities" class="label">Город</label>
+          <select id="cities" class="plain-select" style='color:gray' oninput='style.color="black"' formControlName="city">
+            <option value="" disabled selected hidden>Город</option>
+            <option *ngFor="let dt of cities" [ngValue]="dt.city" >{{ dt.city }}</option>
+          </select>
+          <div class="error" *ngIf="ownerRegistrationForm.get('city').invalid && !ownerRegistrationForm.get('city').pristine">
+            <ng-container *ngIf="ownerRegistrationForm.get('city').getError('required')">
+              Поле обязательно для заполнения
+            </ng-container>
+          </div>
+        </div>
+
+      <div class="control">
+        <label for="district" class="label">Район</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="district"
+          placeholder="Район"
+          formControlName="district"
+        />
+        <div class="error" *ngIf="ownerRegistrationForm.get('district').invalid && !ownerRegistrationForm.get('district').pristine">
+
+          <ng-container *ngIf="ownerRegistrationForm.get('district').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label for="street" class="label">Улица</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="street"
+          placeholder="Улица"
+          formControlName="street"
+        />
+        <div class="error" *ngIf="ownerRegistrationForm.get('street').invalid && !ownerRegistrationForm.get('street').pristine">
+
+          <ng-container *ngIf="ownerRegistrationForm.get('street').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+        </div>
+      </div>
+      <div class="control">
+        <label for="building" class="label">Дом</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="building"
+          placeholder="Дом"
+          formControlName="building"
+        />
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label for="email" class="label">Электронная почта</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="email"
+          placeholder="Электронная почта"
+          formControlName="email"
+        />
+        <div class="error" *ngIf="ownerRegistrationForm.get('email').invalid && !ownerRegistrationForm.get('email').pristine">
+          <ng-container *ngIf="ownerRegistrationForm.get('email').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="control">
+        <label for="phone_NUMBER" class="label">Телефонный номер</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="phone_NUMBER"
+          placeholder="Телефонный номер"
+          formControlName="phone_NUMBER"
+        />
+        <div class="error" *ngIf="ownerRegistrationForm.get('phone_NUMBER').invalid && !ownerRegistrationForm.get('phone_NUMBER').pristine">
+          <ng-container *ngIf="ownerRegistrationForm.get('phone_NUMBER').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+
+    </div>
+
+
+  </form>
+  <form *ngIf="step === 2" [formGroup]="catRegistrationForm">
+    <h3 class="function-title column">Информация о кошечке</h3>
+    <div class="column">
+      <div class="control">
+        <label for="name" class="label">Кличка котика</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="catName"
+          placeholder="Кличка"
+          formControlName="name"
+        />
+        <div class="error" *ngIf="catRegistrationForm.get('name').invalid && !catRegistrationForm.get('name').pristine">
+          <ng-container *ngIf="catRegistrationForm.get('name').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="catRegistrationForm.get('name').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+        </div>
+      </div>
+    </div>
+      <div class="column">
+        <div class="control">
+          <label for="breeds" class="label">Порода</label>
+          <select id="breeds" class="plain-select" style='color:gray' oninput='style.color="black"' formControlName="breed">
+            <option value="" disabled selected hidden>Порода</option>
+            <option *ngFor="let dt of breeds" [ngValue]="dt.text" >{{ dt.text }}</option>
+          </select>
+          <div class="error" *ngIf="catRegistrationForm.get('breed').invalid && !catRegistrationForm.get('breed').pristine">
+            <ng-container *ngIf="catRegistrationForm.get('breed').getError('required')">
+              Поле обязательно для заполнения
+            </ng-container>
+          </div>
+        </div>
+      <div class="control">
+        <label for="catAge" class="label">Возраст</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="catAge"
+          placeholder="Возраст"
+          formControlName="catAge"
+        />
+        <div class="error" *ngIf="catRegistrationForm.get('catAge').invalid && !catRegistrationForm.get('catAge').pristine">
+          <ng-container *ngIf="catRegistrationForm.get('catAge').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="catRegistrationForm.get('catAge').getError('pattern')">
+            Поле может состоять только из цифр
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label for="weight" class="label">Вес</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="catWeight"
+          placeholder="Вес"
+          formControlName="weight"
+        />
+        <div class="error" *ngIf="catRegistrationForm.get('weight').invalid && !catRegistrationForm.get('weight').pristine">
+          <ng-container *ngIf="catRegistrationForm.get('weight').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="catRegistrationForm.get('weight').getError('pattern')">
+            Поле может состоять только из цифр
+          </ng-container>
+        </div>
+      </div>
+      <div class="control">
+        <div class="label">Пол</div>
+        <input class="plain-radio" type="radio" id="male" name="sex" value="Кот" formControlName="sex"/>
+        <label for="male">Кот</label>
+        <input class="plain-radio" type="radio" id="female" name="sex" value="Кошка" formControlName="sex"/>
+        <label for="female">Кошка</label>
+      </div>
+      <div class="control">
+        <div class="label">Имеется ли сертификат о вакцинации</div>
+        <input class="plain-radio" type="radio" id="vaccination_yes" name="vaccination_CERTIFICATE" value="Да" formControlName="vaccination_CERTIFICATE"/>
+        <label for="vaccination_yes">Да</label>
+        <input class="plain-radio" type="radio" id="vaccination_no" name="vaccination_CERTIFICATE" value="Нет" formControlName="vaccination_CERTIFICATE"/>
+        <label for="vaccination_no">Нет</label>
+      </div>
+    </div>
+  </form>
+  <div *ngIf="step === 3">
+    <h4 class="step-title">Подтверждение заявки</h4>
+    <pre>{{ownerData | json}}</pre>
+    <pre>{{ownerAddress | json}}</pre>
+    <pre>{{catData | json}}</pre>
+  </div>
+  <div class="column buttons">
+    <div class="control">
+      <button *ngIf="step !== 1" class="plain-button" (click)="prev()">Назад</button>
+    </div>
+    <div class="control">
+      <button class="plain-button" (click)="skipStep()" [disabled]="ownerRegistrationForm.invalid" [hidden]="step !== 1">Пропустить регистрацию котика</button>
+    </div>
+    <div class="control">
+      <button class="plain-button" (click)="goToNextStep()" [disabled]="ownerRegistrationForm.invalid || (step === 2 && catRegistrationForm.invalid)">Далее</button>
+    </div>
+  </div>
+</div>
+
