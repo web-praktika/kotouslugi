@@ -1,9 +1,32 @@
 <div class ="container">
 
   <form action="petForm">
-    <h4 class="step-title">Персональная информация</h4>
+    <h4 class="step-title">Информация о хозяине</h4>
     <div class="column">
-      <div сlass="control">
+      <div class="control">
+        <label for="HumanName" class="label">ФИО хозяина</label>
+        <input
+          type="text"
+          class="plain-input"
+          id="HumanName"
+          placeholder="Ебашь Адольф Холокостович"
+          formControlName="name"
+        />
+      </div>
+      <div class="control" id="control1">
+        <label for="HumanAge" class="label">Возраст хозяина</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="HumanAge"
+          placeholder="18+"
+          formControlName="lastName"
+        />
+      </div>
+    </div>
+    <h4 class="step-title">Информация о коте</h4>
+    <div class="column">
+      <div class="control">
         <label for="name" class="label">Кличка</label>
         <input
           type="text"
@@ -13,20 +36,63 @@
           formControlName="name"
         />
       </div>
-      <div class="control" id="control1">
+      <div class="control" id="control2">
         <label for="lastName" class="label">Название породы</label>
         <input
           class="plain-input"
           type="text"
           id="lastName"
-          placeholder="Мейн-кунка"
+          placeholder="Мейн-кун"
           formControlName="lastName"
         />
-        </div>
       </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label for="age" class="label">Возраст</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="age"
+          placeholder="0+"
+          formControlName="age"
+        />
+      </div>
+      <div class="control">
+        <div class="label">Пол</div>
+        <input class="plain-radio" type="radio" id="male" name="sex" value="male" formControlName="sex"/>
+        <label for="male">Кот</label>
+        <input class="plain-radio" type="radio" id="female" name="sex" value="female" formControlName="sex"/>
+        <label for="female">Кошка</label>
 
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label for="name" class="label">Вес питомца(кг)</label>
+        <input
+          type="text"
+          class="plain-input"
+          id="weight"
+          placeholder="1+"
+          formControlName="name"
+        />
+      </div>
+      <div class="control" id="control3">
+        <label for="lastName" class="label">Окрас питомца</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="color"
+          placeholder="Лайлак-пойнт"
+          formControlName="lastName"
+        />
+      </div>
+    </div>
+    <div class="column buttons">
       <div class="control">
         <button class="plain-button" >Далее</button>
       </div>
+    </div>
   </form>
 </div>
