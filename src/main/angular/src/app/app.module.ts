@@ -16,6 +16,7 @@ import { OrdersModule } from './modules/orders/orders.module';
 import { TestComponent } from './components/test/test.component';
 import { AddCatComponent } from './components/add-cat/add-cat.component';
 import { CatMigrationComponent } from './components/cat-migration/cat-migration.component';
+import {NgxMaskModule} from "ngx-mask";
 
 @NgModule({
   declarations: [
@@ -29,15 +30,16 @@ import { CatMigrationComponent } from './components/cat-migration/cat-migration.
     AddCatComponent,
     CatMigrationComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
-    MainModule,
-    OrdersModule,
-    CatListModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
+        MainModule,
+        OrdersModule,
+        CatListModule,
+        NgxMaskModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

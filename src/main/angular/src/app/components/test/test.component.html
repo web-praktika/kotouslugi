@@ -25,6 +25,12 @@
           <ng-container *ngIf="ownerRegistrationForm.get('surname').getError('pattern')">
             Поле может состоять только из букв русского алфавита
           </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('surname').errors?.minlength">
+            Фамилия не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('surname').errors?.maxlength">
+            Фамилия не может быть больше 20 букв
+          </ng-container>
         </div>
       </div>
     </div>
@@ -46,6 +52,12 @@
           <ng-container *ngIf="ownerRegistrationForm.get('name').getError('pattern')">
             Поле может состоять только из букв русского алфавита
           </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('name').errors?.minlength">
+            Имя не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('name').errors?.maxlength">
+            Имя не может быть больше 20 букв
+          </ng-container>
         </div>
       </div>
       <div class="control">
@@ -62,6 +74,15 @@
           <ng-container *ngIf="ownerRegistrationForm.get('middle_NAME').getError('pattern')">
             Поле может состоять только из букв русского алфавита
           </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('middle_NAME').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('middle_NAME').errors?.minlength">
+            Отчество не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('middle_NAME').errors?.maxlength">
+            Отчество не может быть больше 50 букв
+          </ng-container>
         </div>
       </div>
     </div>
@@ -76,6 +97,8 @@
             <ng-container *ngIf="ownerRegistrationForm.get('city').getError('required')">
               Поле обязательно для заполнения
             </ng-container>
+
+
           </div>
         </div>
 
@@ -92,6 +115,12 @@
 
           <ng-container *ngIf="ownerRegistrationForm.get('district').getError('pattern')">
             Поле может состоять только из букв русского алфавита
+          </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('district').errors?.minlength">
+            Район не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('district').errors?.maxlength">
+            Район не может быть больше 64 букв
           </ng-container>
         </div>
       </div>
@@ -111,6 +140,12 @@
           <ng-container *ngIf="ownerRegistrationForm.get('street').getError('pattern')">
             Поле может состоять только из букв русского алфавита
           </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('street').errors?.minlength">
+            Район не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('street').errors?.maxlength">
+            Район не может быть больше 128 букв
+          </ng-container>
         </div>
       </div>
       <div class="control">
@@ -122,8 +157,21 @@
           placeholder="Дом"
           formControlName="building"
         />
+        <div class="error" *ngIf="ownerRegistrationForm.get('building').invalid && !ownerRegistrationForm.get('street').pristine">
+
+          <ng-container *ngIf="ownerRegistrationForm.get('building').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('building').errors?.minlength">
+            Район не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('building').errors?.maxlength">
+            Район не может быть больше 128 букв
+          </ng-container>
+        </div>
       </div>
     </div>
+
     <div class="column">
       <div class="control">
         <label for="email" class="label">Электронная почта</label>
@@ -138,6 +186,9 @@
           <ng-container *ngIf="ownerRegistrationForm.get('email').getError('required')">
             Поле обязательно для заполнения
           </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('email').errors?.email">
+            Ошибка ввода почты
+          </ng-container>
         </div>
       </div>
     </div>
@@ -146,6 +197,8 @@
       <div class="control">
         <label for="phone_NUMBER" class="label">Телефонный номер</label>
         <input
+          inputmode="tel"
+
           class="plain-input"
           type="text"
           id="phone_NUMBER"
@@ -153,8 +206,15 @@
           formControlName="phone_NUMBER"
         />
         <div class="error" *ngIf="ownerRegistrationForm.get('phone_NUMBER').invalid && !ownerRegistrationForm.get('phone_NUMBER').pristine">
-          <ng-container *ngIf="ownerRegistrationForm.get('phone_NUMBER').getError('required')">
-            Поле обязательно для заполнения
+
+          <ng-container *ngIf="ownerRegistrationForm.get('phone_NUMBER').getError('pattern')">
+            Ошибка при вводе. Примеры: +79261234567 | 89261234567
+          </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('phone_NUMBER').errors?.minlength">
+            Район не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="ownerRegistrationForm.get('phone_NUMBER').errors?.maxlength">
+            Район не может быть больше 10 цифр
           </ng-container>
         </div>
       </div>
@@ -184,6 +244,12 @@
           <ng-container *ngIf="catRegistrationForm.get('name').getError('pattern')">
             Поле может состоять только из букв русского алфавита
           </ng-container>
+          <ng-container *ngIf="_getCatName.errors?.minlength">
+            Кличка не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="_getCatName.errors?.maxlength">
+            Кличка не может быть больше 20 букв
+          </ng-container>
         </div>
       </div>
     </div>
@@ -194,7 +260,7 @@
             <option value="" disabled selected hidden>Порода</option>
             <option *ngFor="let dt of breeds" [ngValue]="dt.text" >{{ dt.text }}</option>
           </select>
-          <div class="error" *ngIf="catRegistrationForm.get('breed').invalid && !catRegistrationForm.get('breed').pristine">
+          <div class="error" *ngIf="catRegistrationForm.get('breed').invalid && !catRegistrationForm.get('breed').pristine ">
             <ng-container *ngIf="catRegistrationForm.get('breed').getError('required')">
               Поле обязательно для заполнения
             </ng-container>
@@ -204,7 +270,7 @@
         <label for="catAge" class="label">Возраст</label>
         <input
           class="plain-input"
-          type="text"
+          type="number"
           id="catAge"
           placeholder="Возраст"
           formControlName="catAge"
@@ -216,6 +282,9 @@
           <ng-container *ngIf="catRegistrationForm.get('catAge').getError('pattern')">
             Поле может состоять только из цифр
           </ng-container>
+          <ng-container *ngIf="catRegistrationForm.get('catAge').errors?.max">
+            Возраст не может быть выше 25 лет
+          </ng-container>
         </div>
       </div>
     </div>
@@ -224,7 +293,7 @@
         <label for="weight" class="label">Вес</label>
         <input
           class="plain-input"
-          type="text"
+          type="number"
           id="catWeight"
           placeholder="Вес"
           formControlName="weight"
@@ -235,6 +304,9 @@
           </ng-container>
           <ng-container *ngIf="catRegistrationForm.get('weight').getError('pattern')">
             Поле может состоять только из цифр
+          </ng-container>
+          <ng-container *ngIf="catRegistrationForm.get('weight').errors?.max">
+            Вес не может быть выше 22 кг
           </ng-container>
         </div>
       </div>
@@ -268,7 +340,7 @@
       <button class="plain-button" (click)="skipStep()" [disabled]="ownerRegistrationForm.invalid" [hidden]="step !== 1">Пропустить регистрацию котика</button>
     </div>
     <div class="control">
-      <button class="plain-button" (click)="goToNextStep()" [disabled]="ownerRegistrationForm.invalid || (step === 2 && catRegistrationForm.invalid)">Далее</button>
+      <button class="plain-button" (click)="goToNextStep()" [disabled]="ownerRegistrationForm.invalid || (step === 2 && catRegistrationForm.invalid)">{{step === 3 ? 'Зарегистрироваться' : 'Далее'}}</button>
     </div>
   </div>
 </div>

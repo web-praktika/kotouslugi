@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { TestServiceService } from '../../services/test-service/test-service.service'
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +11,11 @@ import {isAsciiLetter} from "codelyzer/angular/styles/chars";
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss']
 })
+
+
+
 export class TestComponent implements OnInit {
+
 
   public ownerData: any;
   public ownerAddress: any;
@@ -39,6 +43,9 @@ export class TestComponent implements OnInit {
                       description: 'Проверьте корректность заполнения данных'
                     }];
   public step = 1;
+  public phone = '';
+  public s = '';
+  public phoneMask = { mask: "+{00}(0000)00-0000" };
 
   constructor(
     private testService : TestServiceService,
@@ -49,32 +56,38 @@ export class TestComponent implements OnInit {
 
   ngOnInit(): void {
       this.ownerRegistrationForm = this.formBuilder.group({
-        name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
-        surname: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
-        middle_NAME: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
+        name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/), Validators.minLength(2),Validators.maxLength(20)]),
+        surname: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/), Validators.minLength(2),Validators.maxLength(20)]),
+        middle_NAME: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/), Validators.minLength(2),Validators.maxLength(50)]),
         city: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
-        district: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
-        street: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
-        building: '',
-        phone_NUMBER: '',
-        email: ''
+        district: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/), Validators.minLength(2),Validators.maxLength(64)]),
+        street: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/), Validators.minLength(2),Validators.maxLength(128)]),
+        building: new FormControl('', [Validators.minLength(1),Validators.maxLength(128)]),
+        phone_NUMBER: new FormControl('', [Validators.maxLength(20),Validators.pattern('^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$')]),
+        email: new FormControl('', [Validators.maxLength(50), Validators.email]),
+        test: ''
       });
       this.catRegistrationForm = this.formBuilder.group({
-        name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
+        name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/), Validators.minLength(2),Validators.maxLength(20)]),
         sex: 'Кот',
         breed: '',
-        catAge: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/)]),
-        weight: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/)]),
+        catAge: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/), Validators.max(25)]),
+        weight: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/), Validators.max(22)]),
         vaccination_CERTIFICATE: 'Да',
       });
      this.http.get<any>('/api/breed/get').subscribe(dt => { this.breeds = dt.content; });
     this.http.get<any>('/api/getcity/get').subscribe(dt => { this.cities = dt.content; });
     this.http.get<any>('/api/createuser/get').subscribe(dt => {
       dt.content.forEach((element) => {
-
-        this.count = element.id;
+          if(element.id != null)
+            this.count = element.id;
+          else this.count = 0;
       });
     });
+  }
+
+  get _getCatName() {
+    return this.catRegistrationForm.get('name')
   }
   public goToNextStep(): void {
       switch (this.step) {
@@ -85,7 +98,7 @@ export class TestComponent implements OnInit {
             name: this.ownerRegistrationForm.get('name').value,
             surname: this.ownerRegistrationForm.get('surname').value,
             middle_NAME: this.ownerRegistrationForm.get('middle_NAME').value,
-            phone_NUMBER: this.ownerRegistrationForm.get('phone_NUMBER').value,
+            phone_NUMBER: '+' + this.ownerRegistrationForm.get('phone_NUMBER').value,
             email: this.ownerRegistrationForm.get('email').value
             //...this.ownerRegistrationForm.getRawValue(),
             //...this.catRegistrationForm.getRawValue()

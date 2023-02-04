@@ -33,6 +33,12 @@
           <ng-container *ngIf="catAddForm.get('name').getError('pattern')">
             Поле может состоять только из букв русского алфавита
           </ng-container>
+          <ng-container *ngIf="catAddForm.get('name').errors?.minlength">
+            Кличка не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="catAddForm.get('name').errors?.maxlength">
+            Кличка не может быть больше 20 букв
+          </ng-container>
         </div>
       </div>
     </div>
@@ -65,6 +71,9 @@
           <ng-container *ngIf="catAddForm.get('age').getError('pattern')">
             Поле может состоять только из цифр
           </ng-container>
+          <ng-container *ngIf="catAddForm.get('age').errors?.max">
+            Возраст не может быть выше 25 лет
+          </ng-container>
         </div>
       </div>
     </div>
@@ -84,6 +93,9 @@
           </ng-container>
           <ng-container *ngIf="catAddForm.get('weight').getError('pattern')">
             Поле может состоять только из цифр
+          </ng-container>
+          <ng-container *ngIf="catAddForm.get('weight').errors?.max">
+            Вес не может быть выше 22 кг
           </ng-container>
         </div>
       </div>
@@ -112,7 +124,7 @@
       <button *ngIf="step !== 1" class="plain-button" (click)="prev()">Назад</button>
     </div>
     <div class="control">
-      <button class="plain-button" (click)="goToNextStep()" [disabled]="catAddForm.invalid">Далее</button>
+      <button class="plain-button" (click)="goToNextStep()" [disabled]="catAddForm.invalid">{{step === 2 ? 'Зарегистрировать' : 'Далее'}}</button>
     </div>
   </div>
 </div>
