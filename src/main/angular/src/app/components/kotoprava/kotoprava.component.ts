@@ -84,15 +84,6 @@ export class KotopravaComponent implements OnInit {
 
   public next(): void {
     switch(this.step) {
-    case 1:
-        this.step++;
-        break;
-    case 2:
-        this.step++;
-        break;
-    case 3:
-        this.step++;
-        break;
     case 4:
         this.step++;
         this.dataPet = { ...this.petForm.getRawValue() };
@@ -102,20 +93,23 @@ export class KotopravaComponent implements OnInit {
         break;
     case 5:
         this.http.post('/api/kotopravaRequisition/createPravaRequisition', {
-                  kittens: this.dataPet,
-                  passports: this.dataPassport,
-                  certificates: this.dataCertificates,
-                  num_otdelGIBDD: this.dataOtdel.addressOtdel,
-                  date_otdelGIBDD: this.dataOtdel.dateOtdel,
-                  time_otdelGIBDD: this.dataOtdel.timeOtdel,
-                  name: 'Оформление котоправ',
-                  serviceId: 6,
-                  status: 'ACCEPTED'
-                }).subscribe(() => {
-                  alert('Ну всё получается, заявку подали, права будут');
-                  this.router.navigate(['/']);
-                });
-                break;
+          kittens: this.dataPet,
+          passports: this.dataPassport,
+          certificates: this.dataCertificates,
+          num_otdelGIBDD: this.dataOtdel.addressOtdel,
+          date_otdelGIBDD: this.dataOtdel.dateOtdel,
+          time_otdelGIBDD: this.dataOtdel.timeOtdel,
+          name: 'Оформление котоправ',
+          serviceId: 6,
+          status: 'ACCEPTED'
+        }).subscribe(() => {
+          alert('Ну всё получается, заявку подали, права будут');
+          this.router.navigate(['/']);
+        });
+        break;
+    default:
+        this.step++;
+        break;
     }
   }
 
