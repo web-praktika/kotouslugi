@@ -1,29 +1,53 @@
 <div class ="container">
-
-  <form action="petForm">
+  <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
+  <form *ngIf="step === 1" [formGroup]="petForm">
     <h4 class="step-title">Информация о хозяине</h4>
     <div class="column">
+    <div class="control">
+      <label for="HumanName" class="label">ФИО хозяина</label>
+      <input
+        type="text"
+        class="plain-input"
+        id="HumanName"
+        placeholder="Ебашь Холокост Адольфович"
+        formControlName="HumanName"
+      />
+    </div>
+    <div class="control" id="control1">
+      <label for="HumanAge" class="label">Возраст хозяина</label>
+      <input
+        class="plain-input"
+        type="text"
+        id="HumanAge"
+        placeholder="18+"
+        formControlName="HumanAge"
+      />
+    </div>
+  </div>
+    <div class="column">
       <div class="control">
-        <label for="HumanName" class="label">ФИО хозяина</label>
+        <label for="number" class="label">Номер телефона</label>
         <input
           type="text"
           class="plain-input"
-          id="HumanName"
-          placeholder="Ебашь Адольф Холокостович"
-          formControlName="name"
+          id="number"
+          placeholder="8 800 1000-7-322"
+          formControlName="number"
         />
       </div>
-      <div class="control" id="control1">
-        <label for="HumanAge" class="label">Возраст хозяина</label>
+      <div class="control" id="control2">
+        <label for="mail" class="label">Возраст хозяина</label>
         <input
           class="plain-input"
           type="text"
-          id="HumanAge"
-          placeholder="18+"
-          formControlName="lastName"
+          id="mail"
+          placeholder="lox@mail.ru"
+          formControlName="mail"
         />
       </div>
     </div>
+  </form>
+    <form *ngIf="step === 2" [formGroup]="crossingForm">
     <h4 class="step-title">Информация о коте</h4>
     <div class="column">
       <div class="control">
@@ -36,14 +60,14 @@
           formControlName="name"
         />
       </div>
-      <div class="control" id="control2">
-        <label for="lastName" class="label">Название породы</label>
+      <div class="control" id="control3">
+        <label for="bree" class="label">Название породы</label>
         <input
           class="plain-input"
           type="text"
-          id="lastName"
+          id="bree"
           placeholder="Мейн-кун"
-          formControlName="lastName"
+          formControlName="bree"
         />
       </div>
     </div>
@@ -69,30 +93,33 @@
     </div>
     <div class="column">
       <div class="control">
-        <label for="name" class="label">Вес питомца(кг)</label>
+        <label for="weight" class="label">Вес питомца(кг)</label>
         <input
           type="text"
           class="plain-input"
           id="weight"
           placeholder="1+"
-          formControlName="name"
+          formControlName="weight"
         />
       </div>
-      <div class="control" id="control3">
-        <label for="lastName" class="label">Окрас питомца</label>
+      <div class="control" id="control4">
+        <label for="color" class="label">Окрас питомца</label>
         <input
           class="plain-input"
           type="text"
           id="color"
           placeholder="Лайлак-пойнт"
-          formControlName="lastName"
+          formControlName="color"
         />
       </div>
     </div>
-    <div class="column buttons">
-      <div class="control">
-        <button class="plain-button" >Далее</button>
-      </div>
+    </form>
+  <div class="column buttons">
+    <div class="control">
+      <button *ngIf="step !== 1" class="plain-button" (click)="prev()">Назад</button>
     </div>
-  </form>
+    <div class="control">
+      <button class="plain-button" (click)="next()">Далее</button>
+    </div>
+  </div>
 </div>
