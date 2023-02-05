@@ -9,7 +9,7 @@
         type="text"
         class="plain-input"
         id="HumanName"
-        placeholder="Ебашь Холокост Адольфович"
+        placeholder="Иванов Иван Иванович"
         formControlName="HumanName"
       />
     </div>
@@ -36,12 +36,12 @@
         />
       </div>
       <div class="control" id="control2">
-        <label for="mail" class="label">Возраст хозяина</label>
+        <label for="mail" class="label">Почта </label>
         <input
           class="plain-input"
           type="text"
           id="mail"
-          placeholder="lox@mail.ru"
+          placeholder="example@mail.ru"
           formControlName="mail"
         />
       </div>
@@ -114,6 +114,15 @@
       </div>
     </div>
     </form>
+  <form *ngIf="step === 3" [formGroup]="crossingForm">
+    <h4 class="step-title">Список кандидатов</h4>
+    <img src="..\assets\png\1.jpg" alt="">
+
+  </form>
+  <div *ngIf="step === 4">
+    <h4 class="step-title">Подтверждение заявки</h4>
+    <pre>{{data | json}}</pre>
+  </div>
   <div class="column buttons">
     <div class="control">
       <button *ngIf="step !== 1" class="plain-button" (click)="prev()">Назад</button>
