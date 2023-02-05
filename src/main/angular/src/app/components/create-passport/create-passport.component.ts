@@ -30,7 +30,7 @@ export class CreatePassportComponent implements OnInit {
     },
     {
       id: 2,
-      icon: "/assets/svg/tasks.svg",
+      icon: "/assets/svg/pen.svg",
       title: "Заполнение данных",
       description: "Укажите необходимую информацию о котике",
     },
