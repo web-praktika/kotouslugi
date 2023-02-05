@@ -23,7 +23,12 @@
         <div>Статус: {{order.status === 'ACCEPTED' ? 'Принята' : 'На рассмотрении'}}</div>
       </div>
     </div>
-    {{order.kittens | json}} {{order.passports | json}} {{order.certificates | json}}
-    {{order.num_otdelGIBDD | json}} {{order.date_otdelGIBDD | json}} {{order.time_otdelGIBDD | json}}
+    <p>ИНФОРМАЦИЯ О КОТИКЕ: Имя: {{order.kittens[0].value}}; Порода: {{order.kittens[1].value}};
+      Пол: {{order.kittens[2].value}}; Возраст: {{order.kittens[3].value}}</p>
+    <p>ИНФОРМАЦИЯ О ПАСПОРТЕ: Номер и серия: {{order.passports[0].value}}; Дата получения: {{order.passports[1].value}};
+      Номер подразделения: {{order.passports[2].value}}; Адрес регистрации: {{order.passports[3].value}}</p>
+    <p>ИНФОРМАЦИЯ О СЕРТИФИКАТАХ: Название автошколы: {{order.certificates[0].value}};
+      Номер сертификата: {{order.certificates[1].value}}; Дата получения сертификата: {{order.certificates[2].value}};
+      Номер справки: {{order.certificates[3].value}}; Дата получения справки: {{order.certificates[4].value}}</p>
   </div>
 </div>
