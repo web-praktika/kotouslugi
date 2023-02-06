@@ -297,6 +297,7 @@
           id="catWeight"
           placeholder="Вес"
           formControlName="weight"
+          step="0.1000"
         />
         <div class="error" *ngIf="catRegistrationForm.get('weight').invalid && !catRegistrationForm.get('weight').pristine">
           <ng-container *ngIf="catRegistrationForm.get('weight').getError('required')">
@@ -327,11 +328,88 @@
     </div>
   </form>
   <div *ngIf="step === 3">
-    <h4 class="step-title">Подтверждение заявки</h4>
-    <pre>{{ownerData | json}}</pre>
-    <pre>{{ownerAddress | json}}</pre>
-    <pre>{{catData | json}}</pre>
+    <h3 class="function-title column">Подтверждение заявки</h3>
+    <h4 class="function-title column">Хозяин</h4>
+    <div class="column">
+      <div class="control">
+      <label class="label">Фамилия</label>
+    <div class="plain-div">{{ownerData.surname}}</div>
+      </div>
+      <div class="control">
+        <label class="label">Имя</label>
+        <div class="plain-div">{{ownerData.name}}</div>
+      </div>
+      <div class="control">
+        <label class="label">Отчество</label>
+        <div class="plain-div">{{ownerData.middle_NAME}}</div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label class="label">Город</label>
+        <div class="plain-div">{{ownerAddress.city}}</div>
+      </div>
+      </div>
+    <div class="column">
+      <div class="control">
+        <label class="label">Район</label>
+        <div class="plain-div">{{ownerAddress.district}}</div>
+      </div>
+      <div class="control">
+        <label class="label">Улица</label>
+        <div class="plain-div">{{ownerAddress.street}}</div>
+      </div>
+      <div class="control">
+        <label class="label">Дом</label>
+        <div class="plain-div">{{ownerAddress.building === "" ? 'Не указан' : ownerAddress.building}}</div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label class="label">Телефонный номер</label>
+        <div class="plain-div">{{ownerData.phone_NUMBER === "" ? 'Не указан' : ownerData.phone_NUMBER}}</div>
+      </div>
+      <div class="control">
+        <label class="label">Электронная почта</label>
+        <div class="plain-div">{{ownerData.email === "" ? 'Не указан' : ownerData.email}}</div>
+      </div>
+    </div>
+    <div *ngIf="catData">
+      <h4 class="function-title column">Котик</h4>
+      <div class="column">
+        <div class="control">
+          <label class="label">Кличка</label>
+          <div class="plain-div">{{catData.name}}</div>
+        </div>
+        <div class="control">
+          <label class="label">Порода</label>
+          <div class="plain-div">{{catData.breed}}</div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="control">
+          <label class="label">Возраст</label>
+          <div class="plain-div">{{catData.age}}</div>
+        </div>
+        <div class="control">
+          <label class="label">Вес</label>
+          <div class="plain-div">{{catData.weight}}</div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="control">
+          <label class="label">Пол</label>
+          <div class="plain-div">{{catData.sex}}</div>
+        </div>
+        <div class="control">
+          <label class="label">Имеются ли прививки</label>
+          <div class="plain-div">{{catData.vaccination_CERTIFICATE}}</div>
+        </div>
+      </div>
+    </div>
+
   </div>
+
   <div class="column buttons">
     <div class="control">
       <button *ngIf="step !== 1" class="plain-button" (click)="prev()">Назад</button>

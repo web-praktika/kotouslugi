@@ -59,8 +59,53 @@
     </div>
   </form>
   <div *ngIf="step === 2">
-    <h4 class="step-title">Подтверждение заявки</h4>
-    <pre>{{data | json}}</pre>
+    <h3 class="function-title column">Подтверждение заявки</h3>
+    <div>
+      <h4 class="function-title column">Хозяин</h4>
+      <div class="column">
+        <div class="control">
+          <label class="label">ФИО отправителя</label>
+          <div class="plain-div">{{outputSender}}</div>
+        </div>
+        <div class="control">
+          <label class="label">ФИО получателя</label>
+          <div class="plain-div">{{outputRecipient}}</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h4 class="function-title column">Котик</h4>
+      <div class="column">
+        <div class="control">
+          <label class="label">Кличка</label>
+          <div class="plain-div">{{data.name}}</div>
+        </div>
+        <div class="control">
+          <label class="label">Порода</label>
+          <div class="plain-div">{{data.breed}}</div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="control">
+          <label class="label">Возраст</label>
+          <div class="plain-div">{{data.age}}</div>
+        </div>
+        <div class="control">
+          <label class="label">Вес</label>
+          <div class="plain-div">{{data.weight}}</div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="control">
+          <label class="label">Пол</label>
+          <div class="plain-div">{{data.sex}}</div>
+        </div>
+        <div class="control">
+          <label class="label">Имеются ли прививки</label>
+          <div class="plain-div">{{data.vaccination_CERTIFICATE}}</div>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="column buttons">
     <div class="control">

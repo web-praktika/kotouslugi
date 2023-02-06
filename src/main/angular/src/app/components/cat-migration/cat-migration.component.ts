@@ -17,11 +17,14 @@ export class CatMigrationComponent implements OnInit {
   public breeds: any;
   public catMigrationForm: FormGroup;
 
+  public outputSender = "";
+  public outputRecipient = "";
+
   public readonly steps = [{
     id: 1,
     icon: '/assets/svg/paw.svg',
-    title: 'Добавление котика',
-    description: 'Укажите необходимую информацию о котике'
+    title: 'Миграция котика',
+    description: 'Попрощайтесь с ним как следует'
   }, {
     id: 2,
     icon: '/assets/svg/tasks.svg',
@@ -42,7 +45,7 @@ export class CatMigrationComponent implements OnInit {
       sender_ID: '',
       recipient_ID: '',
       cat_ID: '',
-      timeMessage: '',
+      timeMessage: 'Постоянная',
     });
     this.http.get<any>('/api/breed/get').subscribe(dt => { this.breeds = dt.content; });
     this.http.get<any>('/api/createuser/get').subscribe(dt => { this.ownersSurnames = dt.content; });
@@ -63,7 +66,12 @@ export class CatMigrationComponent implements OnInit {
           weight: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value).weight,
           vaccination_CERTIFICATE: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value).vaccination_CERTIFICATE,
         };
-
+        this.outputSender = this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('sender_ID').value).surname + " "
+        + this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('sender_ID').value).surname + " "
+        + this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('sender_ID').value).middle_NAME;
+        this.outputRecipient = this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('recipient_ID').value).surname + " "
+          + this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('recipient_ID').value).surname + " "
+          + this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('recipient_ID').value).middle_NAME;
         break;
       case 2:
         var currentDate: Date;

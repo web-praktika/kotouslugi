@@ -19,6 +19,16 @@ select > option:not(:first-of-type) {
   border: 1px solid #dededf;
   border-radius: 4px;
 }
+
+.plain-div
+{
+  width: 100%;
+  padding: 0.7em 0.5em;
+ // margin: 0 0.5em;
+  border: 1px solid #dededf;
+  border-radius: 4px;
+}
+
 .column {
   display: flex;
   justify-content:center;

@@ -14,6 +14,7 @@ export class AddCatComponent implements OnInit {
   public data: any;
   public ownersSurnames: any;
   public breeds: any;
+  public output = "";
   public catAddForm: FormGroup;
   public readonly steps = [{
                         id: 1,
@@ -42,7 +43,7 @@ export class AddCatComponent implements OnInit {
           sex: 'Кот',
           breed: '',
           age: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/), Validators.max(25)]),
-          weight: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/), Validators.max(22)]),
+          weight: new FormControl('', [Validators.required, Validators.pattern("^([+-]?\\d+([\\.]\\d{1,3})?)"), Validators.max(22)]),
           vaccination_CERTIFICATE: 'Да',
         });
     this.http.get<any>('/api/breed/get').subscribe(dt => { this.breeds = dt.content; });
@@ -55,6 +56,7 @@ export class AddCatComponent implements OnInit {
             this.data = {
               ...this.catAddForm.getRawValue(),
             };
+            this.output = this.ownersSurnames.find(x=> x.id == this.data.owner_ID).surname + " " + this.ownersSurnames.find(x=> x.id == this.data.owner_ID).name + " " + this.ownersSurnames.find(x=> x.id == this.data.owner_ID).middle_NAME;
             break;
           case 2:
             this.http.post('/api/createcat/save', {...this.data}).subscribe(() => {
