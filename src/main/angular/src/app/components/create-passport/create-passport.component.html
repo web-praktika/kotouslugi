@@ -27,7 +27,12 @@
       <form class="form" [formGroup]="passportForm">
         <div class="form__name form__group">
           <label>Кличка</label>
-          <input type="text" formControlName="name" class="form__input" placeholder=" "/>
+          <input
+            type="text"
+            formControlName="name"
+            class="form__input"
+            placeholder=" "
+          />
           <div
             class="error"
             *ngIf="
@@ -188,44 +193,63 @@
       <h3 class="passport-subtitle">
         Если тут что-то не так - нажмите "назад" и исправьте нужные поля
       </h3>
-      <div class="passport__view form">
-        <img class="passport__photo" src="{{ passport.photo }}" alt="" />
-        <label>Кличка</label>
-        <div class="passport__name field">
-          {{ passport.name }}
+      <div class="passport__view">
+        <div class="passport__container">
+          <div class="passport_left">
+            <img class="passport__photo" src="{{ passport.photo }}" alt="" />
+          </div>
+          <div class="passport__right">
+            <div class="passport__name pass__group">
+              Кличка <span class="passport__data">{{ passport.name }}</span>
+            </div>
+            <div class="passport__sex pass__group" *ngIf="serviceType === 'get'">
+              Пол
+              <span class="passport__data">
+                {{ passport.sex === "male" ? "Кот" : "Кошка" }}
+              </span>
+            </div>
+            <div
+              class="passport__breed pass__group"
+              *ngIf="serviceType === 'get'"
+            >
+              Порода <span class="passport__data">{{ passport.breed }}</span>
+            </div>
+            <div
+              class="passport__color pass__group"
+              *ngIf="serviceType === 'get'"
+            >
+              Окрас <span class="passport__data">{{ passport.cat_COLOR }}</span>
+            </div>
+            <div
+              class="passport__father pass__group"
+              *ngIf="serviceType === 'get'"
+            >
+              Папа <span class="passport__data">{{ passport.father }}</span>
+            </div>
+            <div
+              class="passport__mother pass__group"
+              *ngIf="serviceType === 'get'"
+            >
+              Мама <span class="passport__data">{{ passport.mother }}</span>
+            </div>
+            <div class="passport__marital-status pass__group">
+              Cемейное положение
+              <span class="passport__data">{{ passport.marital_STATUS }}</span>
+            </div>
+            <div
+              class="passport__reason_FOR_REPLACEMENT pass__group"
+              *ngIf="serviceType === 'replacement'"
+            >
+              Причина замены паспорта
+              <span class="passport__data">{{
+                passport.reason_FOR_REPLACEMENT
+              }}</span>
+            </div>
+          </div>
         </div>
-        <label *ngIf="serviceType === 'get'">Пол</label>
-        <div class="passport__sex field" *ngIf="serviceType === 'get'">
-          {{ passport.sex === "male" ? "Кот" : "Кошка" }}
-        </div>
-        <label *ngIf="serviceType === 'get'">Порода</label>
-        <div class="passport__breed field" *ngIf="serviceType === 'get'">
-          {{ passport.breed }}
-        </div>
-        <label *ngIf="serviceType === 'get'">Окрас</label>
-        <div class="passport__color field" *ngIf="serviceType === 'get'">
-          {{ passport.cat_COLOR }}
-        </div>
-        <label *ngIf="serviceType === 'get'">Папа</label>
-        <div class="passport__father field" *ngIf="serviceType === 'get'">
-          {{ passport.father }}
-        </div>
-        <label *ngIf="serviceType === 'get'">Мама</label>
-        <div class="passport__mother field" *ngIf="serviceType === 'get'">
-          {{ passport.mother }}
-        </div>
-        <label>Семейное положение</label>
-        <div class="passport__marital-status field">
-          {{ passport.marital_STATUS }}
-        </div>
-        <label *ngIf="serviceType === 'replacement'"
-          >Причина замены паспорта</label
-        >
-        <div
-          class="passport__reason_FOR_REPLACEMENT field"
-          *ngIf="serviceType === 'replacement'"
-        >
-          {{ passport.reason_FOR_REPLACEMENT }}
+        <div class="passport__footer">
+          <p class="footer__cypher">PNRUSDRIL7K>KOT>>PASSPORT>>>>>>>>>>>>>>></p>
+          <p class="footer__cypher">3919353498RUS7207223M>>>>>>>415121891000</p>
         </div>
       </div>
     </div>
