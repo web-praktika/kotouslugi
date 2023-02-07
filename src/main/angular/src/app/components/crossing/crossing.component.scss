@@ -3,7 +3,7 @@
   border-bottom: 1px solid #dededf;
   margin-bottom: 1em;
 }
-$fh:300px;
+$fh:250px;
 .flexcolumn {
   display: flex;
   justify-content: space-between;
@@ -13,6 +13,7 @@ $fh:300px;
     justify-content: space-between;
   }
   & img{
+    pointer-events: none; 
     border: 1px solid black;
     height: $fh;
   }
