@@ -79,7 +79,7 @@ export class CrossingComponent implements OnInit {
         this.http.post('/api/requisition/createRequisition', {
           fields: this.data,
           name: 'Название услуги',
-          serviceId: 1,
+          serviceId: 6,
           status: 'ACCEPTED'
         }).subscribe(() => {
           alert('Позже хозяин второго кота свяжется с вами');
