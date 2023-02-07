@@ -40,7 +40,7 @@ export class CrossingComponent implements OnInit {
 
   constructor(
     private router: Router,
-private http: HttpClient,
+    private http: HttpClient,
     private fb: FormBuilder
   ) { }
 
@@ -82,7 +82,6 @@ private http: HttpClient,
           serviceId: 1,
           status: 'ACCEPTED'
         }).subscribe(() => {
-          alert('Заявка успешно подана');
           alert('Позже хозяин второго кота свяжется с вами');
           this.router.navigate(['/']);
         });
