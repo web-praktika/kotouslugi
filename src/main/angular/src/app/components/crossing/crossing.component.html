@@ -135,8 +135,22 @@
         </label>
       </div>
     </div>
-
+    <div class="flexcolumn">
+      <div class="space">
+        <input class="plain-radio" type="radio" id="supreme" name="candidate" value="supreme" formControlName="candidate"/>
+        <label for="supreme" class="label">
+          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/d162c673396927.5c0809afa13f1.jpg" alt="">
+        </label>
+      </div>
+      <div class="space">
+        <input class="plain-radio" type="radio" id="aleha" name="candidate" value="anchester" formControlName="aleha"/>
+        <label for="aleha" class="label">
+          <img src="https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkPpkMja2sIypDZGwZr3wBRaaKTM5SRkZCeTgDn6uOyic" alt="">
+        </label>
+      </div>
+    </div>
   </form>
+  
   <div *ngIf="step === 4">
     <h4 class="step-title">Подтверждение заявки</h4>
     <pre>{{data | json}}</pre>
