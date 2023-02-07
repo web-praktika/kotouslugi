@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-
 @Component({
   selector: 'app-crossing',
   templateUrl: './crossing.component.html',
@@ -11,7 +10,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CrossingComponent implements OnInit {
 
-    public petForm: FormGroup;
+    public humanForm: FormGroup;
+    public PetForm: FormGroup;
     public crossingForm: FormGroup;
     public data: any;
     public readonly steps = [{
@@ -28,7 +28,7 @@ export class CrossingComponent implements OnInit {
       id: 3,
       icon: '/assets/svg/paw.svg',
       title: 'Выбор кавалера',
-      description: 'Выбор лучшего кандидата'
+      description: 'Выбор кандидата'
     }, {
       id: 4,
       icon: '/assets/svg/tasks.svg',
@@ -40,24 +40,28 @@ export class CrossingComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private http: HttpClient,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
-    this.petForm = this.fb.group({
+
+    this.humanForm = this.fb.group({
       HumanName: '',
       HumanAge: '',
       number: '',
       mail: ''
     });
- this.crossingForm = this.fb.group({
-      name: '',
-      lastName: '',
-      sex: 'male',
-      age: '',
-      weight: '',
-      color: ''
+      this.PetForm = this.fb.group({
+        name: '',
+        lastName: '',
+        sex: 'male',
+        age: '',
+        weight: '',
+        color: ''
+    });
+    this.crossingForm = this.fb.group({
+        candidate:''
     });
   }
    public next(): void {
@@ -67,13 +71,14 @@ export class CrossingComponent implements OnInit {
         break;
       case 2:
         this.step++;
+        break;
+      case 3:
+        this.step++;
         this.data = {
-          ...this.petForm.getRawValue(),
+          ...this.humanForm.getRawValue(),
+          ...this.PetForm.getRawValue(),
           ...this.crossingForm.getRawValue()
         };
-        break;
-        case 3:
-        this.step++;
         break;
        case 4:
         this.http.post('/api/requisition/createRequisition', {

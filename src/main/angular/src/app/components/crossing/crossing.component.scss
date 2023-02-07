@@ -3,5 +3,19 @@
   border-bottom: 1px solid #dededf;
   margin-bottom: 1em;
 }
+$fh:300px;
+.flexcolumn {
+  display: flex;
+  justify-content: space-between;
+
+  &.space{
+    height: $fh;
+    justify-content: space-between;
+  }
+  & img{
+    border: 1px solid black;
+    height: $fh;
+  }
+}
 
 

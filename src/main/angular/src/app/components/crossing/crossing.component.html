@@ -1,6 +1,6 @@
 <div class ="container">
   <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
-  <form *ngIf="step === 1" [formGroup]="petForm">
+  <form *ngIf="step === 1" [formGroup]="humanForm">
     <h4 class="step-title">Информация о хозяине</h4>
     <div class="column">
     <div class="control">
@@ -16,6 +16,8 @@
     <div class="control" id="control1">
       <label for="HumanAge" class="label">Возраст хозяина</label>
       <input
+        min="18"
+        max="100"
         class="plain-input"
         type="text"
         id="HumanAge"
@@ -39,7 +41,7 @@
         <label for="mail" class="label">Почта </label>
         <input
           class="plain-input"
-          type="text"
+          type="email"
           id="mail"
           placeholder="example@mail.ru"
           formControlName="mail"
@@ -47,12 +49,13 @@
       </div>
     </div>
   </form>
-    <form *ngIf="step === 2" [formGroup]="crossingForm">
+    <form *ngIf="step === 2" [formGroup]="PetForm">
     <h4 class="step-title">Информация о коте</h4>
     <div class="column">
       <div class="control">
         <label for="name" class="label">Кличка</label>
         <input
+          maxlength=20;
           type="text"
           class="plain-input"
           id="name"
@@ -63,6 +66,7 @@
       <div class="control" id="control3">
         <label for="bree" class="label">Название породы</label>
         <input
+          maxlength=20;
           class="plain-input"
           type="text"
           id="bree"
@@ -105,6 +109,7 @@
       <div class="control" id="control4">
         <label for="color" class="label">Окрас питомца</label>
         <input
+          maxlength=20;
           class="plain-input"
           type="text"
           id="color"
@@ -116,7 +121,20 @@
     </form>
   <form *ngIf="step === 3" [formGroup]="crossingForm">
     <h4 class="step-title">Список кандидатов</h4>
-    <img src="..\assets\png\1.jpg" alt="">
+    <div class="flexcolumn">
+      <div class="space">
+        <input class="plain-radio" type="radio" id="barsik" name="candidate" value="barsik" formControlName="candidate"/>
+        <label for="barsik" class="label">
+          <img src="..\assets\png\1.jpg" alt="">
+        </label>
+      </div>
+      <div class="space">
+        <input class="plain-radio" type="radio" id="manchester" name="candidate" value="manchester" formControlName="candidate"/>
+        <label for="manchester" class="label">
+          <img src="https://cs5.pikabu.ru/post_img/big/2014/09/04/6/1409816833_2052270027.jpg" alt="">
+        </label>
+      </div>
+    </div>
 
   </form>
   <div *ngIf="step === 4">
