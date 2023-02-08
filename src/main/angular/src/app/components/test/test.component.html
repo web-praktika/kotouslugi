@@ -211,10 +211,10 @@
             Ошибка при вводе. Примеры: +79261234567 | 89261234567
           </ng-container>
           <ng-container *ngIf="ownerRegistrationForm.get('phone_NUMBER').errors?.minlength">
-            Район не может быть меньше 2 букв
+            Телефонный номер не может быть меньше 10 символов
           </ng-container>
           <ng-container *ngIf="ownerRegistrationForm.get('phone_NUMBER').errors?.maxlength">
-            Район не может быть больше 10 цифр
+            Телефонный номер не может быть больше 11 символов
           </ng-container>
         </div>
       </div>
@@ -229,7 +229,7 @@
     <h3 class="function-title column">Информация о кошечке</h3>
     <div class="column">
       <div class="control">
-        <label for="name" class="label">Кличка котика</label>
+        <label for="catName" class="label">Кличка котика</label>
         <input
           class="plain-input"
           type="text"
@@ -290,7 +290,7 @@
     </div>
     <div class="column">
       <div class="control">
-        <label for="weight" class="label">Вес</label>
+        <label for="catWeight" class="label">Вес</label>
         <input
           class="plain-input"
           type="number"

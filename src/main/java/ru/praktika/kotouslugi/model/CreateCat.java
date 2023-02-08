@@ -20,7 +20,7 @@ public class CreateCat {
     @Column(name = "AGE", columnDefinition = "INTEGER DEFAULT 0", nullable = false)
     private Integer AGE ;
     @Column(name = "WEIGHT", columnDefinition = "INTEGER DEFAULT 0", nullable = false)
-    private Integer WEIGHT ;
+    private Double WEIGHT ;
     @Column(name = "VACCINATION_CERTIFICATE ", columnDefinition = "VARCHAR(50)", nullable = true)
     private String VACCINATION_CERTIFICATE ;
 
@@ -86,11 +86,11 @@ public class CreateCat {
         this.OWNER_ID = OWNER_ID;
     }
 
-    public Integer getWEIGHT() {
+    public Double getWEIGHT() {
         return WEIGHT;
     }
 
-    public void setWEIGHT(Integer WEIGHT) {
+    public void setWEIGHT(Double WEIGHT) {
         this.WEIGHT = WEIGHT;
     }
 }

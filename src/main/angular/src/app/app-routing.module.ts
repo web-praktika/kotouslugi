@@ -9,6 +9,7 @@ import { OrdersComponent } from './modules/orders/orders.component';
 import { TestComponent } from './components/test/test.component';
 import { AddCatComponent } from './components/add-cat/add-cat.component';
 import { CatMigrationComponent } from './components/cat-migration/cat-migration.component';
+import { FinesComponent } from './components/fines/fines.component';
 
 const routes: Routes = [{
   path: '',
@@ -53,9 +54,12 @@ const routes: Routes = [{
     path: 'cat-migration',
     component: CatMigrationComponent
   }, {
+  path: 'cat-fines',
+  component: FinesComponent
+  }, {
     path: '**',
     component: NotFoundComponent
-}];
+  }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],

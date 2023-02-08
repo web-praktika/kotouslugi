@@ -65,7 +65,6 @@ export class TestComponent implements OnInit {
         building: new FormControl('', [Validators.minLength(1),Validators.maxLength(128)]),
         phone_NUMBER: new FormControl('', [Validators.minLength(10),Validators.maxLength(11),Validators.pattern('^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$')]),
         email: new FormControl('', [Validators.maxLength(50), Validators.email]),
-        test: ''
       });
       this.catRegistrationForm = this.formBuilder.group({
         name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/), Validators.minLength(2),Validators.maxLength(20)]),

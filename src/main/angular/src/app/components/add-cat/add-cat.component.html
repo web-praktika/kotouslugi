@@ -1,10 +1,10 @@
 <div class ="container">
   <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
   <form *ngIf="step === 1" [formGroup]="catAddForm">
-    <h3 class="function-title column">Добавление кошечки</h3>
+    <h3 class="function-title column">Добавление котика</h3>
     <div class="column">
       <div class="control">
-        <label for="owners" class="label">ФИО пользователя</label>
+        <label for="owners" class="label">ФИО владельца</label>
         <select id="owners" class="plain-select" style='color:gray' oninput='style.color="black"' formControlName="owner_ID">
           <option value="" disabled selected hidden>ФИО</option>
           <option *ngFor="let dt of ownersSurnames" [ngValue]="dt.id">{{ dt.surname + ' ' + dt.name + ' ' + dt.middle_NAME}}</option>
@@ -18,7 +18,7 @@
     </div>
     <div class="column">
       <div class="control">
-        <label for="name" class="label">Кличка котика</label>
+        <label for="catName" class="label">Кличка котика</label>
         <input
           class="plain-input"
           type="text"
@@ -79,10 +79,10 @@
     </div>
     <div class="column">
       <div class="control">
-        <label for="weight" class="label">Вес</label>
+        <label for="catWeight" class="label">Вес</label>
         <input
           class="plain-input"
-          type="text"
+          type="number"
           id="catWeight"
           placeholder="Вес"
           formControlName="weight"

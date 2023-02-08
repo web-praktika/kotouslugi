@@ -17,6 +17,7 @@ import { TestComponent } from './components/test/test.component';
 import { AddCatComponent } from './components/add-cat/add-cat.component';
 import { CatMigrationComponent } from './components/cat-migration/cat-migration.component';
 import {NgxMaskModule} from "ngx-mask";
+import { FinesComponent } from './components/fines/fines.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {NgxMaskModule} from "ngx-mask";
     NotFoundComponent,
     TestComponent,
     AddCatComponent,
-    CatMigrationComponent
+    CatMigrationComponent,
+    FinesComponent
   ],
     imports: [
         BrowserModule,
