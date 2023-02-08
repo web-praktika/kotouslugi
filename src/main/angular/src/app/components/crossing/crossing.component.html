@@ -6,6 +6,7 @@
       <div class="control">
         <label for="HumanName" class="label">ФИО хозяина</label>
         <input
+          maxlength=50
           type="text"
           class="plain-input"
           id="HumanName"
@@ -24,10 +25,9 @@
       <div class="control" id="control1">
         <label for="HumanAge" class="label">Возраст хозяина</label>
         <input
-          min="18"
-          max="100"
           class="plain-input"
           type="number"
+          maxlength=3
           id="HumanAge"
           placeholder="18+"
           formControlName="HumanAge"
@@ -52,7 +52,7 @@
           type="number"
           class="plain-input"
           id="number"
-          placeholder="8 801-000-7-322"
+          placeholder="89009909090"
           formControlName="number"
         />
         <div class="error" *ngIf="humanForm.get('number').invalid && !humanForm.get('number').pristine">
@@ -67,6 +67,7 @@
       <div class="control" id="control2">
         <label for="mail" class="label">Почта </label>
         <input
+          maxlength=50
           class="plain-input"
           type="email"
           id="mail"
@@ -85,36 +86,46 @@
   <h4 class="step-title">Информация о коте</h4>
     <div class="column">
       <div class="control">
-        <label for="name" class="label">Кличка</label>
+        <label for="name" class="label">Кличка питомца</label>
         <input
-          maxlength=20;
+          maxlength=50
           type="text"
           class="plain-input"
           id="name"
           placeholder="Борзый"
           formControlName="name"
         />
+        <div class="error" *ngIf="PetForm.get('name').invalid && !PetForm.get('name').pristine">
+          <ng-container *ngIf="PetForm.get('name').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+        </div>
       </div>
       <div class="control" >
         <label for="bree" class="label">Название породы</label>
         <input
-          maxlength=20;
+          maxlength=30
           class="plain-input"
           type="text"
           id="bree"
           placeholder="Мейн-кун"
           formControlName="bree"
         />
+        <div class="error" *ngIf="PetForm.get('bree').invalid && !PetForm.get('bree').pristine">
+          <ng-container *ngIf="PetForm.get('bree').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+        </div>
       </div>
     </div>
     <div class="column">
       <div class="control">
-        <label for="age" class="label">Возраст</label>
+        <label for="age" class="label">Возраст питомца</label>
         <input
           class="plain-input"
           type="number"
           id="age"
-          placeholder="0+"
+          placeholder="1+"
           formControlName="age"
         />
         <div class="error" *ngIf="PetForm.get('age').invalid && !PetForm.get('age').pristine">
@@ -123,6 +134,9 @@
           </ng-container>
           <ng-container *ngIf="PetForm.get('age').getError('max')">
             Кошки столько не живут
+          </ng-container>
+          <ng-container *ngIf="PetForm.get('age').getError('min')">
+            Кот слишком молод
           </ng-container>
         </div>
       </div>
@@ -137,9 +151,9 @@
     </div>
     <div class="column">
       <div class="control">
-        <label for="weight" class="label">Вес питомца(грам)</label>
+        <label for="weight" class="label">Вес питомца(грамм)</label>
         <input
-          type="text"
+          type="number"
           class="plain-input"
           id="weight"
           placeholder="4000+"
@@ -148,9 +162,6 @@
         <div class="error" *ngIf="PetForm.get('weight').invalid && !PetForm.get('weight').pristine">
           <ng-container *ngIf="PetForm.get('weight').getError('required')">
             Поле обязательно для заполнения
-          </ng-container>
-          <ng-container *ngIf="PetForm.get('weight').getError('pattern')">
-            Поле может состоять только из цифр
           </ng-container>
           <ng-container *ngIf="PetForm.get('weight').getError('min')">
             Кот слишком худой
@@ -163,7 +174,7 @@
       <div class="control" >
         <label for="color" class="label">Окрас питомца</label>
         <input
-          maxlength=20;
+          maxlength=50
           class="plain-input"
           type="text"
           id="color"
