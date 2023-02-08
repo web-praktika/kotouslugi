@@ -3,7 +3,6 @@ package ru.praktika.kotouslugi.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.praktika.kotouslugi.dao.FinesRepository;
-import ru.praktika.kotouslugi.model.CreateCat;
 import ru.praktika.kotouslugi.model.Fines;
 
 import java.util.ArrayList;

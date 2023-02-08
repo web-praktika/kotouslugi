@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.praktika.kotouslugi.dao.CatFinesRepository;
 import ru.praktika.kotouslugi.model.CatFines;
-import ru.praktika.kotouslugi.model.CreateCat;
 
 import java.util.ArrayList;
 import java.util.List;
