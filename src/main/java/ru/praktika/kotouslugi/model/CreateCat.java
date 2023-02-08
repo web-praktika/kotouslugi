@@ -19,7 +19,7 @@ public class CreateCat {
     private String BREED ;
     @Column(name = "AGE", columnDefinition = "INTEGER DEFAULT 0", nullable = false)
     private Integer AGE ;
-    @Column(name = "WEIGHT", columnDefinition = "INTEGER DEFAULT 0", nullable = false)
+    @Column(name = "WEIGHT", columnDefinition = "DOUBLE DEFAULT 0", nullable = false)
     private Double WEIGHT ;
     @Column(name = "VACCINATION_CERTIFICATE ", columnDefinition = "VARCHAR(50)", nullable = true)
     private String VACCINATION_CERTIFICATE ;

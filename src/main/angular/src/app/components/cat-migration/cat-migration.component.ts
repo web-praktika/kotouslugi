@@ -67,10 +67,10 @@ export class CatMigrationComponent implements OnInit {
           vaccination_CERTIFICATE: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value && x.id == this.catMigrationForm.get('cat_ID').value).vaccination_CERTIFICATE,
         };
         this.outputSender = this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('sender_ID').value).surname + " "
-        + this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('sender_ID').value).surname + " "
+        + this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('sender_ID').value).name + " "
         + this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('sender_ID').value).middle_NAME;
         this.outputRecipient = this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('recipient_ID').value).surname + " "
-          + this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('recipient_ID').value).surname + " "
+          + this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('recipient_ID').value).name + " "
           + this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('recipient_ID').value).middle_NAME;
         break;
       case 2:
