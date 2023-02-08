@@ -42,8 +42,8 @@ export class AddCatComponent implements OnInit {
           name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/), Validators.minLength(2),Validators.maxLength(20)]),
           sex: 'Кот',
           breed: '',
-          age: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/), Validators.max(25)]),
-          weight: new FormControl('', [Validators.required, Validators.pattern("^([+-]?\\d+([\\.]\\d{1,3})?)"), Validators.max(22)]),
+          age: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/), Validators.max(25),Validators.min(1)]),
+          weight: new FormControl('', [Validators.required, Validators.pattern("^([+]?\\d+([\\.]\\d{1,3})?)"), Validators.max(22),Validators.min(0.1)]),
           vaccination_CERTIFICATE: 'Да',
         });
     this.http.get<any>('/api/breed/get').subscribe(dt => { this.breeds = dt.content; });

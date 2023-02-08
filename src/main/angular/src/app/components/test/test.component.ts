@@ -60,8 +60,8 @@ export class TestComponent implements OnInit {
         surname: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/), Validators.minLength(2),Validators.maxLength(20)]),
         middle_NAME: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/), Validators.minLength(2),Validators.maxLength(50)]),
         city: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
-        district: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/), Validators.minLength(2),Validators.maxLength(64)]),
-        street: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/), Validators.minLength(2),Validators.maxLength(128)]),
+        district: new FormControl('', [Validators.required, Validators.pattern("^[0-9А-Яа-я -]*$"), Validators.minLength(2),Validators.maxLength(64)]),
+        street: new FormControl('', [Validators.required, Validators.pattern("^[0-9А-Яа-я -]*$"), Validators.minLength(2),Validators.maxLength(128)]),
         building: new FormControl('', [Validators.minLength(1),Validators.maxLength(128)]),
         phone_NUMBER: new FormControl('', [Validators.minLength(10),Validators.maxLength(11),Validators.pattern('^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$')]),
         email: new FormControl('', [Validators.maxLength(50), Validators.email]),
@@ -70,8 +70,8 @@ export class TestComponent implements OnInit {
         name: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/), Validators.minLength(2),Validators.maxLength(20)]),
         sex: 'Кот',
         breed: '',
-        catAge: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/), Validators.max(25)]),
-        weight: new FormControl('', [Validators.required, Validators.pattern("^([+-]?\\d+([\\.]\\d{1,3})?)"), Validators.max(22)]),
+        catAge: new FormControl('', [Validators.required, Validators.pattern(/^[\d]+$/), Validators.max(25),Validators.min(1)]),
+        weight: new FormControl('', [Validators.required, Validators.pattern("^([+]?\\d+([\\.]\\d{1,3})?)"), Validators.max(22),Validators.min(0.1)]),
         vaccination_CERTIFICATE: 'Да',
       });
       this.getData();

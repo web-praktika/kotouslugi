@@ -74,6 +74,9 @@
           <ng-container *ngIf="catAddForm.get('age').errors?.max">
             Возраст не может быть выше 25 лет
           </ng-container>
+          <ng-container *ngIf="catAddForm.get('age').errors?.min">
+            Возраст не может быть 0
+          </ng-container>
         </div>
       </div>
     </div>
@@ -97,6 +100,9 @@
           </ng-container>
           <ng-container *ngIf="catAddForm.get('weight').errors?.max">
             Вес не может быть выше 22 кг
+          </ng-container>
+          <ng-container *ngIf="catAddForm.get('weight').errors?.min">
+            Вес не может быть 0 кг
           </ng-container>
         </div>
       </div>

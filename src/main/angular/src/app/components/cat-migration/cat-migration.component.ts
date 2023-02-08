@@ -59,12 +59,12 @@ export class CatMigrationComponent implements OnInit {
         this.data = {
           owner_ID: this.catMigrationForm.get('recipient_ID').value,
           cat_ID: this.catMigrationForm.get('cat_ID').value,
-          name: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value).name,
-          sex: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value).sex,
-          breed: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value).breed,
-          age: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value).age,
-          weight: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value).weight,
-          vaccination_CERTIFICATE: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value).vaccination_CERTIFICATE,
+          name: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value && x.id == this.catMigrationForm.get('cat_ID').value).name,
+          sex: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value && x.id == this.catMigrationForm.get('cat_ID').value).sex,
+          breed: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value && x.id == this.catMigrationForm.get('cat_ID').value).breed,
+          age: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value && x.id == this.catMigrationForm.get('cat_ID').value).age,
+          weight: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value && x.id == this.catMigrationForm.get('cat_ID').value).weight,
+          vaccination_CERTIFICATE: this.Cats.find(x=> x.owner_ID == this.catMigrationForm.get('sender_ID').value && x.id == this.catMigrationForm.get('cat_ID').value).vaccination_CERTIFICATE,
         };
         this.outputSender = this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('sender_ID').value).surname + " "
         + this.ownersSurnames.find(x => x.id == this.catMigrationForm.get('sender_ID').value).surname + " "
