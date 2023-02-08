@@ -27,7 +27,7 @@
           min="18"
           max="100"
           class="plain-input"
-          type="text"
+          type="number"
           id="HumanAge"
           placeholder="18+"
           formControlName="HumanAge"
@@ -36,11 +36,8 @@
           <ng-container *ngIf="humanForm.get('HumanAge').getError('required')">
             Поле обязательно для заполнения
           </ng-container>
-          <ng-container *ngIf="humanForm.get('HumanAge').getError('pattern')">
-            Поле может состоять только из цифр
-          </ng-container>
           <ng-container *ngIf="humanForm.get('HumanAge').getError('min')">
-            пользователь должен быть совершеннолетним
+            Пользователь должен быть совершеннолетним
           </ng-container>
           <ng-container *ngIf="humanForm.get('HumanAge').getError('max')">
             Люди столько не живут
@@ -52,12 +49,20 @@
       <div class="control">
         <label for="number" class="label">Номер телефона</label>
         <input
-          type="text"
+          type="number"
           class="plain-input"
           id="number"
-          placeholder="8 800 1000-7-322"
+          placeholder="8 801-000-7-322"
           formControlName="number"
         />
+        <div class="error" *ngIf="humanForm.get('number').invalid && !humanForm.get('number').pristine">
+          <ng-container *ngIf="humanForm.get('number').getError('pattern')">
+            Неправильная запись
+          </ng-container>
+          <ng-container *ngIf="humanForm.get('number').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+        </div>
       </div>
       <div class="control" id="control2">
         <label for="mail" class="label">Почта </label>
@@ -68,6 +73,11 @@
           placeholder="example@mail.ru"
           formControlName="mail"
         />
+        <div class="error" *ngIf="humanForm.get('mail').invalid && !humanForm.get('mail').pristine">
+          <ng-container *ngIf="humanForm.get('mail').getError('email')">
+            Неправильная запись
+          </ng-container>
+        </div>
       </div>
     </div>
   </form>
@@ -102,7 +112,7 @@
         <label for="age" class="label">Возраст</label>
         <input
           class="plain-input"
-          type="text"
+          type="number"
           id="age"
           placeholder="0+"
           formControlName="age"
@@ -110,9 +120,6 @@
         <div class="error" *ngIf="PetForm.get('age').invalid && !PetForm.get('age').pristine">
           <ng-container *ngIf="PetForm.get('age').getError('required')">
             Поле обязательно для заполнения
-          </ng-container>
-          <ng-container *ngIf="PetForm.get('age').getError('pattern')">
-            Поле может состоять только из цифр
           </ng-container>
           <ng-container *ngIf="PetForm.get('age').getError('max')">
             Кошки столько не живут
@@ -135,7 +142,7 @@
           type="text"
           class="plain-input"
           id="weight"
-          placeholder="1+"
+          placeholder="4000+"
           formControlName="weight"
         />
         <div class="error" *ngIf="PetForm.get('weight').invalid && !PetForm.get('weight').pristine">
