@@ -1,0 +1,301 @@
+<div class ="container">
+  <!--
+ // <div class ="row">1</div>
+  //<div class ="row">2</div>
+  -<h4><p>{{titlePage}}</p></h4>
+  <button class = "plain-button" (click) = "saveData()">Тест</button>
+  <div *ngIf="isShow">{{sc}}</div> -->
+  <app-order-steps [steps]="steps" [active]="step"></app-order-steps>
+  <form *ngIf="step === 1" [formGroup]="catFinesForm">
+    <h4 class="step-title">Информация о кошечке</h4>
+    <div class="column">
+      <div class="control">
+        <label for="catName" class="label">Кличка котика</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="catName"
+          placeholder="Кличка"
+          formControlName="catName"
+        />
+        <div class="error" *ngIf="catFinesForm.get('catName').invalid && !catFinesForm.get('catName').pristine">
+          <ng-container *ngIf="catFinesForm.get('catName').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="catFinesForm.get('catName').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+          <ng-container *ngIf="catFinesForm.get('catName').errors?.minlength">
+            Кличка не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="catFinesForm.get('catName').errors?.maxlength">
+            Кличка не может быть больше 20 букв
+          </ng-container>
+        </div>
+      </div>
+      <div class="control">
+        <label for="catAge" class="label">Возраст</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="catAge"
+          placeholder="Возраст"
+          formControlName="age"
+        />
+        <div class="error" *ngIf="catFinesForm.get('age').invalid && !catFinesForm.get('age').pristine">
+          <ng-container *ngIf="catFinesForm.get('age').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="catFinesForm.get('age').getError('pattern')">
+            Поле может состоять только из цифр
+          </ng-container>
+          <ng-container *ngIf="catFinesForm.get('age').errors?.max">
+            Возраст не может быть выше 10 лет
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <div class="label">Пол</div>
+        <input class="plain-radio" type="radio" id="male" name="sex" value="Кот" formControlName="sex"/>
+        <label for="male">Кот</label>
+        <input class="plain-radio" type="radio" id="female" name="sex" value="Кошка" formControlName="sex"/>
+        <label for="female">Кошка</label>
+      </div>
+      <div class="control">
+        <label for="breed" class="label">Порода котика</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="breed"
+          placeholder="Порода"
+          formControlName="breed"
+        />
+        <div class="error" *ngIf="catFinesForm.get('breed').invalid && !catFinesForm.get('breed').pristine">
+          <ng-container *ngIf="catFinesForm.get('breed').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="catFinesForm.get('breed').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+          <ng-container *ngIf="catFinesForm.get('breed').errors?.minlength">
+            Порода не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="catFinesForm.get('breed').errors?.maxlength">
+            Порода не может быть больше 20 букв
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label for="color" class="label">Окрас котика</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="color"
+          placeholder="Окрас"
+          formControlName="color"
+        />
+        <div class="error" *ngIf="catFinesForm.get('color').invalid && !catFinesForm.get('color').pristine">
+          <ng-container *ngIf="catFinesForm.get('color').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="catFinesForm.get('color').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+          <ng-container *ngIf="catFinesForm.get('color').errors?.minlength">
+            Окрас не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="catFinesForm.get('color').errors?.maxlength">
+            Окрас не может быть больше 20 букв
+          </ng-container>
+        </div>
+      </div>
+      <div class="control">
+        <label for="catWeight" class="label">Вес</label>
+        <input
+          class="plain-input"
+          type="number"
+          id="catWeight"
+          placeholder="Вес"
+          formControlName="weight"
+          step="0.1000"
+        />
+        <div class="error" *ngIf="catFinesForm.get('weight').invalid && !catFinesForm.get('weight').pristine">
+          <ng-container *ngIf="catFinesForm.get('weight').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="catFinesForm.get('weight').getError('pattern')">
+            Поле может состоять только из цифр
+          </ng-container>
+          <ng-container *ngIf="catFinesForm.get('weight').errors?.max">
+            Вес не может быть выше 12 кг
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </form>
+  <form *ngIf="step === 2" [formGroup]="ownerFinesForm">
+    <h4 class="step-title">Персональная информация</h4>
+    <div class="column">
+      <div class="control">
+        <label for="ownerName" class="label">Фамилия владельца котика</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="surname"
+          placeholder="Фамилия владельца котика"
+          formControlName="surname"
+        />
+        <div class="error" *ngIf="ownerFinesForm.get('surname').invalid && !ownerFinesForm.get('surname').pristine">
+          <ng-container *ngIf="ownerFinesForm.get('surname').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('surname').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('surname').errors?.minlength">
+            Фамилия не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('surname').errors?.maxlength">
+            Фамилия не может быть больше 20 букв
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label for="ownerName" class="label">Имя владельца котика</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="ownerName"
+          placeholder="Имя владельца котика"
+          formControlName="ownerName"
+        />
+        <div class="error" *ngIf="ownerFinesForm.get('ownerName').invalid && !ownerFinesForm.get('ownerName').pristine">
+          <ng-container *ngIf="ownerFinesForm.get('ownerName').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('ownerName').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('ownerName').errors?.minlength">
+            Имя не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('ownerName').errors?.maxlength">
+            Имя не может быть больше 20 букв
+          </ng-container>
+        </div>
+      </div>
+      <div class="control">
+        <label for="middle_NAME" class="label">Отчество владельца котика</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="middle_NAME"
+          placeholder="Отчество владельца котика"
+          formControlName="middle_NAME"
+        />
+        <div class="error" *ngIf="ownerFinesForm.get('middle_NAME').invalid && !ownerFinesForm.get('middle_NAME').pristine">
+          <ng-container *ngIf="ownerFinesForm.get('middle_NAME').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('middle_NAME').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('middle_NAME').errors?.minlength">
+            Отчество не может быть меньше 2 букв
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('middle_NAME').errors?.maxlength">
+            Отчество не может быть больше 20 букв
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="control">
+        <label for="passportNumber" class="label">Номер паспорта</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="passportNumber"
+          placeholder="Номер паспорта"
+          formControlName="passportNumber"
+        />
+        <div class="error" *ngIf="ownerFinesForm.get('passportNumber').invalid && !ownerFinesForm.get('passportNumber').pristine">
+          <ng-container *ngIf="ownerFinesForm.get('passportNumber').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('passportNumber').getError('pattern')">
+            Поле может состоять только из цифр
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('passportNumber').errors?.minlength">
+            Номер паспорта состоит из 6 цифр
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('passportNumber').errors?.maxlength">
+            Номер паспорта состоит из 6 цифр
+          </ng-container>
+        </div>
+      </div>
+      <div class="control">
+        <label for="phone_NUMBER" class="label">Номер телефона</label>
+        <input
+          class="plain-input"
+          type="text"
+          id="phone_NUMBER"
+          placeholder="Номер телефона"
+          formControlName="phone_NUMBER"
+        />
+        <div class="error" *ngIf="ownerFinesForm.get('phone_NUMBER').invalid && !ownerFinesForm.get('phone_NUMBER').pristine">
+          <ng-container *ngIf="ownerFinesForm.get('phone_NUMBER').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('phone_NUMBER').getError('pattern')">
+            Ошибка ввода номера телефона
+          </ng-container>
+          <ng-container *ngIf="ownerFinesForm.get('phone_NUMBER').errors?.maxlength">
+            Слишком много цифр
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div *ngIf="step === 3">
+    <h4 class="step-title">Штрафы</h4>
+    <div class="column" *ngFor="let i of tests">
+      <div class="control plain-div"><h4 style="text-align: center">{{"Штраф №"+i.id}}</h4>
+        <h4 style="text-align: center">{{"Выдан котику №" + i.id + " за " + i.title}}</h4>
+        <p>{{i.desc}}</p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="step === 4">
+    <h4 class="step-title">Штрафы</h4>
+    <!--<div class="column" *ngFor="let i of contentsOutput">
+      <div class="control plain-div"><h4 style="text-align: center">{{"Штраф №"+i.id}}</h4>
+        <h4 style="text-align: center">{{i.title}}{{i.catId}}</h4>
+      <p>{{i.desc}}</p>
+      <button style="float:right;" class="plain-button" (click)="test(i.id)">Оплатить</button>
+      </div>
+    </div>-->
+    <div class="column">
+      <div class="control plain-div" ><h4 style="text-align: center">{{"Штраф №"+ contentsOutput.id}}</h4>
+        <h4 style="text-align: center">{{"Выдан котику №" + contentsOutput.id + " за " + contentsOutput.title}}</h4>
+        <p>{{contentsOutput.desc}}</p>
+        <p>{{"Сумма : " + contentsOutput.cost + " ₽"}}</p>
+        <button style="float:right;" class="plain-button" (click)="test(contentsOutput.id)">Оплатить</button>
+      </div>
+    </div>
+  </div>
+  <div class="column buttons">
+    <div class="control">
+      <button *ngIf="step !== 1" class="plain-button" (click)="prev()">Назад</button>
+    </div>
+    <div class="control">
+      <button class="plain-button" (click)="Next()" [hidden] = "step === 4" [disabled]="catFinesForm.invalid || (step === 2 && ownerFinesForm.invalid)">{{'Далее'}}</button>
+    </div>
+  </div>
+</div>
