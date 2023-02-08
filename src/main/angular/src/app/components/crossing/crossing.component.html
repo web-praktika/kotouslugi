@@ -220,9 +220,8 @@
     <div class="control">
       <button class="plain-button" 
       (click)="next()"
+      [disabled]="(step === 1 && humanForm.invalid) || (step === 2 && PetForm.invalid)"
       >Далее</button>
     </div>
   </div>
 </div>
-
-[disabled]="(step === 1 && humanForm.invalid) || (step === 2 && PetForm.invalid)"
