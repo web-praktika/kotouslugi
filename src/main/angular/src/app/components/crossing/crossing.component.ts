@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CrossingComponent implements OnInit {
 
+   
     public humanForm: FormGroup;
     public PetForm: FormGroup;
     public crossingForm: FormGroup;
@@ -40,28 +41,28 @@ export class CrossingComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private http: HttpClient
   ) { }
 
   ngOnInit(): void {
-
     this.humanForm = this.fb.group({
-      HumanName: '',
-      HumanAge: '',
+      HumanName: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
+      HumanAge: new FormControl('', [Validators.max(122), Validators.min(18),Validators.required, Validators.pattern(/^[\d]+$/)]),
       number: '',
       mail: ''
     });
       this.PetForm = this.fb.group({
         name: '',
-        lastName: '',
+        bree: '',
+        age: new FormControl('', [Validators.max(25), Validators.min(1),Validators.required, Validators.pattern(/^[\d]+$/)]),
         sex: 'male',
-        age: '',
-        weight: '',
+        weight: new FormControl('', [Validators.max(21000), Validators.min(4000),Validators.required, Validators.pattern(/^[\d]+$/)]),
         color: ''
     });
     this.crossingForm = this.fb.group({
-        candidate:''
+        candidate:'supreme'
     });
   }
    public next(): void {

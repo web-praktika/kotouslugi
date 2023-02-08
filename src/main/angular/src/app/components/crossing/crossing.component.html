@@ -3,29 +3,51 @@
   <form *ngIf="step === 1" [formGroup]="humanForm">
     <h4 class="step-title">Информация о хозяине</h4>
     <div class="column">
-    <div class="control">
-      <label for="HumanName" class="label">ФИО хозяина</label>
-      <input
-        type="text"
-        class="plain-input"
-        id="HumanName"
-        placeholder="Иванов Иван Иванович"
-        formControlName="HumanName"
-      />
+      <div class="control">
+        <label for="HumanName" class="label">ФИО хозяина</label>
+        <input
+          type="text"
+          class="plain-input"
+          id="HumanName"
+          placeholder="Иванов Иван Иванович"
+          formControlName="HumanName"
+        />
+        <div class="error" *ngIf="humanForm.get('HumanName').invalid && !humanForm.get('HumanName').pristine">
+          <ng-container *ngIf="humanForm.get('HumanName').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="humanForm.get('HumanName').getError('pattern')">
+            Поле может состоять только из букв русского алфавита
+          </ng-container>
+        </div>
+      </div>
+      <div class="control" id="control1">
+        <label for="HumanAge" class="label">Возраст хозяина</label>
+        <input
+          min="18"
+          max="100"
+          class="plain-input"
+          type="text"
+          id="HumanAge"
+          placeholder="18+"
+          formControlName="HumanAge"
+        />
+        <div class="error" *ngIf="humanForm.get('HumanAge').invalid && !humanForm.get('HumanAge').pristine">
+          <ng-container *ngIf="humanForm.get('HumanAge').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="humanForm.get('HumanAge').getError('pattern')">
+            Поле может состоять только из цифр
+          </ng-container>
+          <ng-container *ngIf="humanForm.get('HumanAge').getError('min')">
+            пользователь должен быть совершеннолетним
+          </ng-container>
+          <ng-container *ngIf="humanForm.get('HumanAge').getError('max')">
+            Люди столько не живут
+          </ng-container>
+        </div>
+      </div>
     </div>
-    <div class="control" id="control1">
-      <label for="HumanAge" class="label">Возраст хозяина</label>
-      <input
-        min="18"
-        max="100"
-        class="plain-input"
-        type="text"
-        id="HumanAge"
-        placeholder="18+"
-        formControlName="HumanAge"
-      />
-    </div>
-  </div>
     <div class="column">
       <div class="control">
         <label for="number" class="label">Номер телефона</label>
@@ -49,8 +71,8 @@
       </div>
     </div>
   </form>
-    <form *ngIf="step === 2" [formGroup]="PetForm">
-    <h4 class="step-title">Информация о коте</h4>
+  <form *ngIf="step === 2" [formGroup]="PetForm">
+  <h4 class="step-title">Информация о коте</h4>
     <div class="column">
       <div class="control">
         <label for="name" class="label">Кличка</label>
@@ -63,7 +85,7 @@
           formControlName="name"
         />
       </div>
-      <div class="control" id="control3">
+      <div class="control" >
         <label for="bree" class="label">Название породы</label>
         <input
           maxlength=20;
@@ -85,6 +107,17 @@
           placeholder="0+"
           formControlName="age"
         />
+        <div class="error" *ngIf="PetForm.get('age').invalid && !PetForm.get('age').pristine">
+          <ng-container *ngIf="PetForm.get('age').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="PetForm.get('age').getError('pattern')">
+            Поле может состоять только из цифр
+          </ng-container>
+          <ng-container *ngIf="PetForm.get('age').getError('max')">
+            Кошки столько не живут
+          </ng-container>
+        </div>
       </div>
       <div class="control">
         <div class="label">Пол</div>
@@ -97,7 +130,7 @@
     </div>
     <div class="column">
       <div class="control">
-        <label for="weight" class="label">Вес питомца(кг)</label>
+        <label for="weight" class="label">Вес питомца(грам)</label>
         <input
           type="text"
           class="plain-input"
@@ -105,8 +138,22 @@
           placeholder="1+"
           formControlName="weight"
         />
+        <div class="error" *ngIf="PetForm.get('weight').invalid && !PetForm.get('weight').pristine">
+          <ng-container *ngIf="PetForm.get('weight').getError('required')">
+            Поле обязательно для заполнения
+          </ng-container>
+          <ng-container *ngIf="PetForm.get('weight').getError('pattern')">
+            Поле может состоять только из цифр
+          </ng-container>
+          <ng-container *ngIf="PetForm.get('weight').getError('min')">
+            Кот слишком худой
+          </ng-container>
+          <ng-container *ngIf="PetForm.get('weight').getError('max')">
+            Коты столько не весят
+          </ng-container>
+        </div>
       </div>
-      <div class="control" id="control4">
+      <div class="control" >
         <label for="color" class="label">Окрас питомца</label>
         <input
           maxlength=20;
@@ -123,21 +170,21 @@
     <h4 class="step-title">Список кандидатов</h4>
     <div class="flexcolumn">
       <div class="space">
-        <input class="plain-radio" type="radio" id="barsik" name="candidate" value="barsik" formControlName="candidate"/>
-        <label for="barsik" class="label">
-          <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/d162c673396927.5c0809afa13f1.jpg" alt="">
+        <input class="plain-radio" type="radio" id="supreme" name="candidate" value="supreme" formControlName="candidate"/>
+        <label for="supreme" class="label">
+          <img src="../../../assets/jpg/supreme.jpg" alt="">
         </label>
       </div>
       <div class="space">
         <input class="plain-radio" type="radio" id="manchester" name="candidate" value="manchester" formControlName="candidate"/>
         <label for="manchester" class="label">
-          <img src="https://cs5.pikabu.ru/post_img/big/2014/09/04/6/1409816833_2052270027.jpg" alt="">
+          <img src="../../../assets/jpg/manchester.jpg" alt="">
         </label>
       </div>
       <div class="space">
-        <input class="plain-radio" type="radio" id="aleha" name="candidate" value="anchester" formControlName="aleha"/>
+        <input class="plain-radio" type="radio" id="aleha" name="candidate" value="aleha" formControlName="candidate"/>
         <label for="aleha" class="label">
-          <img src="https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1RkPpkMja2sIypDZGwZr3wBRaaKTM5SRkZCeTgDn6uOyic" alt="">
+          <img src="../../../assets/jpg/aleha.jpg" alt="">
         </label>
       </div>
     </div>
@@ -152,7 +199,10 @@
       <button *ngIf="step !== 1" class="plain-button" (click)="prev()">Назад</button>
     </div>
     <div class="control">
-      <button class="plain-button" (click)="next()">Далее</button>
+      <button class="plain-button" 
+      (click)="next()"
+      [disabled]="(step === 1 && humanForm.invalid) || (step === 2 && PetForm.invalid)"
+      >Далее</button>
     </div>
   </div>
 </div>
