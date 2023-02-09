@@ -46,6 +46,12 @@ public class RequisitionService {
                 case "serviceId":
                     requisition.setServiceId((Integer) o);
                     break;
+                case "time":
+                    requisition.setTime((String) o);
+                    break;
+                case "desc":
+                    requisition.setDesc((String) o);
+                    break;
             }
         });
 

@@ -1,0 +1,48 @@
+.function-title {
+  margin-top: 1em;
+  padding-bottom: .5em;
+  margin-left: 0;
+  margin-bottom: 1em;
+}
+#courses
+{
+  margin-left: 0;
+}
+select > option:not(:first-of-type) {
+  color: black;
+}
+
+.plain-select
+{
+  width: 100%;
+  padding: 1em;
+  border: 1px solid #dededf;
+  border-radius: 4px;
+}
+
+.plain-div
+{
+  width: 100%;
+  padding: 0.7em 0.5em;
+ // margin: 0 0.5em;
+  border: 1px solid #dededf;
+  border-radius: 4px;
+}
+
+.column {
+  display: flex;
+  justify-content:center;
+
+  .control {
+    width: 100%;
+    padding: 0 0.5em;
+  }
+
+  &.buttons {
+    justify-content: space-between;
+
+    .control {
+      width: auto;
+    }
+  }
+}

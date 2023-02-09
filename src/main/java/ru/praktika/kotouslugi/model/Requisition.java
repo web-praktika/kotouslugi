@@ -16,6 +16,10 @@ public class Requisition implements Serializable {
     private String name;
     private RequisitionStatus status;
     private int serviceId;
+
+    private String time;
+
+    private String desc;
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
     private List<Field> fields;
 
@@ -40,6 +44,22 @@ public class Requisition implements Serializable {
 
     public int getId() {
         return id;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public String getDesc() {
+        return desc;
     }
 
     public void setId(int id) {
