@@ -48,8 +48,8 @@ export class CrossingComponent implements OnInit {
 
   ngOnInit(): void {
     this.humanForm = this.fb.group({
-      HumanName: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+$/)]),
-      HumanAge: new FormControl('', [Validators.max(122), Validators.min(18),Validators.required, Validators.pattern(/^[\d]+$/)]),
+      HumanName: new FormControl('', [Validators.required, Validators.pattern(/^[А-яЁё]+[' ']+[А-яЁё]/)]),
+      HumanAge: new FormControl('', [Validators.max(122), Validators.min(18),Validators.required]),
       number: ['', [Validators.required, Validators.pattern("^[0-9_-]{10,12}")]],
       mail:['', Validators.email]
     });
