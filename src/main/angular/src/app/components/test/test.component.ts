@@ -25,6 +25,8 @@ export class TestComponent implements OnInit {
   public cities: any;
   public ownerRegistrationForm: FormGroup;
   public catRegistrationForm: FormGroup;
+  public output: any;
+  public outputCat: any;
   public isCat = false;
   public readonly steps = [{
                       id: 1,
@@ -102,19 +104,54 @@ export class TestComponent implements OnInit {
           if(!this.isCat)
           {
             this.http.post('/api/createuser/save', {...this.ownerData,}).subscribe(() => {
+              this.http.get<any>('/api/createuser/get').subscribe(dt => {
+                dt.content.forEach((element) => {
+                  this.count = element.id;
+                });
+                this.ownerAddress = {
+                  owner_ID: this.count,
+                  city: this.ownerRegistrationForm.get('city').value,
+                  district: this.ownerRegistrationForm.get('district').value,
+                  street: this.ownerRegistrationForm.get('street').value,
+                  building: this.ownerRegistrationForm.get('building').value
+                };
               this.http.post('/api/address/save', {...this.ownerAddress,}).subscribe(() => {
+
                 alert('Вы зарегистрированы в системе');
+              });
               });
               this.router.navigate(['/']);
             });
           }
           else {
             this.http.post('/api/createuser/save', {...this.ownerData,}).subscribe(() => {
-              this.http.post('/api/address/save', {...this.ownerAddress,}).subscribe(() => {
-                this.http.post('/api/createcat/save', {...this.catData}).subscribe(() => {
-                  alert('Вы зарегистрированы в системе');
-                })
-                this.router.navigate(['/']);
+              this.http.get<any>('/api/createuser/get').subscribe(dt => {
+                dt.content.forEach((element) => {
+                  this.count = element.id;
+                });
+                this.ownerAddress = {
+                  owner_ID: this.count,
+                  city: this.ownerRegistrationForm.get('city').value,
+                  district: this.ownerRegistrationForm.get('district').value,
+                  street: this.ownerRegistrationForm.get('street').value,
+                  building: this.ownerRegistrationForm.get('building').value
+                };
+                this.catData = {
+                  owner_ID: this.count,
+                  name: this.catRegistrationForm.get('name').value,
+                  sex: this.catRegistrationForm.get('sex').value,
+                  breed: this.catRegistrationForm.get('breed').value,
+                  age: this.catRegistrationForm.get('catAge').value,
+                  weight: this.catRegistrationForm.get('weight').value,
+                  vaccination_CERTIFICATE: this.catRegistrationForm.get('vaccination_CERTIFICATE').value,
+                };
+                this.http.post('/api/address/save', {...this.ownerAddress,}).subscribe(() => {
+
+                  this.http.post('/api/createcat/save', {...this.catData}).subscribe(() => {
+                    alert('Вы зарегистрированы в системе');
+                  })
+                  this.router.navigate(['/']);
+                });
               });
             });
           }
@@ -141,33 +178,27 @@ export class TestComponent implements OnInit {
         //...this.ownerRegistrationForm.getRawValue(),
         //...this.catRegistrationForm.getRawValue()
       };
-      this.ownerAddress = {
-        owner_ID: this.count + 1,
+      this.output = {
         city: this.ownerRegistrationForm.get('city').value,
         district: this.ownerRegistrationForm.get('district').value,
         street: this.ownerRegistrationForm.get('street').value,
         building: this.ownerRegistrationForm.get('building').value
-      };
+      }
     }
   public createCatDataToPOST() : void {
-    this.catData = {
-      owner_ID: this.count + 1,
+    this.outputCat = {
       name: this.catRegistrationForm.get('name').value,
       sex: this.catRegistrationForm.get('sex').value,
       breed: this.catRegistrationForm.get('breed').value,
       age: this.catRegistrationForm.get('catAge').value,
       weight: this.catRegistrationForm.get('weight').value,
       vaccination_CERTIFICATE: this.catRegistrationForm.get('vaccination_CERTIFICATE').value,
-    };
+    }
   }
   public getData() : void {
     this.http.get<any>('/api/breed/get').subscribe(dt => { this.breeds = dt.content; });
     this.http.get<any>('/api/getcity/get').subscribe(dt => { this.cities = dt.content; });
-    this.http.get<any>('/api/createuser/get').subscribe(dt => {
-      dt.content.forEach((element) => {
-        this.count = element.id;
-      });
-    });
+
   }
 
 }

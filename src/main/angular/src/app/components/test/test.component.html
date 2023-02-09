@@ -353,21 +353,21 @@
     <div class="column">
       <div class="control">
         <label class="label">Город</label>
-        <div class="plain-div">{{ownerAddress.city}}</div>
+        <div class="plain-div">{{output.city}}</div>
       </div>
       </div>
     <div class="column">
       <div class="control">
         <label class="label">Район</label>
-        <div class="plain-div">{{ownerAddress.district}}</div>
+        <div class="plain-div">{{output.district}}</div>
       </div>
       <div class="control">
         <label class="label">Улица</label>
-        <div class="plain-div">{{ownerAddress.street}}</div>
+        <div class="plain-div">{{output.street}}</div>
       </div>
       <div class="control">
         <label class="label">Дом</label>
-        <div class="plain-div">{{ownerAddress.building === "" ? 'Не указан' : ownerAddress.building}}</div>
+        <div class="plain-div">{{output.building === "" ? 'Не указан' : output.building}}</div>
       </div>
     </div>
     <div class="column">
@@ -380,36 +380,36 @@
         <div class="plain-div">{{ownerData.email === "" ? 'Не указан' : ownerData.email}}</div>
       </div>
     </div>
-    <div *ngIf="catData">
+    <div *ngIf="outputCat">
       <h4 class="function-title column">Котик</h4>
       <div class="column">
         <div class="control">
           <label class="label">Кличка</label>
-          <div class="plain-div">{{catData.name}}</div>
+          <div class="plain-div">{{outputCat.name}}</div>
         </div>
         <div class="control">
           <label class="label">Порода</label>
-          <div class="plain-div">{{catData.breed}}</div>
+          <div class="plain-div">{{outputCat.breed}}</div>
         </div>
       </div>
       <div class="column">
         <div class="control">
           <label class="label">Возраст</label>
-          <div class="plain-div">{{catData.age}}</div>
+          <div class="plain-div">{{outputCat.age}}</div>
         </div>
         <div class="control">
           <label class="label">Вес</label>
-          <div class="plain-div">{{catData.weight}}</div>
+          <div class="plain-div">{{outputCat.weight}}</div>
         </div>
       </div>
       <div class="column">
         <div class="control">
           <label class="label">Пол</label>
-          <div class="plain-div">{{catData.sex}}</div>
+          <div class="plain-div">{{outputCat.sex}}</div>
         </div>
         <div class="control">
           <label class="label">Имеются ли прививки</label>
-          <div class="plain-div">{{catData.vaccination_CERTIFICATE}}</div>
+          <div class="plain-div">{{outputCat.vaccination_CERTIFICATE}}</div>
         </div>
       </div>
     </div>
