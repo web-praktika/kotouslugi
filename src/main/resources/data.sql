@@ -27,6 +27,10 @@ INSERT INTO service
 values (6,
         'Не смотри под хвост  - смотри на ГИБДД пост',
         'Оформление котоправ');
+INSERT INTO service
+values (7,
+        'test',
+        'test for test');
 
 
 -- category
@@ -56,6 +60,8 @@ INSERT INTO service_category
 values (5, 3);
 INSERT INTO service_category
 values (6, 4);
+INSERT INTO service_category
+values (7, 2);
 
 INSERT INTO otdels_gibdd
 values (3603, 'ул.Ленина, 36', 'Воронеж');

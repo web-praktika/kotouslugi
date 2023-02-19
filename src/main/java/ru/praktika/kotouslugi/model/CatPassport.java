@@ -14,40 +14,64 @@ public class CatPassport {
 
     @Id
     @GeneratedValue
-    private Long id;
-    private String parameter;
-    private String value;
+    private Integer id;
+    private String passportId;
+    private String passportDate;
+    private String numDepartment;
+    private String registration;
 
     public CatPassport() {
 
     }
 
-    public CatPassport(String parameter, String value) {
-        this.parameter = parameter;
-        this.value = value;
+    public CatPassport(String passportId, String passportDate,
+                       String numDepartment, String registration) {
+        this.passportId = passportId;
+        this.passportDate = passportDate;
+        this.numDepartment = numDepartment;
+        this.registration = registration;
     }
 
-    public Long getId() {
+
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getParameter() {
-        return parameter;
+
+    public String getPassportId() {
+        return passportId;
     }
 
-    public void setParameter(String parameter) {
-        this.parameter = parameter;
+    public void setPassportId(String passportId) {
+        this.passportId = passportId;
     }
 
-    public String getValue() {
-        return value;
+    public String getPassportDate() {
+        return passportDate;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setPassportDate(String passportDate) {
+        this.passportDate = passportDate;
+    }
+
+    public String getNumDepartment() {
+        return numDepartment;
+    }
+
+    public void setNumDepartment(String numDepartment) {
+        this.numDepartment = numDepartment;
+    }
+
+    public String getRegistration() {
+        return registration;
+    }
+
+    public void setRegistration(String registration) {
+        this.registration = registration;
     }
 }

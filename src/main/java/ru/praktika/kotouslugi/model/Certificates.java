@@ -13,37 +13,68 @@ import java.sql.Date;
 public class Certificates {
     @Id
     @GeneratedValue
-    private Long id;
-    private String parameter;
-    private String value;
+    private Integer id;
+    private String educationPlace;
+    private String eduCertificateNumber;
+    private String eduCertificateDate;
+    private String medCertificateNumber;
+    private String medCertificateDate;
 
     public Certificates() { }
 
-    public Certificates(String parameter, String value) {
-        this.parameter = parameter;
-        this.value = value;
+    public Certificates(String educationPlace, String eduCertificateDate, String eduCertificateNumber,
+                        String medCertificateNumber, String medCertificateDate) {
+        this.educationPlace = educationPlace;
+        this.eduCertificateDate = eduCertificateDate;
+        this.eduCertificateNumber = eduCertificateNumber;
+        this.medCertificateNumber = medCertificateNumber;
+        this.medCertificateDate = medCertificateDate;
     }
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getParameter() {
-        return parameter;
+    public String getEducationPlace() {
+        return educationPlace;
     }
 
-    public void setParameter(String parameter) {
-        this.parameter = parameter;
+    public void setEducationPlace(String educationPlace) {
+        this.educationPlace = educationPlace;
     }
 
-    public String getValue() {
-        return value;
+    public String getEduCertificateNumber() {
+        return eduCertificateNumber;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setEduCertificateNumber(String eduCertificateNumber) {
+        this.eduCertificateNumber = eduCertificateNumber;
+    }
+
+    public String getEduCertificateDate() {
+        return eduCertificateDate;
+    }
+
+    public void setEduCertificateDate(String eduCertificateDate) {
+        this.eduCertificateDate = eduCertificateDate;
+    }
+
+    public String getMedCertificateNumber() {
+        return medCertificateNumber;
+    }
+
+    public void setMedCertificateNumber(String medCertificateNumber) {
+        this.medCertificateNumber = medCertificateNumber;
+    }
+
+    public String getMedCertificateDate() {
+        return medCertificateDate;
+    }
+
+    public void setMedCertificateDate(String medCertificateDate) {
+        this.medCertificateDate = medCertificateDate;
     }
 }

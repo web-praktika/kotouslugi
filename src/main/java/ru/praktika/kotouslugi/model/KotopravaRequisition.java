@@ -12,29 +12,39 @@ public class KotopravaRequisition implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
-    private String name;
+    private String nameRequisition;
     private RequisitionStatus status;
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private List<Kittens> kittens;
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private List<CatPassport> passports;
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private  List<Certificates> certificates;
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "kittens_id")
+    private Kittens kittens;
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "passport_id")
+    private CatPassport passports;
+    @OneToOne(cascade = {CascadeType.ALL})
+    private  Certificates certificates;
     private String numGIBDD;
     private String dateGIBDD;
     private String timeGIBDD;
+
+    public Kittens getKittens() {
+        return kittens;
+    }
+
+    public void setKittens(Kittens kittens) {
+        this.kittens = kittens;
+    }
 
     public KotopravaRequisition() {
 
     }
 
-    public KotopravaRequisition(String name, RequisitionStatus status,
+    public KotopravaRequisition(String nameRequisition, RequisitionStatus status,
                                 String numGIBDD, String dateGIBDD, String timeGIBDD){
-        this.name = name;
+        this.nameRequisition = nameRequisition;
         this.status = status;
-        this.kittens = new LinkedList<>();
-        this.passports = new LinkedList<>();
-        this.certificates = new LinkedList<>();
+        this.kittens = new Kittens();
+        this.passports = new CatPassport();
+        this.certificates = new Certificates();
         this.numGIBDD = numGIBDD;
         this.dateGIBDD = dateGIBDD;
         this.timeGIBDD = timeGIBDD;
@@ -48,12 +58,12 @@ public class KotopravaRequisition implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNameRequisition() {
+        return nameRequisition;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameRequisition(String nameRequisition) {
+        this.nameRequisition = nameRequisition;
     }
 
     public RequisitionStatus getStatus() {
@@ -88,27 +98,21 @@ public class KotopravaRequisition implements Serializable {
         this.timeGIBDD = timeGIBDD;
     }
 
-    public List<Kittens> getKittens() {
-        return kittens;
-    }
 
-    public void setKittens(List<Kittens> kittens) {
-        this.kittens = kittens;
-    }
-
-    public List<CatPassport> getPassports() {
+    public CatPassport getPassports() {
         return passports;
     }
 
-    public void setPassports(List<CatPassport> passports) {
+    public void setPassports(CatPassport passports) {
         this.passports = passports;
     }
 
-    public List<Certificates> getCertificates() {
+    public Certificates getCertificates() {
         return certificates;
     }
 
-    public void setCertificates(List<Certificates> certificates) {
+    public void setCertificates(Certificates certificates) {
         this.certificates = certificates;
     }
+
 }

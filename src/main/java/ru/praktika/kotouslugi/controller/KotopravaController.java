@@ -3,6 +3,7 @@ package ru.praktika.kotouslugi.controller;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ru.praktika.kotouslugi.model.Kittens;
 import ru.praktika.kotouslugi.model.KotopravaRequisition;
 import ru.praktika.kotouslugi.model.Requisition;
 import ru.praktika.kotouslugi.model.response.BaseResponse;

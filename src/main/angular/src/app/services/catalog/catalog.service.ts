@@ -29,6 +29,9 @@ export class CatalogService {
   }, {
     id: 6,
     src: '/assets/icons/cat_birdhouse.png'
+  }, {
+    id: 7,
+    src: '/assets/icons/cat_upsidedown.png'
   }];
 
   constructor(

@@ -7,6 +7,7 @@ import { VetComponent } from './components/vet/vet.component';
 import { CatListComponent } from './modules/cat-list/cat-list.component';
 import { OrdersComponent } from './modules/orders/orders.component';
 import { KotopravaComponent } from './components/kotoprava/kotoprava.component';
+import { CatstestComponent } from './components/catstest/catstest.component';
 
 const routes: Routes = [{
   path: '',
@@ -36,12 +37,18 @@ const routes: Routes = [{
     path: 'service/6',
     redirectTo: 'kotoprava'
   }, {
-   path: 'kotoprava',
-   component: KotopravaComponent
+    path: 'kotoprava',
+    component: KotopravaComponent
+  }, {
+    path: 'service/7',
+    redirectTo: 'catstest'
+  }, {
+    path: 'catstest',
+    component: CatstestComponent
   }, {
     path: '**',
     component: NotFoundComponent
-}];
+  }];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],

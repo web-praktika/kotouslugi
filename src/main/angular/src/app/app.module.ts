@@ -14,6 +14,7 @@ import { VetComponent } from './components/vet/vet.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdersModule } from './modules/orders/orders.module';
 import { KotopravaComponent } from './components/kotoprava/kotoprava.component';
+import { CatstestComponent } from './components/catstest/catstest.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { KotopravaComponent } from './components/kotoprava/kotoprava.component';
     VetComponent,
     NotFoundComponent,
     KotopravaComponent,
+    CatstestComponent,
   ],
   imports: [
     BrowserModule,

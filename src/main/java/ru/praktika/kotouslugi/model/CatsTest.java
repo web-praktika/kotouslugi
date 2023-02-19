@@ -6,25 +6,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="kittens")
-public class Kittens {
+@Table(name="cats_test")
+public class CatsTest {
+
     @Id
     @GeneratedValue
     private Integer id;
     private String name;
     private String breed;
     private String sex;
-    private String age;
+    private Integer age;
 
-    public Kittens() {
+    public CatsTest() {
 
-    }
-
-    public Kittens(String name, String breed, String sex, String age) {
-        this.name = name;
-        this.breed = breed;
-        this.sex = sex;
-        this.age = age;
     }
     public Integer getId() {
         return id;
@@ -42,7 +36,6 @@ public class Kittens {
         this.name = name;
     }
 
-
     public String getBreed() {
         return breed;
     }
@@ -51,19 +44,19 @@ public class Kittens {
         this.breed = breed;
     }
 
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
     public String getSex() {
         return sex;
     }
 
     public void setSex(String sex) {
         this.sex = sex;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
     }
 }
