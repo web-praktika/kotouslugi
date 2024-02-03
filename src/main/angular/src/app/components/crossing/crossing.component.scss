@@ -1,0 +1,35 @@
+.step-title {
+  padding-bottom: .5em;
+  border-bottom: 1px solid #dededf;
+  margin-bottom: 1em;
+}
+$fh:250px;
+.flexcolumn {
+  display: flex;
+  justify-content: space-between;
+
+  &.space{
+    height: $fh;
+    justify-content: space-between;
+  }
+  & img{
+    pointer-events: none; 
+    border: 1px solid black;
+    height: $fh;
+  }
+
+}
+
+input::-webkit-inner-spin-button {
+  -webkit-appearance: inner-spin-button;
+  display: inline-block;
+  cursor: default;
+  flex: 0 0 auto;
+  align-self: stretch;
+  -webkit-user-select: none;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-user-modify: read-only;
+}
+
+

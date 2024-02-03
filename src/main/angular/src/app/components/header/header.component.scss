@@ -1,0 +1,73 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.4em;
+  padding-bottom: 1.4em;
+}
+
+.logo {
+  position: relative;
+  font-size: 1.28em;
+  font-weight: bold;
+  padding-left: 2.6em;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -.5em;
+    left: 0;
+    width: 45px;
+    height: 45px;
+    background: url('../../../assets/png/cat_slippers.png') no-repeat;
+    background-position:center;
+    background-size: 100%;
+  }
+
+  .red {
+    color: #ED2E52;
+  }
+
+  .blue {
+    color: #1270B7
+  }
+}
+
+.orders {
+  position: relative;
+  padding-right: 1.4em;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 14px;
+    height: 20px;
+    background: url(../../../assets/svg/envelope.svg) no-repeat center;
+    background-size: 100%;
+  }
+}
+
+.breadcrumbs {
+  padding: 1em 0;
+  border-top: 1px solid #dededf;
+  border-bottom: 1px solid #dededf;
+
+  a {
+    position: relative;
+    margin-right: 2em;
+  }
+
+  span {
+    position: relative;
+  }
+
+  a + a:before,
+  span:before {
+    content: '>';
+    position: absolute;
+    top: 0;
+    left: -1.2em;
+    color: #909090;
+  }
+}

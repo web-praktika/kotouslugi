@@ -1,0 +1,33 @@
+.title {
+  padding-bottom: .3em;
+  border-bottom: 1px solid #dededf;
+}
+
+.order {
+  padding: 1em;
+  border: 1px solid #dededf;
+  border-radius: 4px;
+  margin-bottom: 1em;
+}
+
+.service-info {
+  display: flex;
+
+  .icon {
+    max-width: 35px;
+    margin: 0 .5em .5em 0;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .name {
+    margin: 0;
+  }
+
+  .category {
+    color: #999999;
+  }
+}
